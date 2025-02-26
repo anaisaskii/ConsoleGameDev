@@ -39,6 +39,10 @@ RenderSettings:
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+>>>>>>> Stashed changes
 =======
   m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
 >>>>>>> Stashed changes
@@ -102,7 +106,12 @@ LightmapSettings:
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   m_LightingSettings: {fileID: 4890085278179872738, guid: 20c6ed6983ce261458300b5dfa68f03e, type: 2}
+=======
+  m_LightingSettings: {fileID: 4890085278179872738, guid: 20c6ed6983ce261458300b5dfa68f03e,
+    type: 2}
+>>>>>>> Stashed changes
 =======
   m_LightingSettings: {fileID: 4890085278179872738, guid: 20c6ed6983ce261458300b5dfa68f03e,
     type: 2}
@@ -113,7 +122,11 @@ NavMeshSettings:
   m_ObjectHideFlags: 0
   m_BuildSettings:
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     serializedVersion: 2
+=======
+    serializedVersion: 3
+>>>>>>> Stashed changes
 =======
     serializedVersion: 3
 >>>>>>> Stashed changes
@@ -130,7 +143,11 @@ NavMeshSettings:
     manualTileSize: 0
     tileSize: 256
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     accuratePlacement: 0
+=======
+    buildHeightMesh: 0
+>>>>>>> Stashed changes
 =======
     buildHeightMesh: 0
 >>>>>>> Stashed changes
@@ -186,6 +203,10 @@ MonoBehaviour:
     LensShift: {x: 0, y: 0}
     GateFit: 2
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+    FocusDistance: 10
+>>>>>>> Stashed changes
 =======
     FocusDistance: 10
 >>>>>>> Stashed changes
@@ -206,6 +227,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 109669588}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+  serializedVersion: 2
+>>>>>>> Stashed changes
 =======
   serializedVersion: 2
 >>>>>>> Stashed changes
@@ -217,7 +242,10 @@ Transform:
   - {fileID: 1979625626}
   m_Father: {fileID: 0}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   m_RootOrder: 3
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -300,6 +328,10 @@ Canvas:
   m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 0
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+  m_UpdateRectTransformForStandalone: 0
+>>>>>>> Stashed changes
 =======
   m_UpdateRectTransformForStandalone: 0
 >>>>>>> Stashed changes
@@ -322,7 +354,10 @@ RectTransform:
   - {fileID: 322337772}
   m_Father: {fileID: 0}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   m_RootOrder: 5
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -359,10 +394,13 @@ MeshCollider:
   m_GameObject: {fileID: 214033223}
   m_Material: {fileID: 0}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
 =======
+=======
+>>>>>>> Stashed changes
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -374,6 +412,9 @@ MeshCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
   m_Convex: 0
   m_CookingOptions: 30
@@ -436,6 +477,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 214033223}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+  serializedVersion: 2
+>>>>>>> Stashed changes
 =======
   serializedVersion: 2
 >>>>>>> Stashed changes
@@ -446,7 +491,10 @@ Transform:
   m_Children: []
   m_Father: {fileID: 863685910}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   m_RootOrder: 2
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -511,6 +559,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 241497567}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+  serializedVersion: 2
+>>>>>>> Stashed changes
 =======
   serializedVersion: 2
 >>>>>>> Stashed changes
@@ -521,24 +573,35 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &276355600 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 304361654003423997, guid: 1b7152958888f3248ad91e425326b2d5, type: 3}
 =======
+=======
+>>>>>>> Stashed changes
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &276355600 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 304361654003423997, guid: 1b7152958888f3248ad91e425326b2d5,
     type: 3}
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
   m_PrefabInstance: {fileID: 1783831682}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &276355601 stripped
 Transform:
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   m_CorrespondingSourceObject: {fileID: 304361654002927325, guid: 1b7152958888f3248ad91e425326b2d5, type: 3}
+=======
+  m_CorrespondingSourceObject: {fileID: 304361654002927325, guid: 1b7152958888f3248ad91e425326b2d5,
+    type: 3}
+>>>>>>> Stashed changes
 =======
   m_CorrespondingSourceObject: {fileID: 304361654002927325, guid: 1b7152958888f3248ad91e425326b2d5,
     type: 3}
@@ -584,6 +647,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 278527961}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+  serializedVersion: 2
+>>>>>>> Stashed changes
 =======
   serializedVersion: 2
 >>>>>>> Stashed changes
@@ -594,7 +661,10 @@ Transform:
   m_Children: []
   m_Father: {fileID: 863685910}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   m_RootOrder: 6
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -607,10 +677,13 @@ BoxCollider:
   m_GameObject: {fileID: 278527961}
   m_Material: {fileID: 0}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
 =======
+=======
+>>>>>>> Stashed changes
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -622,6 +695,9 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
   m_Size: {x: 2, y: 2, z: 2}
   m_Center: {x: 1, y: 1, z: -1}
@@ -707,7 +783,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 163595593}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   m_RootOrder: 0
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -790,7 +869,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 163595593}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   m_RootOrder: 1
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -881,10 +963,13 @@ MeshCollider:
   m_GameObject: {fileID: 392180849}
   m_Material: {fileID: 0}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
 =======
+=======
+>>>>>>> Stashed changes
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -896,6 +981,9 @@ MeshCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
   m_Convex: 0
   m_CookingOptions: 30
@@ -958,6 +1046,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 392180849}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+  serializedVersion: 2
+>>>>>>> Stashed changes
 =======
   serializedVersion: 2
 >>>>>>> Stashed changes
@@ -968,7 +1060,10 @@ Transform:
   m_Children: []
   m_Father: {fileID: 863685910}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   m_RootOrder: 0
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1000,10 +1095,13 @@ MeshCollider:
   m_GameObject: {fileID: 503922483}
   m_Material: {fileID: 0}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
 =======
+=======
+>>>>>>> Stashed changes
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -1015,6 +1113,9 @@ MeshCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
   m_Convex: 0
   m_CookingOptions: 30
@@ -1077,6 +1178,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 503922483}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+  serializedVersion: 2
+>>>>>>> Stashed changes
 =======
   serializedVersion: 2
 >>>>>>> Stashed changes
@@ -1087,7 +1192,10 @@ Transform:
   m_Children: []
   m_Father: {fileID: 863685910}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   m_RootOrder: 5
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1102,6 +1210,10 @@ GameObject:
   - component: {fileID: 506408234}
   - component: {fileID: 506408233}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+  - component: {fileID: 506408235}
+>>>>>>> Stashed changes
 =======
   - component: {fileID: 506408235}
 >>>>>>> Stashed changes
@@ -1182,6 +1294,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 506408232}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+  serializedVersion: 2
+>>>>>>> Stashed changes
 =======
   serializedVersion: 2
 >>>>>>> Stashed changes
@@ -1192,9 +1308,12 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 =======
+=======
+>>>>>>> Stashed changes
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!114 &506408235
 MonoBehaviour:
@@ -1219,6 +1338,9 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 0
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 --- !u!1 &530584336
 GameObject:
@@ -1248,10 +1370,13 @@ MeshCollider:
   m_GameObject: {fileID: 530584336}
   m_Material: {fileID: 0}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
 =======
+=======
+>>>>>>> Stashed changes
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -1263,6 +1388,9 @@ MeshCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
   m_Convex: 1
   m_CookingOptions: 14
@@ -1325,6 +1453,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 530584336}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+  serializedVersion: 2
+>>>>>>> Stashed changes
 =======
   serializedVersion: 2
 >>>>>>> Stashed changes
@@ -1335,7 +1467,10 @@ Transform:
   m_Children: []
   m_Father: {fileID: 863685910}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   m_RootOrder: 1
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1363,6 +1498,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 660917925}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+  serializedVersion: 2
+>>>>>>> Stashed changes
 =======
   serializedVersion: 2
 >>>>>>> Stashed changes
@@ -1373,7 +1512,10 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1732666373}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   m_RootOrder: 1
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1405,10 +1547,13 @@ MeshCollider:
   m_GameObject: {fileID: 837475900}
   m_Material: {fileID: 0}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
 =======
+=======
+>>>>>>> Stashed changes
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -1420,6 +1565,9 @@ MeshCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
   m_Convex: 0
   m_CookingOptions: 30
@@ -1482,6 +1630,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 837475900}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+  serializedVersion: 2
+>>>>>>> Stashed changes
 =======
   serializedVersion: 2
 >>>>>>> Stashed changes
@@ -1492,7 +1644,10 @@ Transform:
   m_Children: []
   m_Father: {fileID: 863685910}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   m_RootOrder: 3
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1520,6 +1675,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 863685909}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+  serializedVersion: 2
+>>>>>>> Stashed changes
 =======
   serializedVersion: 2
 >>>>>>> Stashed changes
@@ -1537,7 +1696,10 @@ Transform:
   - {fileID: 278527962}
   m_Father: {fileID: 0}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   m_RootOrder: 1
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1569,10 +1731,13 @@ MeshCollider:
   m_GameObject: {fileID: 1298833745}
   m_Material: {fileID: 0}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
 =======
+=======
+>>>>>>> Stashed changes
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -1584,6 +1749,9 @@ MeshCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
   m_Convex: 0
   m_CookingOptions: 30
@@ -1646,6 +1814,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1298833745}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+  serializedVersion: 2
+>>>>>>> Stashed changes
 =======
   serializedVersion: 2
 >>>>>>> Stashed changes
@@ -1656,7 +1828,10 @@ Transform:
   m_Children: []
   m_Father: {fileID: 863685910}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   m_RootOrder: 4
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1673,6 +1848,10 @@ GameObject:
   - component: {fileID: 1629103069}
   - component: {fileID: 1629103073}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+  - component: {fileID: 1629103074}
+>>>>>>> Stashed changes
 =======
   - component: {fileID: 1629103074}
 >>>>>>> Stashed changes
@@ -1702,6 +1881,7 @@ Camera:
   serializedVersion: 2
   m_ClearFlags: 1
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
@@ -1710,6 +1890,8 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_FocalLength: 50
 =======
+=======
+>>>>>>> Stashed changes
   m_BackGroundColor: {r: 0, g: 0, b: 0, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
@@ -1725,6 +1907,9 @@ Camera:
   m_Anamorphism: 0
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
   m_NormalizedViewPortRect:
     serializedVersion: 2
@@ -1760,6 +1945,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1629103068}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+  serializedVersion: 2
+>>>>>>> Stashed changes
 =======
   serializedVersion: 2
 >>>>>>> Stashed changes
@@ -1770,7 +1959,10 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   m_RootOrder: 2
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
   m_LocalEulerAnglesHint: {x: 30, y: 0, z: 0}
@@ -1809,7 +2001,10 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
 --- !u!114 &1629103074
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1854,6 +2049,9 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 --- !u!1 &1732666368
 GameObject:
@@ -1924,9 +2122,12 @@ CapsuleCollider:
   m_GameObject: {fileID: 1732666368}
   m_Material: {fileID: 0}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   m_IsTrigger: 0
   m_Enabled: 1
 =======
+=======
+>>>>>>> Stashed changes
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -1938,6 +2139,9 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
   m_Radius: 0.3
   m_Height: 1.8
@@ -1951,11 +2155,14 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1732666368}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0
 =======
+=======
+>>>>>>> Stashed changes
   serializedVersion: 4
   m_Mass: 1
   m_Drag: 0
@@ -1971,6 +2178,9 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
   m_UseGravity: 1
   m_IsKinematic: 0
@@ -1985,6 +2195,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1732666368}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+  serializedVersion: 2
+>>>>>>> Stashed changes
 =======
   serializedVersion: 2
 >>>>>>> Stashed changes
@@ -1997,7 +2211,10 @@ Transform:
   - {fileID: 660917926}
   m_Father: {fileID: 0}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   m_RootOrder: 4
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2083,6 +2300,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     m_TransformParent: {fileID: 1732666373}
     m_Modifications:
     - target: {fileID: 304361654002927325, guid: 1b7152958888f3248ad91e425326b2d5, type: 3}
@@ -2131,6 +2349,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 304361654003423997, guid: 1b7152958888f3248ad91e425326b2d5, type: 3}
 =======
+=======
+>>>>>>> Stashed changes
     serializedVersion: 3
     m_TransformParent: {fileID: 1732666373}
     m_Modifications:
@@ -2191,13 +2411,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 304361654003423997, guid: 1b7152958888f3248ad91e425326b2d5,
         type: 3}
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
       propertyPath: m_Name
       value: UnityCharacter
       objectReference: {fileID: 0}
     m_RemovedComponents: []
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -2205,6 +2431,9 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 276355602}
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
   m_SourcePrefab: {fileID: 100100000, guid: 1b7152958888f3248ad91e425326b2d5, type: 3}
 --- !u!1 &1979625625
@@ -2234,6 +2463,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1979625625}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+  serializedVersion: 2
+>>>>>>> Stashed changes
 =======
   serializedVersion: 2
 >>>>>>> Stashed changes
@@ -2244,7 +2477,10 @@ Transform:
   m_Children: []
   m_Father: {fileID: 109669590}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   m_RootOrder: 0
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2302,7 +2538,10 @@ MonoBehaviour:
   m_FrequencyGain: 0.3
   mNoiseOffsets: {x: 0, y: 0, z: 0}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -2314,4 +2553,7 @@ SceneRoots:
   - {fileID: 1732666373}
   - {fileID: 163595593}
   - {fileID: 241497570}
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes

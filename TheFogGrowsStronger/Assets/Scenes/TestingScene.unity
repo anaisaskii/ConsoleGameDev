@@ -446,6 +446,7 @@ PrefabInstance:
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 90bd2c308d0b20642b1741bbee9e864a, type: 3}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 --- !u!1001 &1690087039
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -535,12 +536,17 @@ PrefabInstance:
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 73ffbc06802a247cfb1b26f4ee67eba8, type: 3}
 =======
+=======
+>>>>>>> Stashed changes
 --- !u!20 &1442916994 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 4174552764616035136, guid: e8f52139de915ab41a341f39794da126,
     type: 3}
   m_PrefabInstance: {fileID: 191699604791120235}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 --- !u!4 &1977170054 stripped
 Transform:

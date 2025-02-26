@@ -1,7 +1,11 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 --- !u!114 &-1228962247314687205
+=======
+--- !u!114 &-5042083364219018588
+>>>>>>> Stashed changes
 =======
 --- !u!114 &-5042083364219018588
 >>>>>>> Stashed changes
@@ -134,7 +138,11 @@ Material:
     m_Colors:
     - _BaseColor: {r: 0.9607844, g: 0.9686275, b: 0.98039216, a: 1}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     - _Color: {r: 0.9607844, g: 0.9686275, b: 0.98039216, a: 1}
+=======
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+>>>>>>> Stashed changes
 =======
     - _Color: {r: 1, g: 1, b: 1, a: 1}
 >>>>>>> Stashed changes

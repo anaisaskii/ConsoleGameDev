@@ -121,7 +121,11 @@ Material:
     - _SpecColor: {r: 0.11764706, g: 0.11764706, b: 0.11764706, a: 1}
   m_BuildTextureStacks: []
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 --- !u!114 &116972467348164051
+=======
+--- !u!114 &6461380589046681305
+>>>>>>> Stashed changes
 =======
 --- !u!114 &6461380589046681305
 >>>>>>> Stashed changes

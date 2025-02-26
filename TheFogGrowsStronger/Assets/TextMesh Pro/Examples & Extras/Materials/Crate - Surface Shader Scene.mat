@@ -139,6 +139,7 @@ Material:
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
   m_BuildTextureStacks: []
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 --- !u!114 &405012126198891089
 MonoBehaviour:
   m_ObjectHideFlags: 11
@@ -152,5 +153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 7
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
