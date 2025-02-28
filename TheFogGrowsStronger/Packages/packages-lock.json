@@ -103,7 +103,7 @@
       }
     },
     "com.unity.render-pipelines.ps4": {
-      "version": "file:C:/Users/S22137489/Desktop/com.unity.render-pipelines.ps4-1.9.1.tgz",
+      "version": "file:com.unity.render-pipelines.ps4-1.9.1.tgz",
       "depth": 0,
       "source": "local-tarball",
       "dependencies": {}
