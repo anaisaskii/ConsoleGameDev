@@ -723,7 +723,7 @@ PlayerSettings:
   ps4StartupImagesFolder: 
   ps4IconImagesFolder: 
   ps4SaveDataImagePath: 
-  ps4SdkOverride: 
+  ps4SdkOverride: C:/Program Files (x86)/SCE/ORBIS SDKs/11.000
   ps4BGMPath: 
   ps4ShareFilePath: 
   ps4ShareOverlayImagePath: 
@@ -822,7 +822,7 @@ PlayerSettings:
     EmbeddedLinux: UNITY_POST_PROCESSING_STACK_V2
     GameCoreXboxOne: UNITY_POST_PROCESSING_STACK_V2
     Nintendo Switch: UNITY_POST_PROCESSING_STACK_V2
-    PS4: UNITY_POST_PROCESSING_STACK_V2
+    PS4: UNITY_POST_PROCESSING_STACK_V2;UNITY_PIPELINE_URP
     PS5: UNITY_POST_PROCESSING_STACK_V2
     QNX: UNITY_POST_PROCESSING_STACK_V2
     Stadia: UNITY_POST_PROCESSING_STACK_V2
