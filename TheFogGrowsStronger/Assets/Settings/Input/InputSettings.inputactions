@@ -52,12 +52,12 @@
                 },
                 {
                     "name": "ToggleSprint",
-                    "type": "Button",
+                    "type": "Value",
                     "id": "6af9cc8b-323c-442b-ba9a-c32b596d6d8d",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 },
                 {
                     "name": "PrimarySkill",

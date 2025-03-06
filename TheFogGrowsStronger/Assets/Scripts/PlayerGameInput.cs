@@ -1,46 +1,83 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System;
 
-public class PlayerGameInput : MonoBehaviour, IAgentMovementInput
+public class PlayerGameInput : MonoBehaviour
 {
     private PlayerInput m_input;
 
+    public event Action OnPrimarySkillInput;
+    public event Action OnSecondarySkillInput;
+    public event Action OnUtilitySkillInput;
+    public event Action OnSpecialSkillInput;
+
     public Vector2 MovementInput { get; private set; }
     public Vector2 CameraInput { get; private set; }
+    public bool JumpInput { get; private set; }
     public bool SprintInput { get; private set; }
+    public bool PrimarySkillHeld { get; private set; }
 
     private void Awake()
     {
         m_input = GetComponent<PlayerInput>();
     }
+
     private void OnEnable()
     {
         m_input.actions["Player/Move"].performed += OnMove;
         m_input.actions["Player/Move"].canceled += OnMove;
-        m_input.actions["Player/ToggleSprint"].performed += OnInput;
+
+        m_input.actions["Player/Jump"].performed += OnJump;
+        m_input.actions["Player/Jump"].canceled += OnJump;
+
+        m_input.actions["Player/PrimarySkill"].performed += OnPrimarySkill;
+        m_input.actions["Player/PrimarySkill"].canceled += OnPrimarySkillCanceled;
+
+        m_input.actions["Player/ToggleSprint"].performed += OnToggleSprint;
     }
 
     private void OnDisable()
     {
         m_input.actions["Player/Move"].performed -= OnMove;
         m_input.actions["Player/Move"].canceled -= OnMove;
-        m_input.actions["Player/ToggleSprint"].performed -= OnInput;
+
+        m_input.actions["Player/Jump"].performed -= OnJump;
+        m_input.actions["Player/Jump"].canceled -= OnJump;
+
+        m_input.actions["Player/PrimarySkill"].performed -= OnPrimarySkill;
+        m_input.actions["Player/PrimarySkill"].canceled -= OnPrimarySkillCanceled;
+
+        m_input.actions["Player/ToggleSprint"].performed -= OnToggleSprint;
     }
 
-    private void OnLook(InputAction.CallbackContext context)
-    {
-        CameraInput = context.ReadValue<Vector2>();
-    }
-
-    private void OnMove(InputAction.CallbackContext context)
+    public void OnMove(InputAction.CallbackContext context)
     {
         MovementInput = context.ReadValue<Vector2>();
     }
 
-    private void OnInput(InputAction.CallbackContext context)
+    public void OnLook(InputAction.CallbackContext context)
+    {
+        CameraInput = context.ReadValue<Vector2>();
+    }
+
+    public void OnJump(InputAction.CallbackContext context)
+    {
+        JumpInput = context.ReadValueAsButton();
+    }
+
+    public void OnToggleSprint(InputAction.CallbackContext context)
     {
         SprintInput = context.ReadValueAsButton();
+    }
+
+    public void OnPrimarySkill(InputAction.CallbackContext context)
+    {
+        PrimarySkillHeld = true;
+        OnPrimarySkillInput?.Invoke();
+    }
+
+    private void OnPrimarySkillCanceled(InputAction.CallbackContext context)
+    {
+        PrimarySkillHeld = false;
     }
 }

@@ -95,10 +95,6 @@ GameObject:
   - component: {fileID: 4670475348956357429}
   - component: {fileID: 8782344421748624871}
   - component: {fileID: 5118232298607531126}
-  - component: {fileID: 343084616862076462}
-  - component: {fileID: 5828283152617802667}
-  - component: {fileID: 4751754502592561125}
-  - component: {fileID: 1369729856749499156}
   m_Layer: 9
   m_Name: Player
   m_TagString: Untagged
@@ -121,6 +117,7 @@ Transform:
   m_Children:
   - {fileID: 1124773578813410125}
   - {fileID: 1594989145794421965}
+  - {fileID: 4102740478483725985}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &4670475348956357429
@@ -340,78 +337,46 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 2940cc15-c080-4c50-9411-437639393e99
     m_ActionName: Player/SpecialSkill[/Keyboard/r,/XInputControllerWindows/rightShoulder]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 2e03286c-29ef-4321-bae5-cdde663f3720
+    m_ActionName: Player/Look[/Mouse/delta,/Pen/delta,/XInputControllerWindows/rightStick]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &343084616862076462
-MonoBehaviour:
+--- !u!1 &7364353887521621824
+GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5305436426052286152}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c97e906f9e929b34ca1e90c3efaa67e9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &5828283152617802667
-MonoBehaviour:
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4102740478483725985}
+  m_Layer: 9
+  m_Name: PistolMuzzle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4102740478483725985
+Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5305436426052286152}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1623f3ed408311c4ab0840e0defa20be, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MoveSpeed: 2
-  SprintSpeed: 5.335
-  RotationSmoothTime: 0.12
-  SpeedChangeRate: 10
-  FallTimeout: 0.15
-  Gravity: -15
-  Grounded: 1
-  StairsGrounded: 1
-  GroundedOffset: 0.21
-  StairOffset: 0.07
-  GroundedRadius: 0.28
-  GroundLayers:
-    serializedVersion: 2
-    m_Bits: 2147483648
-  AnimationSpeedFloat: 
-  AnimationGroundedBool: 
-  AnimationFallTrigger: 
-  m_rotationStrategy: {fileID: 0}
---- !u!114 &4751754502592561125
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5305436426052286152}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f1672ba9f6cfd6740bcf689f7f47d6af, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_mainCamera: {fileID: 0}
---- !u!114 &1369729856749499156
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5305436426052286152}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 570702cf1dce3c54daca3707ab1a3960, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_GameObject: {fileID: 7364353887521621824}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.297, z: 0.589}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6841244917192524649}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &9029586594074282228
 GameObject:
   m_ObjectHideFlags: 0

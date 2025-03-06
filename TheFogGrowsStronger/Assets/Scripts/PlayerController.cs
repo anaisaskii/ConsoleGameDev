@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Windows;
+using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
@@ -12,7 +14,7 @@ public class PlayerController : MonoBehaviour
     public float FallTimeout = 0.15f;
 
     private CharacterController m_controller;
-    private IAgentMovementInput m_input;
+    private PlayerGameInput m_input;
     private float m_speed;
     private float m_targetRotation = 0.0f;
     private float m_rotationVelocity;
@@ -33,23 +35,50 @@ public class PlayerController : MonoBehaviour
 
     private Animator m_animator;
     private float m_animationMovementSpeed;
-    //private GameObject _mainCamera;
 
     [SerializeField]
     private AgentRotationStrategy m_rotationStrategy;
 
-    //Getting reference to Unity specific objects
+    [Header("Shooting")]
+    public Transform firePoint;
+    public GameObject projectilePrefab;
+    public float fireRate = 10f;
+    public float projectileSpeed = 30f;
+    public float projectileDamage = 10f;
+    public LayerMask shootableLayers;
+    public float shootDistance = 100f;
+    public GameObject muzzleFlashPrefab;
+    public GameObject hitEffectPrefab;
+
+    private float nextFireTime;
+    private Camera mainCamera;
+    private Vector3 aimPoint;
+
     private void Awake()
     {
-        // get a reference to the RotationStrategy to help us separate Agent script from depending on the Camera
         if (m_rotationStrategy == null)
         {
             m_rotationStrategy = GetComponent<AgentRotationStrategy>();
         }
         m_animator = GetComponent<Animator>();
         m_controller = GetComponent<CharacterController>();
-        //Now IAgentMovementInput handles communication with the InputSystem
-        m_input = GetComponent<IAgentMovementInput>();
+        m_input = GetComponent<PlayerGameInput>();
+        mainCamera = Camera.main;
+    }
+
+    private void OnEnable()
+    {
+        m_input.OnPrimarySkillInput += HandlePrimarySkillInput;
+    }
+
+    private void OnDisable()
+    {
+        m_input.OnPrimarySkillInput -= HandlePrimarySkillInput;
+    }
+
+    private void HandlePrimarySkillInput()
+    {
+        // The shooting logic is handled in Update since we want continuous fire
     }
 
     //All the logic connected with movement happens in the Update
@@ -77,53 +106,86 @@ public class PlayerController : MonoBehaviour
 
         Vector3 targetDirection = Quaternion.Euler(0.0f, m_targetRotation, 0.0f) * Vector3.forward;
 
-        //move the character controller
-        m_controller.Move(targetDirection.normalized * (m_speed * Time.deltaTime) +
-                         new Vector3(0.0f, m_verticalVelocity, 0.0f) * Time.deltaTime);
+        Vector3 horizontalMovement = targetDirection.normalized * m_speed * Time.deltaTime;
+        Vector3 verticalMovement = new Vector3(0.0f, m_verticalVelocity * Time.deltaTime, 0.0f);
 
-        //play animations
+        m_controller.Move(horizontalMovement + verticalMovement);
+
+        // Handle shooting
+        if (m_input.PrimarySkillHeld && Time.time >= nextFireTime)
+        {
+            FireProjectile();
+            nextFireTime = Time.time + 1f / fireRate;
+        }
+
         m_animator.SetFloat(AnimationSpeedFloat, m_animationMovementSpeed);
+
     }
 
-    //[SerializeField]
-    //private bool isPlayer = false;
-    //[SerializeField]
-    //private GameObject _mainCamera;
-    //private void RotationCalculation()
-    //{
-    //    // normalize input direction
-    //    Vector3 inputDirection = new Vector3(_input.MovementInput.x, 0.0f, _input.MovementInput.y).normalized;
+    private void FireProjectile()
+    {
+        // Calculate aim point in the center of the screen
+        Ray ray = mainCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+        aimPoint = ray.GetPoint(shootDistance);
 
-    //    //Rotation Code
-    //    if (_input.MovementInput != Vector2.zero)
-    //    {
-    //        if (isPlayer)
-    //        {
-    //            // Player rotation logic
-    //            _targetRotation = Mathf.Atan2(inputDirection.x,
-    //                              inputDirection.z) * Mathf.Rad2Deg +
-    //                              _mainCamera.transform.eulerAngles.y;
-    //        }
-    //        else
-    //        {
-    //            // NPC rotation logic 
-    //            _targetRotation = Mathf.Atan2(inputDirection.x,
-    //                              inputDirection.z) * Mathf.Rad2Deg;
-    //        }
+        // Create projectile
+        if (firePoint != null && projectilePrefab != null)
+        {
+            // Spawn muzzle flash
+            if (muzzleFlashPrefab != null)
+            {
+                GameObject muzzleVFX = Instantiate(muzzleFlashPrefab, firePoint.position, firePoint.rotation);
+                Destroy(muzzleVFX, 2f); // Destroy after effect duration
+            }
 
-    //        float rotation = Mathf.SmoothDampAngle(transform.eulerAngles.y, _targetRotation, ref _rotationVelocity,
-    //            RotationSmoothTime);
+            // First do hitscan detection
+            RaycastHit hit;
+            if (Physics.Raycast(firePoint.position, (aimPoint - firePoint.position).normalized, out hit, shootDistance, shootableLayers))
+            {
+                // Apply damage immediately (hitscan)
+                Health health = hit.collider.gameObject.GetComponent<Health>();
+                if (health != null)
+                {
+                    health.TakeDamage(projectileDamage);
+                }
 
-    //        // rotate to face input direction relative to camera position
-    //        transform.rotation = Quaternion.Euler(0.0f, rotation, 0.0f);
-    //    }
-    //}
+                // Create hit effect at impact point
+                if (hitEffectPrefab != null)
+                {
+                    GameObject hitVFX = Instantiate(hitEffectPrefab, hit.point, Quaternion.LookRotation(hit.normal));
+                    Destroy(hitVFX, 2f); // Destroy after effect duration
+                }
+
+                // Adjust aim point to hit location for visual projectile
+                aimPoint = hit.point;
+            }
+
+            // Spawn visual projectile
+            GameObject projectile = Instantiate(projectilePrefab, firePoint.position, Quaternion.identity);
+            projectile.transform.LookAt(aimPoint);
+
+            Projectile projectileScript = projectile.GetComponent<Projectile>();
+            if (projectileScript != null)
+            {
+                projectileScript.speed = projectileSpeed;
+                projectileScript.damage = 0; // No damage since we already applied it with hitscan
+            }
+            else
+            {
+                // If no Projectile component, just make it move forward
+                Rigidbody rb = projectile.GetComponent<Rigidbody>();
+                if (rb != null)
+                {
+                    rb.velocity = (aimPoint - firePoint.position).normalized * projectileSpeed;
+                }
+            }
+        }
+    }
 
     //Calculating the movement speed and controlling the MOVEMENT animation
     private void CharacterMovementCalculation()
     {
         float targetSpeed = m_input.SprintInput ? SprintSpeed : MoveSpeed;
-
 
         if (m_input.MovementInput == Vector2.zero)
             targetSpeed = 0.0f;
@@ -173,6 +235,8 @@ public class PlayerController : MonoBehaviour
         return Physics.CheckSphere(spherePosition, GroundedRadius, GroundLayers,
             QueryTriggerInteraction.Ignore);
     }
+
+
 
     //Visualizaton of the Grounded check
     private void OnDrawGizmosSelected()
