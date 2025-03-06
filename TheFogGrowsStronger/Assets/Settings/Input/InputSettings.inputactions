@@ -15,15 +15,6 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Sprint",
-                    "type": "Button",
-                    "id": "6af9cc8b-323c-442b-ba9a-c32b596d6d8d",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Jump",
                     "type": "Button",
                     "id": "a2fb4760-de0d-4ae6-a905-05870ee71b10",
@@ -36,6 +27,24 @@
                     "name": "Interact",
                     "type": "Button",
                     "id": "d05412a5-b981-4c1a-be70-85b066a48993",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ActivateEquipment",
+                    "type": "Button",
+                    "id": "16e5643b-abfd-4468-a492-06ad7e481c10",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ToggleSprint",
+                    "type": "Button",
+                    "id": "6af9cc8b-323c-442b-ba9a-c32b596d6d8d",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -58,6 +67,24 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "UtilitySkill",
+                    "type": "Button",
+                    "id": "b927b47e-26b5-460c-b3f4-a221dd717130",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "SpecialSkill",
+                    "type": "Button",
+                    "id": "2940cc15-c080-4c50-9411-437639393e99",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -68,29 +95,18 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Sprint",
+                    "action": "ToggleSprint",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "b89fcd79-87d9-404d-9217-f07e5c98892c",
-                    "path": "<Keyboard>/space",
+                    "id": "8f20e5f4-11ab-4e75-82f0-798084d61623",
+                    "path": "<Gamepad>/leftStick/down",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Jump",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "86a682fe-4f16-4260-a325-cf011220ccdb",
-                    "path": "<Gamepad>/buttonSouth",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Jump",
+                    "action": "ToggleSprint",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -162,6 +178,116 @@
                 },
                 {
                     "name": "",
+                    "id": "7132b657-d3a0-433d-997d-35eb3dea425e",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PrimarySkill",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d0795965-2b6b-41b4-a4b7-a7c9b503569a",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PrimarySkill",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "060698ad-b354-460e-b5bb-10ec62e449bf",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SecondarySkill",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "bebffc4a-75ef-4d02-9807-c07d72c0d436",
+                    "path": "<Gamepad>/leftTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SecondarySkill",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "28f0cdc8-55b5-4077-94b5-284efdb4034b",
+                    "path": "<Keyboard>/shift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "UtilitySkill",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ff916dba-ee4f-4ba4-84ac-d647cd5624e2",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "UtilitySkill",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "cda0e88a-dc07-4cd4-90ab-a76527110c52",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SpecialSkill",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "dfdf240a-47b8-4b74-a75d-320fe11d63bd",
+                    "path": "<Gamepad>/rightShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SpecialSkill",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b89fcd79-87d9-404d-9217-f07e5c98892c",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "86a682fe-4f16-4260-a325-cf011220ccdb",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "211da8ed-a9b5-4aa0-af88-8ad96b1c8e88",
                     "path": "<Keyboard>/e",
                     "interactions": "",
@@ -184,45 +310,23 @@
                 },
                 {
                     "name": "",
-                    "id": "d0795965-2b6b-41b4-a4b7-a7c9b503569a",
-                    "path": "<Gamepad>/rightTrigger",
+                    "id": "80140893-867e-441c-970d-751250480308",
+                    "path": "<Keyboard>/q",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "PrimarySkill",
+                    "action": "ActivateEquipment",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "7132b657-d3a0-433d-997d-35eb3dea425e",
-                    "path": "<Mouse>/leftButton",
+                    "id": "bbc0aa39-b3f1-4e8c-a84c-26e91d65fa02",
+                    "path": "<Gamepad>/buttonNorth",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "PrimarySkill",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "bebffc4a-75ef-4d02-9807-c07d72c0d436",
-                    "path": "<Gamepad>/leftTrigger",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "SecondarySkill",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "060698ad-b354-460e-b5bb-10ec62e449bf",
-                    "path": "<Mouse>/rightButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "SecondarySkill",
+                    "action": "ActivateEquipment",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
