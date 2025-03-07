@@ -18,6 +18,12 @@ public class EnemyPatrol : MonoBehaviour
         agent.SetDestination(currentTarget.position);
     }
 
+    //destroy object in final game but this is fine for now 
+    public void EnemyDie()
+    {
+        GetComponent<MeshRenderer>().enabled = false;
+    }
+
     void Update()
     {
         // cgheck if agent has reached its destination

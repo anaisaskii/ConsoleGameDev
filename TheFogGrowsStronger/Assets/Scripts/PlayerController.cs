@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour
     public string AnimationGroundedBool;
     public string AnimationFallTrigger;
 
-    private Animator m_animator;
+    public Animator m_animator;
     private float m_animationMovementSpeed;
 
     [SerializeField]
@@ -60,7 +60,7 @@ public class PlayerController : MonoBehaviour
         {
             m_rotationStrategy = GetComponent<AgentRotationStrategy>();
         }
-        m_animator = GetComponent<Animator>();
+        //m_animator = GetComponent<Animator>();
         m_controller = GetComponent<CharacterController>();
         m_input = GetComponent<PlayerGameInput>();
         mainCamera = Camera.main;
@@ -90,14 +90,14 @@ public class PlayerController : MonoBehaviour
             m_fallTimeoutDelta -= Time.deltaTime;
             if (m_fallTimeoutDelta <= 0 && StairsGrounded == false)
             {
-                m_animator.SetTrigger(AnimationFallTrigger);
+                //m_animator.SetTrigger(AnimationFallTrigger);
             }
         }
         else
         {
             m_verticalVelocity = 0;
             m_fallTimeoutDelta = FallTimeout;
-            m_animator.ResetTrigger(AnimationFallTrigger);
+            //m_animator.ResetTrigger(AnimationFallTrigger);
         }
 
         CharacterMovementCalculation();
@@ -118,7 +118,7 @@ public class PlayerController : MonoBehaviour
             nextFireTime = Time.time + 1f / fireRate;
         }
 
-        m_animator.SetFloat(AnimationSpeedFloat, m_animationMovementSpeed);
+        //m_animator.SetFloat(AnimationSpeedFloat, m_animationMovementSpeed);
 
     }
 
@@ -215,7 +215,13 @@ public class PlayerController : MonoBehaviour
 
         m_animationMovementSpeed = Mathf.Lerp(m_animationMovementSpeed, targetSpeed, Time.deltaTime * SpeedChangeRate);
         if (m_animationMovementSpeed < 0.01f)
+        {
+            m_animator.SetBool("Walking", false);
             m_animationMovementSpeed = 0f;
+        }
+
+        bool isWalking = m_speed > 0.1f; // If moving, set walking to true
+        m_animator.SetBool("Walking", isWalking);
     }
 
     //Grounded checks that allows us to swap between FALL and MOVEMENT animation / behavior
@@ -223,7 +229,7 @@ public class PlayerController : MonoBehaviour
     {
         Grounded = GroundedCheck(GroundedOffset);
         StairsGrounded = GroundedCheck(StairOffset);
-        m_animator.SetBool(AnimationGroundedBool, Grounded);
+        //m_animator.SetBool(AnimationGroundedBool, Grounded);
     }
 
     //Spherecasting downwards to detect if we are grounded

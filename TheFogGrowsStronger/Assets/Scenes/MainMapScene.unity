@@ -137,9 +137,10 @@ GameObject:
   - component: {fileID: 22992037}
   - component: {fileID: 22992036}
   - component: {fileID: 22992041}
+  - component: {fileID: 22992042}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -268,6 +269,38 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &22992042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 22992035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1551ba486810f624eabf45fadbece742, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  currentHealth: 100
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 22992036}
+        m_TargetAssemblyTypeName: EnemyPatrol, Assembly-CSharp
+        m_MethodName: EnemyDie
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnDamage:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &44190032 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4a3ca3fb662ffc941bc1a5c9990e69b5,
@@ -5497,6 +5530,51 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1968256464}
     m_Modifications:
+    - target: {fileID: 2404209061635182132, guid: 5805c5eee36906245a6a01e339ca042f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 64150fb4be42ac24b91dd1a19c37ebfe, type: 2}
+    - target: {fileID: 2404209061635182132, guid: 5805c5eee36906245a6a01e339ca042f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: a8787121f8ce4be4fa980e3e83096aea, type: 2}
+    - target: {fileID: 2404209061635182132, guid: 5805c5eee36906245a6a01e339ca042f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: 2100000, guid: 5ea96c1f29a068e4c9f9d9e8608ca338, type: 2}
+    - target: {fileID: 2404209061635182132, guid: 5805c5eee36906245a6a01e339ca042f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[3]
+      value: 
+      objectReference: {fileID: 2100000, guid: dea500b45f7907d40a0a2346a674afa1, type: 2}
+    - target: {fileID: 2404209061635182132, guid: 5805c5eee36906245a6a01e339ca042f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[4]
+      value: 
+      objectReference: {fileID: 2100000, guid: df8f66a47a74ee341ba2337be90412dd, type: 2}
+    - target: {fileID: 3719782178723079395, guid: 5805c5eee36906245a6a01e339ca042f,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.433287
+      objectReference: {fileID: 0}
+    - target: {fileID: 3719782178723079395, guid: 5805c5eee36906245a6a01e339ca042f,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.433287
+      objectReference: {fileID: 0}
+    - target: {fileID: 3719782178723079395, guid: 5805c5eee36906245a6a01e339ca042f,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.433287
+      objectReference: {fileID: 0}
+    - target: {fileID: 4670475348956357429, guid: 5805c5eee36906245a6a01e339ca042f,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: d2bd6095b3ac53248900e0a0ce8ebd1f, type: 2}
     - target: {fileID: 5118232298607531126, guid: 5805c5eee36906245a6a01e339ca042f,
         type: 3}
       propertyPath: m_Camera
@@ -5557,7 +5635,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4670475348956357429, guid: 5805c5eee36906245a6a01e339ca042f, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -5577,6 +5656,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 526266439}
+    - targetCorrespondingSourceObject: {fileID: 4095041458026741337, guid: 5805c5eee36906245a6a01e339ca042f,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1538215084}
   m_SourcePrefab: {fileID: 100100000, guid: 5805c5eee36906245a6a01e339ca042f, type: 3}
 --- !u!1 &410087039
 GameObject:
@@ -5998,6 +6081,7 @@ MonoBehaviour:
   AnimationSpeedFloat: 
   AnimationGroundedBool: 
   AnimationFallTrigger: 
+  m_animator: {fileID: 1538215084}
   m_rotationStrategy: {fileID: 0}
   firePoint: {fileID: 811294380}
   projectilePrefab: {fileID: 1657981230171060, guid: 6cf36a334a0e5754ea36fca06014b86a,
@@ -8296,6 +8380,33 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 6240159341419647114, guid: ff0653376ec34314db85d43742fffeb0, type: 3}
+--- !u!1 &1538215082 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4095041458026741337, guid: 5805c5eee36906245a6a01e339ca042f,
+    type: 3}
+  m_PrefabInstance: {fileID: 355742548}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1538215084
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1538215082}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d2bd6095b3ac53248900e0a0ce8ebd1f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!4 &1550756680 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 374d6e80ac724224090ea29dfa303731,
