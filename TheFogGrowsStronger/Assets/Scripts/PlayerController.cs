@@ -12,6 +12,9 @@ public class PlayerController : MonoBehaviour
     public float RotationSmoothTime = 0.12f;
     public float SpeedChangeRate = 10.0f;
     public float FallTimeout = 0.15f;
+    public float JumpHeight = 1.2f;
+    public float DashDistance = 5.0f;
+    public float DashCooldown = 1.0f;
 
     private CharacterController m_controller;
     private PlayerGameInput m_input;
@@ -20,6 +23,7 @@ public class PlayerController : MonoBehaviour
     private float m_rotationVelocity;
     private float m_verticalVelocity;
     private float m_fallTimeoutDelta;
+    private bool m_canDash = true;
 
     [Header("Grounded Check")]
     public float Gravity = -15.0f;
@@ -69,16 +73,35 @@ public class PlayerController : MonoBehaviour
     private void OnEnable()
     {
         m_input.OnPrimarySkillInput += HandlePrimarySkillInput;
+        m_input.OnUtilitySkillInput += HandleUtilitySkillInput;
     }
 
     private void OnDisable()
     {
         m_input.OnPrimarySkillInput -= HandlePrimarySkillInput;
+        m_input.OnUtilitySkillInput -= HandleUtilitySkillInput;
     }
 
     private void HandlePrimarySkillInput()
     {
         // The shooting logic is handled in Update since we want continuous fire
+    }
+
+    private void HandleUtilitySkillInput()
+    {
+        if (m_canDash)
+        {
+            StartCoroutine(Dash());
+        }
+    }
+
+    private IEnumerator Dash()
+    {
+        m_canDash = false;
+        Vector3 dashDirection = transform.forward * DashDistance;
+        m_controller.Move(dashDirection);
+        yield return new WaitForSeconds(DashCooldown);
+        m_canDash = true;
     }
 
     //All the logic connected with movement happens in the Update
@@ -118,8 +141,13 @@ public class PlayerController : MonoBehaviour
             nextFireTime = Time.time + 1f / fireRate;
         }
 
-        //m_animator.SetFloat(AnimationSpeedFloat, m_animationMovementSpeed);
+        // Handle jumping
+        if (m_input.JumpInput && Grounded || m_input.JumpInput && StairsGrounded)
+        {
+            m_verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
+        }
 
+        //m_animator.SetFloat(AnimationSpeedFloat, m_animationMovementSpeed);
     }
 
     private void FireProjectile()
@@ -241,8 +269,6 @@ public class PlayerController : MonoBehaviour
         return Physics.CheckSphere(spherePosition, GroundedRadius, GroundLayers,
             QueryTriggerInteraction.Ignore);
     }
-
-
 
     //Visualizaton of the Grounded check
     private void OnDrawGizmosSelected()

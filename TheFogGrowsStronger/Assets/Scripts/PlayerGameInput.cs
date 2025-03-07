@@ -34,6 +34,8 @@ public class PlayerGameInput : MonoBehaviour
         m_input.actions["Player/PrimarySkill"].canceled += OnPrimarySkillCanceled;
 
         m_input.actions["Player/ToggleSprint"].performed += OnToggleSprint;
+
+        m_input.actions["Player/UtilitySkill"].performed += OnUtilitySkill;
     }
 
     private void OnDisable()
@@ -48,6 +50,8 @@ public class PlayerGameInput : MonoBehaviour
         m_input.actions["Player/PrimarySkill"].canceled -= OnPrimarySkillCanceled;
 
         m_input.actions["Player/ToggleSprint"].performed -= OnToggleSprint;
+
+        m_input.actions["Player/UtilitySkill"].performed -= OnUtilitySkill;
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -67,7 +71,12 @@ public class PlayerGameInput : MonoBehaviour
 
     public void OnToggleSprint(InputAction.CallbackContext context)
     {
-        SprintInput = context.ReadValueAsButton();
+        SprintInput = !SprintInput;
+    }
+
+    public void OnUtilitySkill(InputAction.CallbackContext context)
+    {
+        OnUtilitySkillInput?.Invoke();
     }
 
     public void OnPrimarySkill(InputAction.CallbackContext context)

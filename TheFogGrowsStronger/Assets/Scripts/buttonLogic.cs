@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Cinemachine;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
 public class buttonLogic : MonoBehaviour
@@ -11,10 +12,17 @@ public class buttonLogic : MonoBehaviour
     public CinemachineVirtualCamera mainMenuCam;  //(inspector) assign main menu cam
     public CinemachineVirtualCamera settingsCam;  //(inspector) assign settings menu ui
 
+    public EventSystem eventSystem;
+
+    public GameObject UI_FirstButtonSettings;
+    public GameObject UI_FirstButtonMainMenu;
+
     public void OpenSettingsMenu()
     {
         // Disable the Main Menu UI
         UI_MainMenu.SetActive(false);
+
+        eventSystem.firstSelectedGameObject = UI_FirstButtonSettings;
 
         // Enable the Settings Menu UI
         UI_SettingsMenu.SetActive(true);
@@ -29,6 +37,8 @@ public class buttonLogic : MonoBehaviour
     {
         // Disable the Settings Menu UI
         UI_SettingsMenu.SetActive(false);
+
+        eventSystem.firstSelectedGameObject = UI_FirstButtonMainMenu;
 
         // Enable the Main Menu UI
         UI_MainMenu.SetActive(true);
