@@ -50,7 +50,7 @@ AnimatorController:
     m_BlendingMode: 0
     m_SyncedLayerIndex: -1
     m_DefaultWeight: 0
-    m_IKPass: 0
+    m_IKPass: 1
     m_SyncedLayerAffectsTiming: 0
     m_Controller: {fileID: 9100000}
 --- !u!1101 &1193369846396665127
@@ -99,7 +99,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 2318283858895240716, guid: df33649f040abba45a0d2d47bbea0128,
+  m_Motion: {fileID: -2063456091466035620, guid: 7b90e6037a491344d8674f1b75c7a3bd,
     type: 3}
   m_Tag: 
   m_SpeedParameter: 
@@ -152,7 +152,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 8704822659849773449, guid: df33649f040abba45a0d2d47bbea0128,
+  m_Motion: {fileID: 9183799436759675188, guid: 7b90e6037a491344d8674f1b75c7a3bd,
     type: 3}
   m_Tag: 
   m_SpeedParameter: 

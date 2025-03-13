@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Windows;
 using UnityEngine.InputSystem;
+using Cinemachine;
 
 public class PlayerController : MonoBehaviour
 {
@@ -55,7 +56,13 @@ public class PlayerController : MonoBehaviour
     public GameObject hitEffectPrefab;
 
     private float nextFireTime;
+
     private Camera mainCamera;
+
+    //reference to player follow cam
+    //use for FOV and other effects
+    public CinemachineFreeLook freelookCam;
+
     private Vector3 aimPoint;
 
     private void Awake()
@@ -214,6 +221,9 @@ public class PlayerController : MonoBehaviour
     private void CharacterMovementCalculation()
     {
         float targetSpeed = m_input.SprintInput ? SprintSpeed : MoveSpeed;
+        
+        // Modify the FOV manually
+        freelookCam.m_Lens.FieldOfView = (targetSpeed == SprintSpeed) ? 65f : 60f;
 
         if (m_input.MovementInput == Vector2.zero)
             targetSpeed = 0.0f;
