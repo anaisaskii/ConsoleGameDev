@@ -52,9 +52,9 @@
                 },
                 {
                     "name": "ToggleSprint",
-                    "type": "Value",
+                    "type": "Button",
                     "id": "6af9cc8b-323c-442b-ba9a-c32b596d6d8d",
-                    "expectedControlType": "Vector2",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
@@ -111,7 +111,7 @@
                 {
                     "name": "",
                     "id": "8f20e5f4-11ab-4e75-82f0-798084d61623",
-                    "path": "<Gamepad>/leftStick/down",
+                    "path": "<Gamepad>/leftStickPress",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
