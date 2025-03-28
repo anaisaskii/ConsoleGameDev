@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.Windows;
 using UnityEngine.InputSystem;
 using Cinemachine;
+using UnityEngine.UI;
+using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
@@ -44,7 +46,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private AgentRotationStrategy m_rotationStrategy;
 
-
+    private int cash = 0;
+    public TextMeshProUGUI cashText;
 
     [Header("Shooting")]
     public Transform firePoint;
@@ -162,6 +165,9 @@ public class PlayerController : MonoBehaviour
     //All the logic connected with movement happens in the Update
     private void Update()
     {
+        cash = cashText.text == "" ? 0 : int.Parse(cashText.text);  
+        Debug.Log(cash);
+
         if (Grounded == false)
         {
             m_verticalVelocity += Gravity * Time.deltaTime;
