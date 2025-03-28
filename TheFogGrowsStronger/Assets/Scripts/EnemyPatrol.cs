@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
+using TMPro;
 
 public class EnemyPatrol : MonoBehaviour
 {
@@ -10,6 +12,8 @@ public class EnemyPatrol : MonoBehaviour
 
     private NavMeshAgent agent;
     private Transform currentTarget;
+
+    public TextMeshProUGUI cashText;
 
     void Start()
     {
@@ -22,6 +26,7 @@ public class EnemyPatrol : MonoBehaviour
     public void EnemyDie()
     {
         GetComponent<MeshRenderer>().enabled = false;
+        cashText.text = (int.Parse(cashText.text) + 10).ToString();
     }
 
     void Update()

@@ -93,6 +93,14 @@
       },
       "url": "https://packages.unity.com"
     },
+    "com.unity.inputsystem.ps4": {
+      "version": "file:../Plugins/com.unity.inputsystem.ps4-0.2.0-pre.tgz",
+      "depth": 0,
+      "source": "local-tarball",
+      "dependencies": {
+        "com.unity.inputsystem": "1.6.1"
+      }
+    },
     "com.unity.mathematics": {
       "version": "1.2.6",
       "depth": 1,
