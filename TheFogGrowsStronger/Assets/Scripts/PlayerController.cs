@@ -44,6 +44,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private AgentRotationStrategy m_rotationStrategy;
 
+
+
     [Header("Shooting")]
     public Transform firePoint;
     public GameObject projectilePrefab;
@@ -58,6 +60,34 @@ public class PlayerController : MonoBehaviour
     private float nextFireTime;
 
     private Camera mainCamera;
+
+    public GameObject normalProjectilePrefab;
+    public GameObject secondaryProjectilePrefab;
+    public GameObject specialProjectilePrefab;
+
+    public float normalAttackDamage = 10f;
+    public float secondaryAttackDamage = 50f;
+    public float secondaryAttackCooldown = 4f;
+    public float specialAttackBurstRate = 0.05f; // Faster burst rate
+    public int specialAttackBurstCount = 10;
+
+    private bool canUseSecondaryAttack = true;
+
+    private void OnEnable()
+    {
+        m_input.OnPrimarySkillInput += HandlePrimarySkillInput;
+        m_input.OnSecondarySkillInput += HandleSecondarySkillInput;
+        m_input.OnUtilitySkillInput += HandleUtilitySkillInput;
+        m_input.OnSpecialSkillInput += HandleSpecialSkillInput;
+    }
+
+    private void OnDisable()
+    {
+        m_input.OnPrimarySkillInput -= HandlePrimarySkillInput;
+        m_input.OnSecondarySkillInput -= HandleSecondarySkillInput;
+        m_input.OnUtilitySkillInput -= HandleUtilitySkillInput;
+        m_input.OnSpecialSkillInput -= HandleSpecialSkillInput;
+    }
 
     //reference to player follow cam
     //use for FOV and other effects
@@ -77,16 +107,34 @@ public class PlayerController : MonoBehaviour
         mainCamera = Camera.main;
     }
 
-    private void OnEnable()
+    private void HandleSecondarySkillInput()
     {
-        m_input.OnPrimarySkillInput += HandlePrimarySkillInput;
-        m_input.OnUtilitySkillInput += HandleUtilitySkillInput;
+        if (canUseSecondaryAttack)
+        {
+            StartCoroutine(SecondaryAttack());
+        }
     }
 
-    private void OnDisable()
+    private void HandleSpecialSkillInput()
     {
-        m_input.OnPrimarySkillInput -= HandlePrimarySkillInput;
-        m_input.OnUtilitySkillInput -= HandleUtilitySkillInput;
+        StartCoroutine(SpecialAttack());
+    }
+
+    private IEnumerator SecondaryAttack()
+    {
+        canUseSecondaryAttack = false;
+        FireProjectile(secondaryProjectilePrefab, secondaryAttackDamage);
+        yield return new WaitForSeconds(secondaryAttackCooldown);
+        canUseSecondaryAttack = true;
+    }
+
+    private IEnumerator SpecialAttack()
+    {
+        for (int i = 0; i < specialAttackBurstCount; i++)
+        {
+            FireProjectile(specialProjectilePrefab, normalAttackDamage);
+            yield return new WaitForSeconds(specialAttackBurstRate);
+        }
     }
 
     private void HandlePrimarySkillInput()
@@ -144,7 +192,7 @@ public class PlayerController : MonoBehaviour
         // Handle shooting
         if (m_input.PrimarySkillHeld && Time.time >= nextFireTime)
         {
-            FireProjectile();
+            FireProjectile(normalProjectilePrefab, normalAttackDamage);
             nextFireTime = Time.time + 1f / fireRate;
         }
 
@@ -157,11 +205,11 @@ public class PlayerController : MonoBehaviour
         //m_animator.SetFloat(AnimationSpeedFloat, m_animationMovementSpeed);
     }
 
-    private void FireProjectile()
+    private void FireProjectile(GameObject projectilePrefab, float damage)
     {
         // Calculate aim point in the center of the screen
         Ray ray = mainCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
-        aimPoint = ray.GetPoint(shootDistance);
+        Vector3 aimPoint = ray.GetPoint(shootDistance);
 
         // Create projectile
         if (firePoint != null && projectilePrefab != null)
@@ -181,7 +229,7 @@ public class PlayerController : MonoBehaviour
                 Health health = hit.collider.gameObject.GetComponent<Health>();
                 if (health != null)
                 {
-                    health.TakeDamage(projectileDamage);
+                    health.TakeDamage(damage);
                 }
 
                 // Create hit effect at impact point

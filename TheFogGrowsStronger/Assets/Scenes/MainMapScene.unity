@@ -6789,6 +6789,17 @@ MonoBehaviour:
     type: 3}
   hitEffectPrefab: {fileID: 1594239829313766, guid: 26b29734bf3bebe4fb390f7cb3db7530,
     type: 3}
+  normalProjectilePrefab: {fileID: 1657981230171060, guid: 6cf36a334a0e5754ea36fca06014b86a,
+    type: 3}
+  secondaryProjectilePrefab: {fileID: 1746672929845058, guid: 066d7c4cdca7a744fb9457e7b49580db,
+    type: 3}
+  specialProjectilePrefab: {fileID: 1830508508936448, guid: 5d777067c17b96c43a3bd547d25cb893,
+    type: 3}
+  normalAttackDamage: 10
+  secondaryAttackDamage: 50
+  secondaryAttackCooldown: 4
+  specialAttackBurstRate: 0.1
+  specialAttackBurstCount: 10
   freelookCam: {fileID: 308983726}
 --- !u!114 &526266442
 MonoBehaviour:

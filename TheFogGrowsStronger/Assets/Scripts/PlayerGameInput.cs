@@ -33,9 +33,13 @@ public class PlayerGameInput : MonoBehaviour
         m_input.actions["Player/PrimarySkill"].performed += OnPrimarySkill;
         m_input.actions["Player/PrimarySkill"].canceled += OnPrimarySkillCanceled;
 
+        m_input.actions["Player/SecondarySkill"].performed += OnSecondarySkill;
+
         m_input.actions["Player/ToggleSprint"].performed += OnToggleSprint;
 
         m_input.actions["Player/UtilitySkill"].performed += OnUtilitySkill;
+
+        m_input.actions["Player/SpecialSkill"].performed += OnSpecialSkill;
     }
 
     private void OnDisable()
@@ -49,9 +53,13 @@ public class PlayerGameInput : MonoBehaviour
         m_input.actions["Player/PrimarySkill"].performed -= OnPrimarySkill;
         m_input.actions["Player/PrimarySkill"].canceled -= OnPrimarySkillCanceled;
 
+        m_input.actions["Player/SecondarySkill"].performed -= OnSecondarySkill;
+
         m_input.actions["Player/ToggleSprint"].performed -= OnToggleSprint;
 
         m_input.actions["Player/UtilitySkill"].performed -= OnUtilitySkill;
+
+        m_input.actions["Player/SpecialSkill"].performed -= OnSpecialSkill;
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -83,6 +91,16 @@ public class PlayerGameInput : MonoBehaviour
     {
         PrimarySkillHeld = true;
         OnPrimarySkillInput?.Invoke();
+    }
+
+    public void OnSecondarySkill(InputAction.CallbackContext context)
+    {
+        OnSecondarySkillInput?.Invoke();
+    }
+
+    public void OnSpecialSkill(InputAction.CallbackContext context)
+    {
+        OnSpecialSkillInput?.Invoke();
     }
 
     private void OnPrimarySkillCanceled(InputAction.CallbackContext context)
