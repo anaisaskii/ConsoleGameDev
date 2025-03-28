@@ -52,7 +52,7 @@ public class PlayerController : MonoBehaviour
     [Header("Shooting")]
     public Transform firePoint;
     public GameObject projectilePrefab;
-    public float fireRate = 10f;
+    public float fireRate = 3f;
     public float projectileSpeed = 30f;
     public float projectileDamage = 10f;
     public LayerMask shootableLayers;
