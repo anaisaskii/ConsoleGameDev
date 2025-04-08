@@ -7,13 +7,12 @@ using TMPro;
 
 public class EnemyPatrol : MonoBehaviour
 {
+    //make this an array of points
     public Transform pointA;
     public Transform pointB;
 
     private NavMeshAgent agent;
     private Transform currentTarget;
-
-    public TextMeshProUGUI cashText;
 
     void Start()
     {
@@ -21,13 +20,7 @@ public class EnemyPatrol : MonoBehaviour
         currentTarget = pointA; 
         agent.SetDestination(currentTarget.position);
     }
-
-    //destroy object in final game but this is fine for now 
-    public void EnemyDie()
-    {
-        GetComponent<MeshRenderer>().enabled = false;
-        cashText.text = (int.Parse(cashText.text) + 10).ToString();
-    }
+    
 
     void Update()
     {
