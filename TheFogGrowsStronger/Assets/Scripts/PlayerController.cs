@@ -166,7 +166,7 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         cash = cashText.text == "" ? 0 : int.Parse(cashText.text);  
-        Debug.Log(cash);
+        //Debug.Log(cash);
 
         if (Grounded == false)
         {
