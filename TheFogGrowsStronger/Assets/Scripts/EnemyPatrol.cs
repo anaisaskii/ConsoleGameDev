@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
+using TMPro;
 
 public class EnemyPatrol : MonoBehaviour
 {
+    //make this an array of points
     public Transform pointA;
     public Transform pointB;
 
@@ -17,12 +20,7 @@ public class EnemyPatrol : MonoBehaviour
         currentTarget = pointA; 
         agent.SetDestination(currentTarget.position);
     }
-
-    //destroy object in final game but this is fine for now 
-    public void EnemyDie()
-    {
-        GetComponent<MeshRenderer>().enabled = false;
-    }
+    
 
     void Update()
     {

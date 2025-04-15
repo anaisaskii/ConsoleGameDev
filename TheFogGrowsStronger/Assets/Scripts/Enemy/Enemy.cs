@@ -2,13 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.Contracts;
 using UnityEngine;
+using TMPro;
+public enum EnemyType
+{
+    ENEMY1,
+    ENEMY2,
+    BOSS
+}
 
 public class Enemy : MonoBehaviour
 {
-    public int health = 100;
+    //set what type of enemy this is
+    public EnemyType enemyType;
 
-    public int enemySpeed = 2;
-    public int attackDamage = 2;
+    public int enemyHealth = 100;
+    public int enemySpeed = 1;
+    public int enemyAttackDamage = 1;
+    public int enemyAttackSpeed = 1;
 
     public float attackCooldownTime;
     private float attackCooldown;
@@ -19,7 +29,7 @@ public class Enemy : MonoBehaviour
     private enum EnemyState { Idle, Patrol, Chase, Attack, Die };
     private EnemyState currentState;
 
-
+    public TextMeshProUGUI cashText;
 
     // --Damage--
 
@@ -32,12 +42,18 @@ public class Enemy : MonoBehaviour
 
     protected virtual void ApplyDamage()
     {
-        health -= attackDamage;
+        enemyHealth -= enemyAttackDamage;
+    }
+
+    public void EnemyDie()
+    {
+        Die();
     }
 
     protected virtual void Die()
     {
-
+        GetComponent<MeshRenderer>().enabled = false;
+        cashText.text = (int.Parse(cashText.text) + 10).ToString();
     }
 
     // --Movement--
