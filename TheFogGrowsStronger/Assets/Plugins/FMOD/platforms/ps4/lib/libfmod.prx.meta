@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 76978d9151bb75346a8d68062bd53502
+PluginImporter:
+  serializedVersion: 1
+  platformData:
+    Any:
+      enabled: 0
+      settings: {}
+    Editor:
+      enabled: 0
+      settings:
+        DefaultValueInitialized: true
+    PS4:
+      enabled: 1
+      settings: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
