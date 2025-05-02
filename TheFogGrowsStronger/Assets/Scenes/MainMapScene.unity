@@ -33831,6 +33831,108 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 962240302}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &963265459
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 963265463}
+  - component: {fileID: 963265462}
+  - component: {fileID: 963265461}
+  - component: {fileID: 963265460}
+  m_Layer: 0
+  m_Name: Box Volume
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &963265460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963265459}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6e68d1d7b2cea04c9ec45188797c8b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scatteringAlbedo: {r: 0.6037736, g: 0.6037736, b: 0.6037736, a: 1}
+  fogDistance: 43.71
+  mask: {fileID: 0}
+  volumeShaderSetting:
+    shader: {fileID: 0}
+    kernelName: 
+  positiveFade: {x: 0.5, y: 0.5, z: 0.5}
+  negativeFade: {x: 0.5, y: 0.5, z: 0.5}
+  invertFade: 1
+  distanceFadeStart: 50
+  distanceFadeEnd: 200
+  falloffMode: 0
+  windSpeed: 3.36
+  windDirection: {x: 1, y: 0}
+  counterFlowSpeed: 1
+  tiling: 0.5
+  detailNoiseTiling: 0.85
+  flatten: 2
+--- !u!114 &963265461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963265459}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IsGlobal: 0
+  priority: 0
+  blendDistance: 1
+  weight: 1
+  sharedProfile: {fileID: 0}
+--- !u!65 &963265462
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963265459}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &963265463
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963265459}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 229.53827, y: 69.06873, z: 110.30152}
+  m_LocalScale: {x: 108.657364, y: 108.657364, z: 108.657364}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &964865796
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -75650,3 +75752,4 @@ SceneRoots:
   - {fileID: 737722972}
   - {fileID: 722064601}
   - {fileID: 437790107}
+  - {fileID: 963265463}
