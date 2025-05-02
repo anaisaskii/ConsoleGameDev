@@ -6,6 +6,8 @@ using UnityEngine.InputSystem;
 using Cinemachine;
 using UnityEngine.UI;
 using TMPro;
+using FMODUnity;
+using FMOD.Studio;
 
 public class PlayerController : MonoBehaviour
 {
@@ -75,6 +77,9 @@ public class PlayerController : MonoBehaviour
     public int specialAttackBurstCount = 10;
 
     private bool canUseSecondaryAttack = true;
+
+    private EventInstance jumpInstance;
+    private string jumpInstanceLocation = "event:/TestSoundEffect";
 
     private void OnEnable()
     {
@@ -206,6 +211,11 @@ public class PlayerController : MonoBehaviour
         if (m_input.JumpInput && Grounded || m_input.JumpInput && StairsGrounded)
         {
             m_verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
+
+            //fmod here
+            jumpInstance = RuntimeManager.CreateInstance(jumpInstanceLocation);
+            jumpInstance.start();
+            jumpInstance.release();
         }
 
         //m_animator.SetFloat(AnimationSpeedFloat, m_animationMovementSpeed);
