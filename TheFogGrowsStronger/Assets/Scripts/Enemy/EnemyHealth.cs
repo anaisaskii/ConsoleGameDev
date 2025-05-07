@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyHealth : Health
 {
-    public EnemySpawner enemySpawner;
+    private EnemySpawner enemySpawner;
 
     public override void Die()
     {
@@ -17,6 +17,6 @@ public class EnemyHealth : Health
         Destroy(gameObject);
         */
 
-        Debug.Log("EnemyHealth script - Die()");
+        Destroy(gameObject);
     }
 }
