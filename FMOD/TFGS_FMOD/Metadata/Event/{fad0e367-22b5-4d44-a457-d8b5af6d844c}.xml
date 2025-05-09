@@ -2,13 +2,13 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{fad0e367-22b5-4d44-a457-d8b5af6d844c}">
 		<property name="name">
-			<value>TestSoundEffect</value>
+			<value>Jump</value>
 		</property>
 		<property name="outputFormat">
 			<value>1</value>
 		</property>
 		<relationship name="folder">
-			<destination>{4fd42aea-6d0e-4442-b538-b842eed20534}</destination>
+			<destination>{4fb2ac2a-4f74-4543-88f4-053112aa2fb6}</destination>
 		</relationship>
 		<relationship name="mixer">
 			<destination>{b0a80013-0632-46b1-aa61-d3aa22084fe9}</destination>
@@ -32,7 +32,7 @@
 			<destination>{396f5ca9-a22b-4376-b989-a6b59b1e243e}</destination>
 		</relationship>
 		<relationship name="banks">
-			<destination>{d061ea9e-50fc-4fdd-b8ea-c0c54be5e900}</destination>
+			<destination>{98248bbf-72be-4fed-8576-620ece6c00c4}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixer" id="{b0a80013-0632-46b1-aa61-d3aa22084fe9}">

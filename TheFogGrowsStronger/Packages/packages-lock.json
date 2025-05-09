@@ -248,15 +248,6 @@
         "com.unity.modules.imgui": "1.0.0"
       }
     },
-    "com.unity.universal-forwardplus-volumetric": {
-      "version": "file:URP-VolumetricFog-ForwardPlus-1.0.2/URP-VolumetricFog-ForwardPlus-1.0.2",
-      "depth": 0,
-      "source": "local",
-      "dependencies": {
-        "com.unity.render-pipelines.core": "14.0.8",
-        "com.unity.render-pipelines.universal": "14.0.8"
-      }
-    },
     "com.unity.visualscripting": {
       "version": "1.9.4",
       "depth": 0,
