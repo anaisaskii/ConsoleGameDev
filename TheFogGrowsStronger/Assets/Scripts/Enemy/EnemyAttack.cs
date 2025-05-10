@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.Contracts;
 using UnityEngine;
+using UnityEngine.AI;
 using TMPro;
 
 // This handles the enemy attacks and attack states
@@ -26,8 +27,7 @@ public class EnemyAttack : MonoBehaviour
     public int enemyAttackSpeed = 1;
     public float stoppingDistance = 1.5f;
 
-    public float attackCooldownTime;
-    private float attackCooldown;
+    private NavMeshAgent agent;
 
     private Rigidbody rb;
 
@@ -72,7 +72,6 @@ public class EnemyAttack : MonoBehaviour
     //cause a virtual void can't be called i don't think..?
     protected virtual void Attack(int damage)
     {
-        Debug.Log("Attack!");
         enemybt.progress();
     }
 

@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-//would be cool to just be able to select an enemy type and stuff is done automatically wow
+//select an enemy type and stuff is done automatically wow
 public enum CharacterType
 {
     Player,
