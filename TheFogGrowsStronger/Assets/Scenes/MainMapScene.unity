@@ -18414,7 +18414,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 526266446}
-  enemyPrefab: {fileID: 3018020837327663734, guid: 0c1753214b7f73540b0d9e270fdd8ce7,
+  enemyPrefab: {fileID: 4790996903983911642, guid: 5b8023747b8596e47917e01123bea25d,
     type: 3}
   maxEnemies: 10
   spawnRadius: 20

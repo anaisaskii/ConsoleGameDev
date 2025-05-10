@@ -50,6 +50,8 @@ public class EnemyAttack : MonoBehaviour
 
         rb = GetComponent<Rigidbody>();
 
+        agent = this.GetComponent<NavMeshAgent>();
+
         enemybt = this.GetComponent<EnemyBT>();
     }
 
@@ -59,6 +61,7 @@ public class EnemyAttack : MonoBehaviour
         {
             currentState = EnemyState.Attack;
         }
+
     }
 
     private void FixedUpdate()
@@ -109,11 +112,10 @@ public class EnemyAttack : MonoBehaviour
 
         float distance = Vector3.Distance(transform.position, player.position);
 
+        agent.SetDestination(player.position);
+
         if (distance > stoppingDistance)
         {
-            Vector3 move = transform.position + direction * enemySpeed * Time.fixedDeltaTime;
-            rb.MovePosition(move);
-
             // Optional: rotate to face the player
             Quaternion lookRotation = Quaternion.LookRotation(direction);
             rb.MoveRotation(Quaternion.Slerp(rb.rotation, lookRotation, 10f * Time.fixedDeltaTime));

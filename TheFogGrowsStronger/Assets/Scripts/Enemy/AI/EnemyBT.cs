@@ -18,7 +18,6 @@ public class EnemyBT : MonoBehaviour
 
     private Root aiRoot;
 
-    private bool isJumping;
     private float jumpDuration = 1f;
     private float startTime;
     private Vector3 jumpStartPosition;
@@ -71,27 +70,18 @@ public class EnemyBT : MonoBehaviour
 
     void Update()
     {
-        if (isJumping)
-        {
-            float timeElapsed = Time.time - startTime;
-            float t = timeElapsed / jumpDuration;
-
-            if (t < 1f)
-            {
-                transform.position = Vector3.Lerp(jumpStartPosition, jumpTargetPosition, t);
-            }
-            else
-            {
-                isJumping = false;
-                agent.enabled = true; // Re-enable agent after jump
-            }
-        }
+        
     }
 
     public void progress()
     {
-        if (!isJumping) // Don't tick BT during a jump
-            aiRoot.Tick();
+        aiRoot.Tick();
+        float distance = Vector3.Distance(agent.destination, playerTransform.position);
+        if (distance > 0.5f)
+        {
+            agent.SetDestination(playerTransform.position);
+        }
+
     }
 
     private bool IsPlayerInMeleeRange()
@@ -120,26 +110,12 @@ public class EnemyBT : MonoBehaviour
         Debug.Log("Performed heavy melee attack!");
         lastAttackTime = Time.time;
 
-        // Move quickly toward the player
-        if (agent.enabled)
-        {
-            agent.SetDestination(playerTransform.position);
-        }
+        playerhealth.TakeDamage(10);
     }
 
     private void PerformRangedAttack()
     {
-        Debug.Log("Performed ranged jump attack!");
-        lastAttackTime = Time.time;
-
-        jumpStartPosition = transform.position;
-        jumpTargetPosition = new Vector3(playerTransform.position.x, transform.position.y, playerTransform.position.z);
-
-        isJumping = true;
-        startTime = Time.time;
-
-        // Temporarily disable NavMeshAgent during jump
-        agent.enabled = false;
+        //shoot
     }
 
     public void playerTakeDamage(int damage)
