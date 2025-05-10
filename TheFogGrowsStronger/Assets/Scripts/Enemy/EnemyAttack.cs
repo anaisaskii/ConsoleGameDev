@@ -39,6 +39,7 @@ public class EnemyAttack : MonoBehaviour
     private EnemyState currentState;
 
     public TextMeshProUGUI cashText;
+    EnemyBT enemybt;
 
     private void Start()
     {
@@ -48,10 +49,20 @@ public class EnemyAttack : MonoBehaviour
         currentState = EnemyState.Chase;
 
         rb = GetComponent<Rigidbody>();
+
+        enemybt = this.GetComponent<EnemyBT>();
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            currentState = EnemyState.Attack;
+        }
     }
 
     private void FixedUpdate()
-    {
+    { 
         HandleState();
     }
 
@@ -61,7 +72,8 @@ public class EnemyAttack : MonoBehaviour
     //cause a virtual void can't be called i don't think..?
     protected virtual void Attack(int damage)
     {
-
+        Debug.Log("Attack!");
+        enemybt.progress();
     }
 
     // --Movement--
@@ -111,11 +123,7 @@ public class EnemyAttack : MonoBehaviour
 
     protected virtual void AttackPlayer()
     {
-        if (attackCooldown <= 0)
-        {
-            // Attack logic
-            attackCooldown = attackCooldownTime;
-        }
+        Attack(10);
     }
 
 }

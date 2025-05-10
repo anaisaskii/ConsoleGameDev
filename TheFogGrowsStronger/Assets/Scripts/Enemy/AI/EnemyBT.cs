@@ -10,8 +10,10 @@ using BTAI;
 
 public class EnemyBT : MonoBehaviour
 {
-    private Transform player;
-    //public PlayerHealth playerhealth;
+    private GameObject player;
+    private Transform playerTransform;
+
+    private Health playerhealth;
 
     private float meleeRange = 5.0f; // how near the player has to be to attack
     private float combinedCooldown = 6f; // a joint cooldown so attacks can't be spammed
@@ -19,7 +21,7 @@ public class EnemyBT : MonoBehaviour
 
     private Root aiRoot; // root for behaviour tree
 
-    private Animator animator;
+    //private Animator animator;
 
     private bool isJumping; // check if jumping
     private float jumpDuration = 1f; // how long does the enemy take to jump
@@ -31,13 +33,14 @@ public class EnemyBT : MonoBehaviour
     public void Start()
     {
         //find player gameobject
-        this.player = GameObject.Find("Target").transform;
+        player = GameObject.FindWithTag("Player");
+        playerTransform = player.transform;
+        playerhealth = player.GetComponent<Health>();
 
-        //get player health from player
-        //playerhealth.GetComponent<PlayerHealth>();
+        Debug.Log(player);
 
-        animator = this.GetComponent<Animator>();
-        animator.speed = 0.9f; // 1 was too fast...
+        //animator = this.GetComponent<Animator>();
+        //animator.speed = 0.9f; // 1 was too fast...
 
         aiRoot = BT.Root();
 
@@ -52,6 +55,7 @@ public class EnemyBT : MonoBehaviour
                     .OpenBranch(
                         BT.Condition(() =>
                         {
+                            Debug.Log("Selecting attack");
                             int attackType = Random.Range(0, 2);
                             return attackType == 0; // light melee condition
                         }),
@@ -90,6 +94,7 @@ public class EnemyBT : MonoBehaviour
             float timeElapsed = Time.time - startTime;
             if (timeElapsed < jumpDuration)
             {
+                
                 // calculate the interpolation factor
                 float t = timeElapsed / jumpDuration;
 
@@ -106,21 +111,13 @@ public class EnemyBT : MonoBehaviour
 
     public void progress()
     {
+        //Debug.Log("Progressing!");
         aiRoot.Tick();
-
-        // calculate the direction to the player
-        Vector3 directionToPlayer = player.position - transform.position;
-        directionToPlayer.y = 0f;  // Ignore vertical rotation
-
-        // rotate extra 90 degrees (so it faces forward)
-        Quaternion targetRotation = Quaternion.LookRotation(directionToPlayer);
-        targetRotation *= Quaternion.Euler(0f, 90f, 0f); // Rotate an additional 90 degrees on the Y-axis
-        transform.rotation = targetRotation;
     }
 
     private bool IsPlayerInMeleeRange()
     {
-        bool isInRange = Vector3.Distance(transform.position, player.position) <= meleeRange;
+        bool isInRange = Vector3.Distance(transform.position, playerTransform.position) <= meleeRange;
         bool canAttack = Time.time >= lastAttackTime + combinedCooldown;
         return isInRange && canAttack;
     }
@@ -128,7 +125,7 @@ public class EnemyBT : MonoBehaviour
     // is the player near the enemy, and has an attack recently happened?
     private bool CanPerformAttack()
     {
-        bool isInRange = Vector3.Distance(transform.position, player.position) >= meleeRange;
+        bool isInRange = Vector3.Distance(transform.position, playerTransform.position) >= meleeRange;
         bool canAttack = Time.time >= lastAttackTime + combinedCooldown;
         return canAttack && isInRange;
     }
@@ -137,24 +134,24 @@ public class EnemyBT : MonoBehaviour
     {
         Debug.Log("Performed light melee attack!");
         lastAttackTime = Time.time;
-        animator.SetTrigger("meleeLight");
+        //animator.SetTrigger("meleeLight");
     }
 
     private void PerformHeavyMeleeAttack()
     {
-        transform.position = Vector3.Lerp(transform.position, player.position, 5f * Time.deltaTime);
-        animator.SetTrigger("meleeHeavy");
+        transform.position = Vector3.Lerp(transform.position, playerTransform.position, 5f * Time.deltaTime);
+        //animator.SetTrigger("meleeHeavy");
         Debug.Log("Performed heavy melee attack!");
         lastAttackTime = Time.time;
     }
 
     private void PerformRangedAttack()
     {
-        animator.SetTrigger("ranged");
+        //animator.SetTrigger("ranged");
         jumpStartPosition = transform.position;
-        jumpTargetPosition = new Vector3(player.position.x, transform.position.y, player.position.z);
+        jumpTargetPosition = new Vector3(playerTransform.position.x, transform.position.y, playerTransform.position.z);
         startTime = Time.time; //to time jumo
-
+        Debug.Log("Performed ranged attack!");
         isJumping = true;
     }
 
@@ -162,7 +159,7 @@ public class EnemyBT : MonoBehaviour
     public void playerTakeDamage(int damage)
     {
         //is player still in range of enemy when attack occurs?
-        if (Vector3.Distance(transform.position, player.position) <= meleeRange)
+        if (Vector3.Distance(transform.position, playerTransform.position) <= meleeRange)
         {
             Debug.Log(damage);
             ApplyDamageToPlayer(damage);
@@ -172,7 +169,7 @@ public class EnemyBT : MonoBehaviour
     private void ApplyDamageToPlayer(int damage)
     {
         // damage player!
-        //playerhealth.playerpublicdamage(damage);
+        playerhealth.TakeDamage(damage);
 
     }
 }
