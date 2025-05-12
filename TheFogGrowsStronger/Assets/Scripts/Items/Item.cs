@@ -21,7 +21,7 @@ public abstract class Item : MonoBehaviour
         {
             ApplyEffect(other.gameObject);  // Apply the effect
 
-            Destroy(gameObject);  // Remove the power-up after pickup
+            Destroy(transform.parent.gameObject);  // Remove the power-up after pickup
         }
     }
 }

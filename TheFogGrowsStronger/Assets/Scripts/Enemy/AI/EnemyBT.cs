@@ -12,7 +12,10 @@ public class EnemyBT : MonoBehaviour
 
     private NavMeshAgent agent;
 
+    private Animator animator;
+
     private float meleeRange = 5.0f;
+    private float rangedRange = 15.0f;
     private float combinedCooldown = 6f;
     private float lastAttackTime;
 
@@ -29,6 +32,7 @@ public class EnemyBT : MonoBehaviour
         playerTransform = player.transform;
         playerhealth = player.GetComponent<Health>();
         agent = GetComponent<NavMeshAgent>();
+        animator = this.GetComponent<Animator>();
 
         aiRoot = BT.Root();
 
@@ -60,7 +64,7 @@ public class EnemyBT : MonoBehaviour
 
         var rangedSequence = BT.Sequence()
             .OpenBranch(
-                BT.Condition(CanPerformAttack),
+                BT.Condition(IsPlayerInRangedRange),
                 BT.Call(PerformRangedAttack)
             );
 
@@ -81,12 +85,22 @@ public class EnemyBT : MonoBehaviour
         {
             agent.SetDestination(playerTransform.position);
         }
+        else
+        {
 
+        }
     }
 
     private bool IsPlayerInMeleeRange()
     {
         bool isInRange = Vector3.Distance(transform.position, playerTransform.position) <= meleeRange;
+        bool canAttack = Time.time >= lastAttackTime + combinedCooldown;
+        return isInRange && canAttack;
+    }
+
+    private bool IsPlayerInRangedRange()
+    {
+        bool isInRange = Vector3.Distance(transform.position, playerTransform.position) <= rangedRange;
         bool canAttack = Time.time >= lastAttackTime + combinedCooldown;
         return isInRange && canAttack;
     }
@@ -100,6 +114,7 @@ public class EnemyBT : MonoBehaviour
 
     private void PerformLightMeleeAttack()
     {
+        animator.SetTrigger("AtkLight");
         Debug.Log("Performed light melee attack!");
         lastAttackTime = Time.time;
         // animator.SetTrigger("meleeLight");
@@ -115,6 +130,7 @@ public class EnemyBT : MonoBehaviour
 
     private void PerformRangedAttack()
     {
+        animator.SetTrigger("Shoot");
         //shoot
     }
 

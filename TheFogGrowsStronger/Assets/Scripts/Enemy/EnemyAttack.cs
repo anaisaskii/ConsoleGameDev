@@ -25,7 +25,9 @@ public class EnemyAttack : MonoBehaviour
 
     public int enemyAttackDamage = 1;
     public int enemyAttackSpeed = 1;
-    public float stoppingDistance = 1.5f;
+    public float stoppingDistance = 5f;
+
+    private Animator animator;
 
     private NavMeshAgent agent;
 
@@ -45,6 +47,7 @@ public class EnemyAttack : MonoBehaviour
     {
         playerObj = GameObject.FindGameObjectWithTag("Player");
         player = playerObj.transform;
+        animator = this.GetComponent<Animator>();
 
         currentState = EnemyState.Chase;
 
@@ -57,10 +60,6 @@ public class EnemyAttack : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            currentState = EnemyState.Attack;
-        }
 
     }
 
@@ -70,12 +69,16 @@ public class EnemyAttack : MonoBehaviour
     }
 
     // --Damage--
-
-    //make public void to take the damage in individual classes
-    //cause a virtual void can't be called i don't think..?
     protected virtual void Attack(int damage)
     {
         enemybt.progress();
+
+        float distance = Vector3.Distance(transform.position, player.position);
+        if (distance >= stoppingDistance)
+        {
+            Debug.Log("Entering Chase state!");
+            currentState = EnemyState.Chase;
+        }
     }
 
     // --Movement--
@@ -106,19 +109,24 @@ public class EnemyAttack : MonoBehaviour
     {
         if (player == null) return;
 
-        Vector3 direction = (player.position - transform.position).normalized;
-
-        Debug.DrawRay(transform.position, direction * 2f, Color.red);
-
         float distance = Vector3.Distance(transform.position, player.position);
 
-        agent.SetDestination(player.position);
-
+        // If we're far enough, keep chasing
         if (distance > stoppingDistance)
         {
-            // Optional: rotate to face the player
-            Quaternion lookRotation = Quaternion.LookRotation(direction);
-            rb.MoveRotation(Quaternion.Slerp(rb.rotation, lookRotation, 10f * Time.fixedDeltaTime));
+            agent.isStopped = false;
+            agent.SetDestination(player.position);
+            animator.SetBool("Move", true);
+        }
+        else if (distance <= stoppingDistance)
+        {
+            Debug.Log("Entering attack state!");
+            animator.SetBool("Move", false);
+            agent.isStopped = true;
+            agent.ResetPath();
+
+            // Optionally switch state
+            currentState = EnemyState.Attack;
         }
     }
 

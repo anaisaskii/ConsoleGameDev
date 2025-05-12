@@ -48,7 +48,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private AgentRotationStrategy m_rotationStrategy;
 
-    private int cash = 0;
+    //made this public so can be accessed by chest script
+    public int cash = 0;
     public TextMeshProUGUI cashText;
 
     [Header("Shooting")]
