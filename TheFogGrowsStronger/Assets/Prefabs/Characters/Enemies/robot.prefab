@@ -210,6 +210,8 @@ MonoBehaviour:
   characterType: 1
   maxHealth: 25
   currentHealth: 25
+  damageNumbers: {fileID: 8759920988120644963, guid: 6e4f29476a02bcd49a00677b431fd33f,
+    type: 3}
   OnDeath:
     m_PersistentCalls:
       m_Calls:

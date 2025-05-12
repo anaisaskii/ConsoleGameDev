@@ -17,6 +17,8 @@ public class Health : MonoBehaviour
     [SerializeField] private float maxHealth = 100f;
     [SerializeField] private float currentHealth;
 
+    public GameObject damageNumbers;
+
     public UnityEvent OnDeath;
     public UnityEvent<float> OnDamage;
 
@@ -47,11 +49,26 @@ public class Health : MonoBehaviour
         currentHealth -= damage;
         OnDamage?.Invoke(damage);
 
+        if (damageNumbers != null)
+        {
+            showDamageNumbers();
+        }
+        else
+        {
+            Debug.Log("damage numbers not being ran");
+        }
+
         if (currentHealth <= 0)
         {
             currentHealth = 0;
             Die();
         }
+    }
+
+    void showDamageNumbers()
+    {
+        Instantiate(damageNumbers, transform.position, Quaternion.identity, transform);
+        Debug.Log("damage numbers ran");
     }
 
     public virtual void Die()
