@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CommonEnemy : Enemy
+public class CommonEnemy : EnemyAttack
 {
    public void TakeDamage()
     {
-        ApplyDamage();
+        //ApplyDamage();
     }
 
     private void Update()

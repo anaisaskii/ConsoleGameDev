@@ -1,20 +1,48 @@
 using UnityEngine;
 using UnityEngine.Events;
 
+//select an enemy type and stuff is done automatically wow
+public enum CharacterType
+{
+    Player,
+    CommonEnemy1,
+    CommonEnemy2,
+    Boss1
+}
+
 public class Health : MonoBehaviour
 {
+    public CharacterType characterType;
+
     [SerializeField] private float maxHealth = 100f;
     [SerializeField] private float currentHealth;
 
     public UnityEvent OnDeath;
     public UnityEvent<float> OnDamage;
 
-    private void Awake()
+    //when you choose a character type in the inspector it'll set the health automatically
+    private void OnValidate()
     {
+        switch (characterType)
+        {
+            case CharacterType.Player:
+                maxHealth = 100;
+                break;
+            case CharacterType.CommonEnemy1:
+                maxHealth = 25;
+                break;
+            case CharacterType.CommonEnemy2:
+                maxHealth = 50;
+                break;
+            case CharacterType.Boss1:
+                maxHealth = 100;
+                break;
+        }
+
         currentHealth = maxHealth;
     }
 
-    public void TakeDamage(float damage)
+    public virtual void TakeDamage(float damage)
     {
         currentHealth -= damage;
         OnDamage?.Invoke(damage);
@@ -22,8 +50,15 @@ public class Health : MonoBehaviour
         if (currentHealth <= 0)
         {
             currentHealth = 0;
-            OnDeath?.Invoke();
+            Die();
         }
+    }
+
+    public virtual void Die()
+    {
+        //change this to destroy the prefab by default!!
+        //then for the player we can have special conditions (will need a playerhealth script)
+        GetComponent<MeshRenderer>().enabled = false;
     }
 
     public float GetCurrentHealth()

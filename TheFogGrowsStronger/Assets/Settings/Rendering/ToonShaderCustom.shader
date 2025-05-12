@@ -8,6 +8,10 @@ Shader "Custom/ToonShaderCustom"
         _FogColor("Fog Color", Color) = (0.5, 0.5, 0.5, 1)
         _FogStart("Fog Start", Float) = 10
         _FogEnd("Fog End", Float) = 50
+        _Brightness("Brightness", Range(0, 2)) = 1
+        _ShadowColor("Shadow Color", Color) = (0.5, 0.5, 0.5, 1)
+        _ShadowThreshold("Shadow Threshold", Range(0, 1)) = 0.5
+        _ShadowBlend("Shadow Blend", Range(0.001, 1)) = 0.1
     }
 
         SubShader
@@ -43,7 +47,7 @@ Shader "Custom/ToonShaderCustom"
                     float2 uv : TEXCOORD0;
                     float4 vertex : SV_POSITION;
                     float3 worldPos : TEXCOORD1;
-                    float3x3 TBN : TEXCOORD2;  // This takes 3 TEXCOORDs (TEXCOORD2, 3, 4)
+                    float3x3 TBN : TEXCOORD2;
                     float4 shadowCoord : TEXCOORD5;
                 };
 
@@ -55,6 +59,10 @@ Shader "Custom/ToonShaderCustom"
                 float4 _FogColor;
                 float _FogStart;
                 float _FogEnd;
+                float _Brightness;
+                float4 _ShadowColor;
+                float _ShadowThreshold;
+                float _ShadowBlend;
 
                 v2f vert(appdata v)
                 {
@@ -75,11 +83,6 @@ Shader "Custom/ToonShaderCustom"
                     return o;
                 }
 
-                float3 ApplyCelShading(float NdotL)
-                {
-                    return NdotL > 0.5 ? 1.0 : 0.5;
-                }
-
                 float FogFactor(float3 worldPos)
                 {
                     float distance = length(worldPos - _WorldSpaceCameraPos);
@@ -88,24 +91,29 @@ Shader "Custom/ToonShaderCustom"
 
                 half4 frag(v2f i) : SV_Target
                 {
-                    // Sample normal map and convert to world space
                     float3 normalTS = UnpackNormal(tex2D(_BumpMap, i.uv));
                     float3 normalWS = normalize(mul(normalTS, i.TBN));
 
-                    // Get lighting direction and intensity
                     Light mainLight = GetMainLight(i.shadowCoord);
                     float NdotL = saturate(dot(normalWS, mainLight.direction));
 
-                    float cel = ApplyCelShading(NdotL);
+                    // Shadow threshold logic
+                    float lightAmount = step(_ShadowThreshold, NdotL); // 0 or 1 based on threshold
+                    float3 shadowTint = lerp(_ShadowColor.rgb, 1.0, lightAmount);
 
+                    // Shadow Blend logic for smoother shadow transition
+                    float blendedShadow = smoothstep(_ShadowThreshold - _ShadowBlend, _ShadowThreshold + _ShadowBlend, NdotL);
+                    shadowTint = lerp(shadowTint, 1.0, blendedShadow);  // Blend between shadow and light using the ShadowBlend factor
+
+                    // Apply texture color and brightness
                     float3 texColor = tex2D(_MainTex, i.uv).rgb;
-                    float3 litColor = texColor * _Color.rgb * cel * mainLight.color.rgb * mainLight.shadowAttenuation;
+                    float3 finalColor = texColor * _Color.rgb * shadowTint * mainLight.color.rgb * mainLight.shadowAttenuation * _Brightness;
 
-                    // Fog
+                    // Fog effect
                     float fogFactor = FogFactor(i.worldPos);
-                    litColor = lerp(litColor, _FogColor.rgb, fogFactor);
+                    finalColor = lerp(finalColor, _FogColor.rgb, fogFactor);
 
-                    return float4(litColor, 1);
+                    return float4(finalColor, 1);
                 }
                 ENDHLSL
             }

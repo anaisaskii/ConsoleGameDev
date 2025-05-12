@@ -1,5 +1,59 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-4505153852915772865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Player/Jump
+  m_EditorClassIdentifier: 
+  Path: event:/Player/Jump
+  Guid:
+    Data1: -86973593
+    Data2: 1296310965
+    Data3: -1244112988
+    Data4: 1283747247
+  Banks:
+  - {fileID: 7528414988718375079}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 298
+--- !u!114 &-2626275452712139997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/BGM/BGM_Forest
+  m_EditorClassIdentifier: 
+  Path: event:/BGM/BGM_Forest
+  Guid:
+    Data1: -466243830
+    Data2: 1102421524
+    Data3: -1651252834
+    Data4: -1639072938
+  Banks:
+  - {fileID: 6645373047468914267}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 34921
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15,14 +69,21 @@ MonoBehaviour:
   EditorBanks:
   - {fileID: 4101538568427018764}
   - {fileID: 1280516438716125525}
+  - {fileID: 6645373047468914267}
+  - {fileID: 7528414988718375079}
   EditorEvents:
-  - {fileID: 3964933397955988717}
+  - {fileID: -4505153852915772865}
+  - {fileID: -2626275452712139997}
   EditorParameters: []
   MasterBanks:
   - {fileID: 1280516438716125525}
   StringsBanks:
   - {fileID: 4101538568427018764}
+<<<<<<< HEAD
   cacheTime: 638817905288740701
+=======
+  cacheTime: 638824191360000000
+>>>>>>> Andrianna
   cacheVersion: 131624
 --- !u!114 &1280516438716125525
 MonoBehaviour:
@@ -39,38 +100,15 @@ MonoBehaviour:
   Path: ../FMOD/TFGS_FMOD/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
+<<<<<<< HEAD
   lastModified: 638817905288740701
+=======
+  lastModified: 638824191340000000
+>>>>>>> Andrianna
   FileSizes:
   - Name: Desktop
-    Value: 6432
+    Value: 1036
   Exists: 1
---- !u!114 &3964933397955988717
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/TestSoundEffect
-  m_EditorClassIdentifier: 
-  Path: event:/TestSoundEffect
-  Guid:
-    Data1: -86973593
-    Data2: 1296310965
-    Data3: -1244112988
-    Data4: 1283747247
-  Banks:
-  - {fileID: 1280516438716125525}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 298
 --- !u!114 &4101538568427018764
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -86,8 +124,52 @@ MonoBehaviour:
   Path: ../FMOD/TFGS_FMOD/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
+<<<<<<< HEAD
   lastModified: 638817905288740701
+=======
+  lastModified: 638824191340000000
+>>>>>>> Andrianna
   FileSizes:
   - Name: Desktop
-    Value: 764
+    Value: 898
+  Exists: 1
+--- !u!114 &6645373047468914267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/BGM.bank
+  m_EditorClassIdentifier: 
+  Path: ../FMOD/TFGS_FMOD/Build/Desktop/BGM.bank
+  Name: BGM
+  StudioPath: bank:/BGM
+  lastModified: 638824191360000000
+  FileSizes:
+  - Name: Desktop
+    Value: 413536
+  Exists: 1
+--- !u!114 &7528414988718375079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/SFX.bank
+  m_EditorClassIdentifier: 
+  Path: ../FMOD/TFGS_FMOD/Build/Desktop/SFX.bank
+  Name: SFX
+  StudioPath: bank:/SFX
+  lastModified: 638824191360000000
+  FileSizes:
+  - Name: Desktop
+    Value: 5888
   Exists: 1

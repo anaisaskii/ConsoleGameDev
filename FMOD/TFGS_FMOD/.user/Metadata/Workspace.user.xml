@@ -5,7 +5,11 @@
 			<destination>{ca8dfd2f-0b58-40f4-a0a3-e2d217048f8f}</destination>
 		</relationship>
 		<relationship name="changelist">
+<<<<<<< HEAD
 			<destination>{b9517b17-df53-4c0d-bf76-e90d3be3f036}</destination>
+=======
+			<destination>{c7a1efa1-438d-4ab8-a811-4c15f618ca5a}</destination>
+>>>>>>> Andrianna
 		</relationship>
 	</object>
 	<object class="ProjectSettings" id="{ca8dfd2f-0b58-40f4-a0a3-e2d217048f8f}">
@@ -19,5 +23,9 @@
 			<destination>{d0568725-8810-4f6e-9c38-afd3b11114c2}</destination>
 		</relationship>
 	</object>
+<<<<<<< HEAD
 	<object class="WorkspaceChangelist" id="{b9517b17-df53-4c0d-bf76-e90d3be3f036}" />
+=======
+	<object class="WorkspaceChangelist" id="{c7a1efa1-438d-4ab8-a811-4c15f618ca5a}" />
+>>>>>>> Andrianna
 </objects>
