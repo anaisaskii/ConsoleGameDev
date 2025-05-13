@@ -2,30 +2,22 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="Workspace" id="{353567e2-cb3a-4aed-811f-a5874fbc81be}">
 		<relationship name="projectSettings">
-			<destination>{ca8dfd2f-0b58-40f4-a0a3-e2d217048f8f}</destination>
+			<destination>{cf8bf0d6-d4c8-4032-b874-dc314c240503}</destination>
 		</relationship>
 		<relationship name="changelist">
-<<<<<<< HEAD
-			<destination>{b9517b17-df53-4c0d-bf76-e90d3be3f036}</destination>
-=======
-			<destination>{c7a1efa1-438d-4ab8-a811-4c15f618ca5a}</destination>
->>>>>>> Andrianna
+			<destination>{fce97fae-581e-4f10-8169-d584a7d2a626}</destination>
 		</relationship>
 	</object>
-	<object class="ProjectSettings" id="{ca8dfd2f-0b58-40f4-a0a3-e2d217048f8f}">
+	<object class="ProjectSettings" id="{cf8bf0d6-d4c8-4032-b874-dc314c240503}">
 		<property name="openWindows">
 			<value>Event Editor 1</value>
 		</property>
 		<property name="windowLayout">
-			<value>AAAAAQAAABwARQB2AGUAbgB0ACAARQBkAGkAdABvAHIAIAAxAAAAQgHZ0MsAAwAAAAAHf/////gAAA8AAAAEEAAACgAAAAEYAAAOHwAAArsAAAABAgAAAAeAAAAHgAAAABcAAA7/AAAEDw==</value>
+			<value>AAAAAwAAACAAUAByAGUAcwBlAHQAIABCAHIAbwB3AHMAZQByACAAMQAAAEIB2dDLAAMAAAAACncAAACBAAAMCAAAA3AAAAp4AAAAoAAADAcAAANvAAAAAQAAAAAHgAAACngAAACgAAAMBwAAA28AAAAOAE0AaQB4AGUAcgAgADEAAABCAdnQywADAAAAAAd/////+AAADwAAAAQQAAAKAAAAARgAAA6NAAAD5wAAAAECAAAAB4AAAAeAAAAAFwAADv8AAAQPAAAAHABFAHYAZQBuAHQAIABFAGQAaQB0AG8AcgAgADEAAABCAdnQywADAAAAAAd/////+AAADwAAAAQQAAAKAAAAARgAAA4fAAACuwAAAAECAAAAB4AAAAeAAAAAFwAADv8AAAQP</value>
 		</property>
 		<relationship name="activePlatform">
 			<destination>{d0568725-8810-4f6e-9c38-afd3b11114c2}</destination>
 		</relationship>
 	</object>
-<<<<<<< HEAD
-	<object class="WorkspaceChangelist" id="{b9517b17-df53-4c0d-bf76-e90d3be3f036}" />
-=======
-	<object class="WorkspaceChangelist" id="{c7a1efa1-438d-4ab8-a811-4c15f618ca5a}" />
->>>>>>> Andrianna
+	<object class="WorkspaceChangelist" id="{fce97fae-581e-4f10-8169-d584a7d2a626}" />
 </objects>
