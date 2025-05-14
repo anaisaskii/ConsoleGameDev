@@ -42,7 +42,7 @@ MonoBehaviour:
   Path: ../FMOD/TFGS_FMOD/Build/Desktop/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
-  lastModified: 638827032480000000
+  lastModified: 638827924260000000
   FileSizes:
   - Name: Desktop
     Value: 1202
@@ -136,7 +136,7 @@ MonoBehaviour:
   Path: ../FMOD/TFGS_FMOD/Build/Desktop/Player_Atk.bank
   Name: Player_Atk
   StudioPath: bank:/Player_Atk
-  lastModified: 638827920160000000
+  lastModified: 638827924260000000
   FileSizes:
   - Name: Desktop
     Value: 148096
@@ -170,7 +170,7 @@ MonoBehaviour:
   - {fileID: -4031877061682129050}
   StringsBanks:
   - {fileID: 5985094667170840401}
-  cacheTime: 638827920160000000
+  cacheTime: 638827924260000000
   cacheVersion: 131624
 --- !u!114 &2062394248928341859
 MonoBehaviour:
@@ -234,7 +234,7 @@ MonoBehaviour:
   Path: ../FMOD/TFGS_FMOD/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638827920160000000
+  lastModified: 638827924260000000
   FileSizes:
   - Name: Desktop
     Value: 1078
