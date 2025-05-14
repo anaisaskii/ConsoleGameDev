@@ -70,9 +70,6 @@
 		<relationship name="modules">
 			<destination>{7bffb684-5353-46db-9237-923394907607}</destination>
 		</relationship>
-		<relationship name="markers">
-			<destination>{273405dc-eb4c-46f7-934c-e1fefa718384}</destination>
-		</relationship>
 	</object>
 	<object class="EventMixerMaster" id="{dcf2c169-27f9-4cbf-96bb-c0706a5e1126}">
 		<relationship name="effectChain">
@@ -106,6 +103,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{67687991-e172-43c3-8bd6-96c160b51a23}">
+		<property name="volume">
+			<value>-16.5</value>
+		</property>
 		<property name="name">
 			<value>Laser_Shoot</value>
 		</property>
@@ -117,23 +117,6 @@
 		</relationship>
 		<relationship name="output">
 			<destination>{dcf2c169-27f9-4cbf-96bb-c0706a5e1126}</destination>
-		</relationship>
-	</object>
-	<object class="LoopRegion" id="{273405dc-eb4c-46f7-934c-e1fefa718384}">
-		<property name="position">
-			<value>0</value>
-		</property>
-		<property name="length">
-			<value>0.10000000000000001</value>
-		</property>
-		<relationship name="timeline">
-			<destination>{28e4758c-5d97-47ee-b3bd-c58496a1e01e}</destination>
-		</relationship>
-		<relationship name="markerTrack">
-			<destination>{63c07545-a768-4446-9567-308396ac05cb}</destination>
-		</relationship>
-		<relationship name="triggerConditions">
-			<destination>{8a881085-be00-4881-a26f-7dcfb8661087}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusEffectChain" id="{e17292a8-895f-4ac6-bb07-2c43f13e2078}">
@@ -157,17 +140,6 @@
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{aac238ed-e63d-4781-a0a3-b35fa7781d55}" />
-	<object class="ParameterCondition" id="{8a881085-be00-4881-a26f-7dcfb8661087}">
-		<property name="minimum">
-			<value>0</value>
-		</property>
-		<property name="maximum">
-			<value>0.50499999523162842</value>
-		</property>
-		<relationship name="parameter">
-			<destination>{d9c71e55-75ad-4764-8d8b-c3e1ebf484ba}</destination>
-		</relationship>
-	</object>
 	<object class="MixerBusFader" id="{8bfd18ea-6f2f-4ca0-af8b-6f44fea51d7a}" />
 	<object class="AutomationPoint" id="{d6efc6b0-089a-42bd-9c96-c3509e46eee2}">
 		<property name="position">

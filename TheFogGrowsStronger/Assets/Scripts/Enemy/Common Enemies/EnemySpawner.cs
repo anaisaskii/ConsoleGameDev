@@ -17,6 +17,11 @@ public class EnemySpawner : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            Debug.Log("Current active enemies: " + activeEnemies.Count);
+        }
+
         spawnTimer += Time.deltaTime;
 
         if (spawnTimer >= spawnCooldown && activeEnemies.Count < maxEnemies)

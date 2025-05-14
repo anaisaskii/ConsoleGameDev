@@ -21,16 +21,15 @@ public class EnemyAttack : MonoBehaviour
     //set what type of enemy this is
     public EnemyType enemyType;
 
-    public float enemySpeed = 5f;
-
     public int enemyAttackDamage = 1;
     public int enemyAttackSpeed = 1;
-    public float stoppingDistance = 5f;
+
+    public float stoppingDistance;
+    public float enemySpeed = 5f;
 
     private Animator animator;
 
     private NavMeshAgent agent;
-
     private Rigidbody rb;
 
     private GameObject playerObj;
@@ -72,6 +71,7 @@ public class EnemyAttack : MonoBehaviour
     protected virtual void Attack(int damage)
     {
         enemybt.progress();
+        agent.SetDestination(player.transform.position);
 
         float distance = Vector3.Distance(transform.position, player.position);
         if (distance >= stoppingDistance)
@@ -103,6 +103,8 @@ public class EnemyAttack : MonoBehaviour
     protected virtual void Patrol()
     {
         // Patrol logic (shared for all enemies or can be overridden)
+        // if player gets out of chase radius
+        // walk to each waypoint
     }
 
     protected virtual void ChasePlayer()

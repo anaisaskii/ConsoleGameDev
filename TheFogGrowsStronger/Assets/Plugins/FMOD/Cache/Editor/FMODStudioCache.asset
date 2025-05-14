@@ -42,10 +42,10 @@ MonoBehaviour:
   Path: ../FMOD/TFGS_FMOD/Build/Desktop/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
-  lastModified: 638826514260000000
+  lastModified: 638827032480000000
   FileSizes:
   - Name: Desktop
-    Value: 5888
+    Value: 1202
   Exists: 1
 --- !u!114 &-4031877061682129050
 MonoBehaviour:
@@ -62,7 +62,7 @@ MonoBehaviour:
   Path: ../FMOD/TFGS_FMOD/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638826514260000000
+  lastModified: 638827920160000000
   FileSizes:
   - Name: Desktop
     Value: 1036
@@ -93,7 +93,54 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 298
+  Length: 0
+--- !u!114 &-2588839318703713676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Player/RapidFire_Shot
+  m_EditorClassIdentifier: 
+  Path: event:/Player/RapidFire_Shot
+  Guid:
+    Data1: -117228280
+    Data2: 1209687257
+    Data3: -1513350753
+    Data4: 2039319858
+  Banks:
+  - {fileID: -1494385254773545651}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1400
+--- !u!114 &-1494385254773545651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Player_Atk.bank
+  m_EditorClassIdentifier: 
+  Path: ../FMOD/TFGS_FMOD/Build/Desktop/Player_Atk.bank
+  Name: Player_Atk
+  StudioPath: bank:/Player_Atk
+  lastModified: 638827920160000000
+  FileSizes:
+  - Name: Desktop
+    Value: 148096
+  Exists: 1
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -111,16 +158,47 @@ MonoBehaviour:
   - {fileID: 4472467386551336300}
   - {fileID: -4031877061682129050}
   - {fileID: -6148552655213859820}
+  - {fileID: -1494385254773545651}
   EditorEvents:
   - {fileID: -6677391761130311116}
   - {fileID: -3292941137860651606}
+  - {fileID: -2588839318703713676}
+  - {fileID: 2062394248928341859}
+  - {fileID: 7353980564618215057}
   EditorParameters: []
   MasterBanks:
   - {fileID: -4031877061682129050}
   StringsBanks:
   - {fileID: 5985094667170840401}
-  cacheTime: 638826514260000000
+  cacheTime: 638827920160000000
   cacheVersion: 131624
+--- !u!114 &2062394248928341859
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Player/Laser_Gun
+  m_EditorClassIdentifier: 
+  Path: event:/Player/Laser_Gun
+  Guid:
+    Data1: 1998723493
+    Data2: 1164067847
+    Data3: 513286547
+    Data4: 1533984442
+  Banks:
+  - {fileID: -1494385254773545651}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1850
 --- !u!114 &4472467386551336300
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -136,7 +214,7 @@ MonoBehaviour:
   Path: ../FMOD/TFGS_FMOD/Build/Desktop/BGM.bank
   Name: BGM
   StudioPath: bank:/BGM
-  lastModified: 638826514260000000
+  lastModified: 638827032460000000
   FileSizes:
   - Name: Desktop
     Value: 413536
@@ -156,8 +234,35 @@ MonoBehaviour:
   Path: ../FMOD/TFGS_FMOD/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638826514260000000
+  lastModified: 638827920160000000
   FileSizes:
   - Name: Desktop
-    Value: 898
+    Value: 1078
   Exists: 1
+--- !u!114 &7353980564618215057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Player/Pistol_Shot
+  m_EditorClassIdentifier: 
+  Path: event:/Player/Pistol_Shot
+  Guid:
+    Data1: -686286621
+    Data2: 1095064076
+    Data3: 2136720792
+    Data4: -285794879
+  Banks:
+  - {fileID: -1494385254773545651}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1600
