@@ -189,7 +189,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbc5ec65af55864409af51fe7690cee9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyType: 0
   enemyAttackDamage: 1
   enemyAttackSpeed: 1
   detectionRadius: 10
@@ -228,6 +227,8 @@ MonoBehaviour:
   OnDamage:
     m_PersistentCalls:
       m_Calls: []
+  damageNumbers: {fileID: 7267269083777636209, guid: a33fd1eef7333ff4d98648eb2c50f2c0,
+    type: 3}
 --- !u!114 &8997256552222126094
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Events;
+using TMPro;
 
 //select an enemy type and stuff is done automatically wow
 public enum CharacterType
@@ -19,6 +20,8 @@ public class Health : MonoBehaviour
 
     public UnityEvent OnDeath;
     public UnityEvent<float> OnDamage;
+
+    public GameObject damageNumbers;
 
     //when you choose a character type in the inspector it'll set the health automatically
     private void OnValidate()
@@ -47,6 +50,11 @@ public class Health : MonoBehaviour
         currentHealth -= damage;
         OnDamage?.Invoke(damage);
 
+        if (damageNumbers)
+        {
+            ShowDamageNumbers(damage);
+        }
+
         if (currentHealth <= 0)
         {
             currentHealth = 0;
@@ -59,6 +67,12 @@ public class Health : MonoBehaviour
         //change this to destroy the prefab by default!!
         //then for the player we can have special conditions (will need a playerhealth script)
         //GetComponent<MeshRenderer>().enabled = false;
+    }
+
+    void ShowDamageNumbers(float damage)
+    {
+        var number = Instantiate(damageNumbers, transform.position, Quaternion.identity, transform);
+        number.GetComponent<TMP_Text>().text = damage.ToString();
     }
 
     public float GetCurrentHealth()
