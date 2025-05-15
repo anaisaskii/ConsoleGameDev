@@ -75,7 +75,7 @@ public class Health : MonoBehaviour
     {
         //change this to destroy the prefab by default!!
         //then for the player we can have special conditions (will need a playerhealth script)
-        //GetComponent<MeshRenderer>().enabled = false;
+        GetComponent<MeshRenderer>().enabled = false;
     }
 
     public float GetCurrentHealth()

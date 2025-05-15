@@ -1,5 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+<<<<<<< HEAD
 --- !u!114 &-6677391761130311116
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -68,6 +69,9 @@ MonoBehaviour:
     Value: 1036
   Exists: 1
 --- !u!114 &-3292941137860651606
+=======
+--- !u!114 &-5986978731269582202
+>>>>>>> parent of 7cb1528 (merge from andrianna to main)
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -86,13 +90,14 @@ MonoBehaviour:
     Data3: -1244112988
     Data4: 1283747247
   Banks:
-  - {fileID: -6148552655213859820}
+  - {fileID: 4090762900255770931}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
+<<<<<<< HEAD
   Length: 0
 --- !u!114 &-2588839318703713676
 MonoBehaviour:
@@ -200,6 +205,10 @@ MonoBehaviour:
   MaxDistance: 20
   Length: 1850
 --- !u!114 &4472467386551336300
+=======
+  Length: 298
+--- !u!114 &-2356697048347506303
+>>>>>>> parent of 7cb1528 (merge from andrianna to main)
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -219,7 +228,7 @@ MonoBehaviour:
   - Name: Desktop
     Value: 413536
   Exists: 1
---- !u!114 &5985094667170840401
+--- !u!114 &-1558184693012016087
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -234,12 +243,83 @@ MonoBehaviour:
   Path: ../FMOD/TFGS_FMOD/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
+<<<<<<< HEAD
   lastModified: 638829016279285369
+=======
+  lastModified: 638826505897019342
+>>>>>>> parent of 7cb1528 (merge from andrianna to main)
   FileSizes:
   - Name: Desktop
-    Value: 1078
+    Value: 898
   Exists: 1
---- !u!114 &7353980564618215057
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d32cf7c32a3ed8347bac48ef5ed56d82, type: 3}
+  m_Name: FMODStudioCache
+  m_EditorClassIdentifier: 
+  EditorBanks:
+  - {fileID: -1558184693012016087}
+  - {fileID: -2356697048347506303}
+  - {fileID: 3934046599332891641}
+  - {fileID: 4090762900255770931}
+  EditorEvents:
+  - {fileID: 6366997219622738058}
+  - {fileID: -5986978731269582202}
+  EditorParameters: []
+  MasterBanks:
+  - {fileID: 3934046599332891641}
+  StringsBanks:
+  - {fileID: -1558184693012016087}
+  cacheTime: 638826505897019342
+  cacheVersion: 131624
+--- !u!114 &3934046599332891641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: ../FMOD/TFGS_FMOD/Build/Desktop/Master.bank
+  Name: Master
+  StudioPath: bank:/Master
+  lastModified: 638826505897019342
+  FileSizes:
+  - Name: Desktop
+    Value: 1036
+  Exists: 1
+--- !u!114 &4090762900255770931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/SFX.bank
+  m_EditorClassIdentifier: 
+  Path: ../FMOD/TFGS_FMOD/Build/Desktop/SFX.bank
+  Name: SFX
+  StudioPath: bank:/SFX
+  lastModified: 638826505897019342
+  FileSizes:
+  - Name: Desktop
+    Value: 5888
+  Exists: 1
+--- !u!114 &6366997219622738058
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -249,20 +329,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Player/Pistol_Shot
+  m_Name: event:/BGM/BGM_Forest
   m_EditorClassIdentifier: 
-  Path: event:/Player/Pistol_Shot
+  Path: event:/BGM/BGM_Forest
   Guid:
-    Data1: -686286621
-    Data2: 1095064076
-    Data3: 2136720792
-    Data4: -285794879
+    Data1: -466243830
+    Data2: 1102421524
+    Data3: -1651252834
+    Data4: -1639072938
   Banks:
-  - {fileID: -1494385254773545651}
-  IsStream: 0
+  - {fileID: -2356697048347506303}
+  IsStream: 1
   Is3D: 0
-  IsOneShot: 1
+  IsOneShot: 0
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 1600
+  Length: 34921

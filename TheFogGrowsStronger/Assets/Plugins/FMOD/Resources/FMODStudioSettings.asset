@@ -406,7 +406,6 @@ MonoBehaviour:
   - Master
   Banks:
   - BGM
-  - Player_Atk
   - SFX
   BanksToLoad: []
   LiveUpdatePort: 9264

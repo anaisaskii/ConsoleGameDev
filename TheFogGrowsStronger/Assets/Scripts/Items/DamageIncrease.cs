@@ -13,7 +13,8 @@ public class DamageIncrease : Item
 
         if (stats != null)
         {
-            stats.projectileDamage *= powerScaling;
+            stats.projectileDamage *= powerScaling; //multiply so it adds up (or you could do plus for specific items..?)
+            Debug.Log(stats.projectileDamage);
         }
     }
 }
