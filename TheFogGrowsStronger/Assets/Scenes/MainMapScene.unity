@@ -91110,7 +91110,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   runner: {fileID: 8526617009881571305, guid: 0ff9b830b7419d14089283d79cccd852, type: 3}
-  hunter: {fileID: 577752482753690983, guid: 2e34ff99478302f41a733076cad26f20, type: 3}
+  hunter: {fileID: 577752482753690983, guid: af3c3da7ffd0bfb4fb075171ed1ce1c6, type: 3}
   playerParent: {fileID: 2553958467259070346}
   saveGameButton: {fileID: 411689485}
   savedata: {fileID: 1914842863}
