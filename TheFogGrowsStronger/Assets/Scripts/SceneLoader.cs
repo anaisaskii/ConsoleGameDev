@@ -10,7 +10,7 @@ public class SceneLoader : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        StartCoroutine(LoadSceneInBackground("MainMapScene"));
+        StartCoroutine(LoadSceneInBackground("MainMenuScene"));
     }
 
     public void MainMapScene()
