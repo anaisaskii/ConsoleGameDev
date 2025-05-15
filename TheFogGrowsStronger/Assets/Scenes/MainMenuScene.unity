@@ -4773,11 +4773,56 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1279857155}
+    - target: {fileID: 4216718770379463226, guid: e6fa6da077c37064b91b12fea553b4bc,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4216718770379463226, guid: e6fa6da077c37064b91b12fea553b4bc,
+        type: 3}
+      propertyPath: m_StringReference.m_TableEntryReference.m_KeyId
+      value: 1099638065389568
+      objectReference: {fileID: 0}
+    - target: {fileID: 4216718770379463226, guid: e6fa6da077c37064b91b12fea553b4bc,
+        type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_text
+      objectReference: {fileID: 0}
+    - target: {fileID: 5442472512707082241, guid: e6fa6da077c37064b91b12fea553b4bc,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5442472512707082241, guid: e6fa6da077c37064b91b12fea553b4bc,
+        type: 3}
+      propertyPath: m_StringReference.m_TableEntryReference.m_KeyId
+      value: 1099715857145856
+      objectReference: {fileID: 0}
+    - target: {fileID: 5442472512707082241, guid: e6fa6da077c37064b91b12fea553b4bc,
+        type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_text
+      objectReference: {fileID: 0}
     - target: {fileID: 5763978979297351193, guid: e6fa6da077c37064b91b12fea553b4bc,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1279857155}
+    - target: {fileID: 7561390334836677218, guid: e6fa6da077c37064b91b12fea553b4bc,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7561390334836677218, guid: e6fa6da077c37064b91b12fea553b4bc,
+        type: 3}
+      propertyPath: m_StringReference.m_TableEntryReference.m_KeyId
+      value: 1099534872928256
+      objectReference: {fileID: 0}
+    - target: {fileID: 7561390334836677218, guid: e6fa6da077c37064b91b12fea553b4bc,
+        type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_text
+      objectReference: {fileID: 0}
     - target: {fileID: 7645836597091059179, guid: e6fa6da077c37064b91b12fea553b4bc,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target

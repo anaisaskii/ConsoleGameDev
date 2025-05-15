@@ -32,7 +32,43 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 36404298309632
-    m_Key: New Entry
+    m_Key: language
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1099437728653312
+    m_Key: master vol
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1099534872928256
+    m_Key: visual settings
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1099638065389568
+    m_Key: accessibility
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1099715857145856
+    m_Key: volume settings
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1099817006981120
+    m_Key: resolution
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1099911148134400
+    m_Key: fullscreen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1100006451109888
+    m_Key: vsync
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1100155860606976
+    m_Key: objective
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1100214140461056
+    m_Key: powerups
     m_Metadata:
       m_Items: []
   m_Metadata:
