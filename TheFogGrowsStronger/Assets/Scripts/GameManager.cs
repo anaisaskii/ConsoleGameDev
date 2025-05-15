@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using System.IO;
 
 //spawn in player and set up game
@@ -11,8 +13,13 @@ public class GameManager : MonoBehaviour
 
     public GameObject playerParent;
 
+    public Button saveGameButton;
+
     public SaveData savedata;
     private string filePath;
+
+    private bool isPaused = false;
+    public GameObject pauseMenu;
 
     PlayerData newData = new PlayerData
     {
@@ -34,9 +41,13 @@ public class GameManager : MonoBehaviour
                 Instantiate(hunter, playerParent.transform);
                 break;
             case 0: //fallback
-                Instantiate(runner, playerParent.transform);
+                Instantiate(hunter, playerParent.transform);
                 break;
         }
+
+        saveGameButton.onClick.AddListener(SaveAndExitGame);
+
+        UnpauseGame();
 
         //Set attributes based on save data
         filePath = Path.Combine(Application.persistentDataPath, "playerdata.json");
@@ -44,10 +55,41 @@ public class GameManager : MonoBehaviour
         Debug.Log(data.health);
     }
 
-    public void SaveDataToJSON()
+    public void SaveAndExitGame()
     {
         savedata.WriteData(newData);
         Debug.Log("Written Data!");
+        SceneManager.LoadScene("MainMenuScene");
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape)) 
+        {
+            if (isPaused)
+                UnpauseGame();
+            else
+                PauseGame();
+        }
+    }
+
+    void PauseGame()
+    {
+        Time.timeScale = 0f;
+        pauseMenu.SetActive(true); 
+        isPaused = true;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
+
+    // Unpauses the game
+    void UnpauseGame()
+    {
+        Time.timeScale = 1f;
+        pauseMenu.SetActive(false);
+        isPaused = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
 }

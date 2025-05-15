@@ -11,9 +11,15 @@ public class EnemySpawner : MonoBehaviour
     public float minSpawnDistance = 10f;
     public float enemyRadius = 1.5f; // how much space each enemy needs
     public float spawnCooldown = 2f;
-
+    public Transform[] waypoints;
+    public Transform[] bossWaypoints;
     private List<GameObject> activeEnemies = new List<GameObject>();
     private float spawnTimer = 0f;
+
+    private void Start()
+    {
+        
+    }
 
     void Update()
     {

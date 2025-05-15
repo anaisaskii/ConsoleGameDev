@@ -15,6 +15,11 @@ public abstract class Item : MonoBehaviour
         Debug.Log($"Applying {itemName} power-up!");
     }
 
+    public virtual void Update()
+    {
+        this.transform.Rotate(0f, 2 * Time.deltaTime, 0f);
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))  // Check if player touches it

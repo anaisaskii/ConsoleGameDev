@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{45e1bea4-c81c-4b59-9827-71b5d0e09e11}">
+		<property name="assetPath">
+			<value>434869__nic3_one__powerfull-whooshes-2.wav</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>21.661666666666665</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{7948401e-5a1d-47d2-acaf-8619e0344bd4}</destination>
+		</relationship>
+	</object>
+</objects>

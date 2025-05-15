@@ -17,8 +17,6 @@ public class SpeedIncrease : Item
             //in different functions or something
             //this just affects them both for now
             stats.MoveSpeed *= speedScaling;
-            stats.SprintSpeed *= speedScaling;
-            Debug.Log(stats.projectileDamage);
         }
     }
 }

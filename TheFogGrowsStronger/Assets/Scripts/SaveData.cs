@@ -24,8 +24,16 @@ public class SaveData : MonoBehaviour
     public void WriteData(PlayerData data)
     {
         string json = JsonUtility.ToJson(data, true); // true = pretty print
-        File.WriteAllText(filePath, json);
-        Debug.Log("Data saved to: " + filePath);
+        try
+        {
+            File.WriteAllText(filePath, json);
+            Debug.Log("Data saved to: " + filePath);
+        }
+        catch (IOException ioEx)
+        {
+            Debug.LogError("Error saving file: " + ioEx.Message);
+            // Show UI message
+        }
     }
 
     public PlayerData LoadData(string filepath)
