@@ -42,13 +42,27 @@ public class PlayerController : MonoBehaviour
     public string AnimationGroundedBool;
     public string AnimationFallTrigger;
 
+    [Header("Rotation Override Settings")]
+    [Tooltip("How long (in seconds) to keep character facing the camera after an attack.")]
+    public float AttackRotationDuration = 5f;
+
+    [Header("Haptics")]
+    [Tooltip("Low (left motor) / High (right motor) rumble strength (0…1).")]
+    public float rumbleLow = 0.2f;
+    public float rumbleHigh = 0.5f;
+    [Tooltip("How long the rumble should play in seconds.")]
+    public float rumbleDuration = 0.1f;
+    private Coroutine _rumbleCoroutine;
+
+    private bool _attackLock = false;
+    private float _attackLockTimer = 0f;
+
     public Animator m_animator;
     private float m_animationMovementSpeed;
 
     [SerializeField]
     private AgentRotationStrategy m_rotationStrategy;
 
-    //made this public so can be accessed by chest script
     public int cash = 0;
     public TextMeshProUGUI cashText;
 
@@ -104,6 +118,12 @@ public class PlayerController : MonoBehaviour
 
     private Vector3 aimPoint;
 
+    private void BeginAttackLock()
+    {
+        _attackLock = true;
+        _attackLockTimer = 0f;
+    }
+
     private void Awake()
     {
         if (m_rotationStrategy == null)
@@ -131,7 +151,7 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator SecondaryAttack()
     {
-        RuntimeManager.PlayOneShot("event:/Player/Laser_Gun");
+
         canUseSecondaryAttack = false;
         FireProjectile(secondaryProjectilePrefab, secondaryAttackDamage);
         yield return new WaitForSeconds(secondaryAttackCooldown);
@@ -142,7 +162,6 @@ public class PlayerController : MonoBehaviour
     {
         for (int i = 0; i < specialAttackBurstCount; i++)
         {
-            RuntimeManager.PlayOneShot("event:/Player/RapidFire_Shot");
             FireProjectile(specialProjectilePrefab, normalAttackDamage);
             yield return new WaitForSeconds(specialAttackBurstRate);
         }
@@ -173,7 +192,9 @@ public class PlayerController : MonoBehaviour
     //All the logic connected with movement happens in the Update
     private void Update()
     {
-        cash = cashText.text == "" ? 0 : int.Parse(cashText.text);  
+
+
+        cash = cashText.text == "" ? 0 : int.Parse(cashText.text);
         //Debug.Log(cash);
 
         if (Grounded == false)
@@ -194,19 +215,65 @@ public class PlayerController : MonoBehaviour
 
         CharacterMovementCalculation();
 
-        m_targetRotation = m_rotationStrategy.RotationCalculation(m_input.MovementInput, transform, ref m_rotationVelocity, RotationSmoothTime, m_targetRotation);
+        // 1) Handle the attack-lock timer (as before) …
+        if (_attackLock)
+        {
+            _attackLockTimer += Time.deltaTime;
+            if (_attackLockTimer >= AttackRotationDuration)
+                _attackLock = false;
+        }
 
-        Vector3 targetDirection = Quaternion.Euler(0.0f, m_targetRotation, 0.0f) * Vector3.forward;
+        // 2) Compute model rotation (as you already have it):
+        Quaternion desiredRot;
+        if (_attackLock)
+        {
+            float camY = mainCamera.transform.eulerAngles.y;
+            desiredRot = Quaternion.Euler(0, camY, 0);
+        }
+        else if (m_input.MovementInput.sqrMagnitude > 0.01f)
+        {
+            // your old input-based yaw + smoothing here…
+            float rawYaw = Mathf.Atan2(m_input.MovementInput.x,
+                                      m_input.MovementInput.y)
+                           * Mathf.Rad2Deg
+                         + mainCamera.transform.eulerAngles.y;
+            desiredRot = Quaternion.Euler(0, rawYaw, 0);
+        }
+        else
+        {
+            desiredRot = transform.rotation;
+        }
 
-        Vector3 horizontalMovement = targetDirection.normalized * m_speed * Time.deltaTime;
-        Vector3 verticalMovement = new Vector3(0.0f, m_verticalVelocity * Time.deltaTime, 0.0f);
+        // smooth-slerp into place over RotationSmoothTime
+        transform.rotation = Quaternion.Slerp(
+            transform.rotation,
+            desiredRot,
+            Time.deltaTime / RotationSmoothTime
+        );
 
-        m_controller.Move(horizontalMovement + verticalMovement);
+        // 3) BUILD YOUR MOVEMENT FROM INPUT + CAMERA, **NOT** transform.forward:
+        Vector3 inputDir = new Vector3(
+            m_input.MovementInput.x,
+            0f,
+            m_input.MovementInput.y
+        );
+        // rotate that input vector by camera yaw
+        Quaternion camYawQ = Quaternion.Euler(
+            0f,
+            mainCamera.transform.eulerAngles.y,
+            0f
+        );
+        Vector3 moveDir = camYawQ * inputDir;
+        if (moveDir.sqrMagnitude > 1f) moveDir.Normalize();
+
+        Vector3 horizontalMove = moveDir * m_speed * Time.deltaTime;
+        Vector3 verticalMove = Vector3.up * (m_verticalVelocity * Time.deltaTime);
+
+        m_controller.Move(horizontalMove + verticalMove);
 
         // Handle shooting
         if (m_input.PrimarySkillHeld && Time.time >= nextFireTime)
         {
-            RuntimeManager.PlayOneShot("event:/Player/Pistol_Shot");
             FireProjectile(normalProjectilePrefab, normalAttackDamage);
             nextFireTime = Time.time + 1f / fireRate;
         }
@@ -223,10 +290,28 @@ public class PlayerController : MonoBehaviour
         }
 
         //m_animator.SetFloat(AnimationSpeedFloat, m_animationMovementSpeed);
+
+    }
+
+    private IEnumerator StopRumbleAfter(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        // pause or reset—reset does a hard stop
+        Gamepad.current?.PauseHaptics();      // or ResetHaptics()
     }
 
     private void FireProjectile(GameObject projectilePrefab, float damage)
     {
+        BeginAttackLock();
+
+        if (Gamepad.current != null)
+        {
+            Gamepad.current.SetMotorSpeeds(rumbleLow, rumbleHigh);
+            // stop any existing coroutine to avoid overlap
+            if (_rumbleCoroutine != null) StopCoroutine(_rumbleCoroutine);
+            _rumbleCoroutine = StartCoroutine(StopRumbleAfter(rumbleDuration));
+        }
+
         // Calculate aim point in the center of the screen
         Ray ray = mainCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
         Vector3 aimPoint = ray.GetPoint(shootDistance);
@@ -289,7 +374,7 @@ public class PlayerController : MonoBehaviour
     private void CharacterMovementCalculation()
     {
         float targetSpeed = m_input.SprintInput ? SprintSpeed : MoveSpeed;
-        
+
         // Modify the FOV manually
         freelookCam.m_Lens.FieldOfView = (targetSpeed == SprintSpeed) ? 65f : 60f;
 
@@ -347,6 +432,7 @@ public class PlayerController : MonoBehaviour
         return Physics.CheckSphere(spherePosition, GroundedRadius, GroundLayers,
             QueryTriggerInteraction.Ignore);
     }
+
 
     //Visualizaton of the Grounded check
     private void OnDrawGizmosSelected()
