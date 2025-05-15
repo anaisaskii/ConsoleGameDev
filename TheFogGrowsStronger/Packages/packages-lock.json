@@ -1,13 +1,5 @@
 {
   "dependencies": {
-<<<<<<< HEAD
-=======
-    "com.cqf.urpvolumetricfog": {
-      "version": "file:Unity-URP-Volumetric-Light-0.5.4/Unity-URP-Volumetric-Light-0.5.4",
-      "depth": 0,
-      "source": "local",
-      "dependencies": {}
-    },
     "com.unity.addressables": {
       "version": "1.21.19",
       "depth": 1,
@@ -22,7 +14,6 @@
       },
       "url": "https://packages.unity.com"
     },
->>>>>>> origin/Jack
     "com.unity.ai.navigation": {
       "version": "1.1.5",
       "depth": 0,
