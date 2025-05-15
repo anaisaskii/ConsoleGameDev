@@ -7,6 +7,8 @@ public class BossStateMachine : EnemyAI
 {
     private BossBT bossBT;
 
+    //set enemy type to determine waypoints
+
     protected override void Start()
     {
         NavMeshHit hit;

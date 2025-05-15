@@ -10,6 +10,14 @@ public abstract class Item : MonoBehaviour
     public float powerScaling = 1.0f; //strength
     public float speedScaling = 1.0f; //speed
 
+    public float totalDamage = 0;
+    public float totalRunSpeed = 0;
+    public float totalWalkSpeed = 0;
+    public int item_gem = 0;
+    public int item_mag = 0;
+    public int item_syringe = 0;
+    public int item_pill = 0;
+
     public virtual void ApplyEffect(GameObject player)
     {
         Debug.Log($"Applying {itemName} power-up!");

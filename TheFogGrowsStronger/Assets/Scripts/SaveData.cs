@@ -4,51 +4,53 @@ using UnityEngine;
 using System.IO;
 
 [System.Serializable]
-public class PlayerData
+public class SettingsMenuData
 {
-    public string playerName;
-    public int level;
-    public float health;
-    public Vector3 position;
+    public SettingsMenuData()
+    {
+        resolutionX = 1920;
+        resolutionY = 1080;
+        vsync = 0;
+        volume = 50f;
+        language = 0;
+    }
+
+    public int resolutionX;
+    public int resolutionY;
+    public int vsync;
+    public float volume;
+    public int language;
+
 }
 
 public class SaveData : MonoBehaviour
 {
-    private string filePath;
-
-    void Awake()
+    public void Awake()
     {
-        filePath = Path.Combine(Application.persistentDataPath, "playerdata.json");
+        PlayerPreferences.Start();
+        DontDestroyOnLoad(this.gameObject);
+    }
+    public void WriteData(SettingsMenuData data)
+    {
+        PlayerPrefs.SetInt("ResX", data.resolutionX);
+        PlayerPrefs.SetInt("ResY", data.resolutionY);
+        PlayerPrefs.SetInt("Vsync", data.vsync);
+        PlayerPrefs.SetInt("Language", data.language);
+        PlayerPrefs.SetFloat("Volume", data.volume);
+
+        PlayerPrefs.Save();
+
+        UnityEngine.PS4.PS4PlayerPrefs.SaveToByteArray();
     }
 
-    public void WriteData(PlayerData data)
+    public void LoadData()
     {
-        string json = JsonUtility.ToJson(data, true); // true = pretty print
-        try
-        {
-            File.WriteAllText(filePath, json);
-            Debug.Log("Data saved to: " + filePath);
-        }
-        catch (IOException ioEx)
-        {
-            Debug.LogError("Error saving file: " + ioEx.Message);
-            // Show UI message
-        }
+        PlayerPrefs.GetInt("ResX");
+        PlayerPrefs.GetInt("ResY");
+        PlayerPrefs.GetInt("Vsync");
+        PlayerPrefs.GetInt("Language");
+        PlayerPrefs.GetFloat("Volume");
     }
 
-    public PlayerData LoadData(string filepath)
-    {
-        if (File.Exists(filepath))
-        {
-            string json = File.ReadAllText(filepath);
-            PlayerData data = JsonUtility.FromJson<PlayerData>(json);
-            Debug.Log("Data loaded from: " + filepath);
-            return data;
-        }
-        else
-        {
-            Debug.LogWarning("Save file not found!");
-            return null;
-        }
-    }
+    
 }

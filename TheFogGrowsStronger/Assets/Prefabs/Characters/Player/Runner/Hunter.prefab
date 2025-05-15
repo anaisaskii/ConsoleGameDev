@@ -213,8 +213,18 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: b880dee2d13a62745a77be3f4086a779,
         type: 3}
       propertyPath: m_Name
-      value: Hunter4
+      value: Hunter
       objectReference: {fileID: 0}
+    - target: {fileID: 5413673163645920680, guid: b880dee2d13a62745a77be3f4086a779,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 5ea96c1f29a068e4c9f9d9e8608ca338, type: 2}
+    - target: {fileID: 5413673163645920680, guid: b880dee2d13a62745a77be3f4086a779,
+        type: 3}
+      propertyPath: m_Materials.Array.data[3]
+      value: 
+      objectReference: {fileID: 2100000, guid: c540dc4b000f345408b8caf8b005bb28, type: 2}
     - target: {fileID: 5866666021909216657, guid: b880dee2d13a62745a77be3f4086a779,
         type: 3}
       propertyPath: m_Controller

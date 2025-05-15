@@ -26,17 +26,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 7c2173d95e799c449bdc95b013c02523,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 195.15385
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7c2173d95e799c449bdc95b013c02523,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.0473518
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7c2173d95e799c449bdc95b013c02523,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 113.71147
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7c2173d95e799c449bdc95b013c02523,
         type: 3}
@@ -77,12 +77,12 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 6cae05916fd33f14d8d2bc6f12fac0d4, type: 2}
+      objectReference: {fileID: 2100000, guid: d9c41a96b2f7c974dac7da0a0e50f82b, type: 2}
     - target: {fileID: -1526964690268444965, guid: 7c2173d95e799c449bdc95b013c02523,
         type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 
-      objectReference: {fileID: 2100000, guid: 8aa70479e83f71f43b3516cc558186aa, type: 2}
+      objectReference: {fileID: 2100000, guid: 8b36d2ffc7af41d48ac11a8b41d5a7bd, type: 2}
     - target: {fileID: 919132149155446097, guid: 7c2173d95e799c449bdc95b013c02523,
         type: 3}
       propertyPath: m_Name
@@ -189,7 +189,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbc5ec65af55864409af51fe7690cee9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyType: 0
   enemyAttackDamage: 1
   enemyAttackSpeed: 1
   detectionRadius: 10
