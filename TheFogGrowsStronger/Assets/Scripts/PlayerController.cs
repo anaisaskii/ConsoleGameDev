@@ -151,7 +151,7 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator SecondaryAttack()
     {
-
+        RuntimeManager.PlayOneShot("event:/Player/Laser_Gun");
         canUseSecondaryAttack = false;
         FireProjectile(secondaryProjectilePrefab, secondaryAttackDamage);
         yield return new WaitForSeconds(secondaryAttackCooldown);
@@ -162,6 +162,7 @@ public class PlayerController : MonoBehaviour
     {
         for (int i = 0; i < specialAttackBurstCount; i++)
         {
+            RuntimeManager.PlayOneShot("event:/Player/RapidFire_Shot");
             FireProjectile(specialProjectilePrefab, normalAttackDamage);
             yield return new WaitForSeconds(specialAttackBurstRate);
         }
@@ -274,6 +275,7 @@ public class PlayerController : MonoBehaviour
         // Handle shooting
         if (m_input.PrimarySkillHeld && Time.time >= nextFireTime)
         {
+            RuntimeManager.PlayOneShot("event:/Player/Pistol_Shot");
             FireProjectile(normalProjectilePrefab, normalAttackDamage);
             nextFireTime = Time.time + 1f / fireRate;
         }
