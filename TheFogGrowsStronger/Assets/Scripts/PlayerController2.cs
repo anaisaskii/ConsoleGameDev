@@ -9,7 +9,7 @@ using TMPro;
 using FMODUnity;
 using FMOD.Studio;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController2 : MonoBehaviour
 {
     [Header("Movement Parameters")]
     public float MoveSpeed = 2.0f;
@@ -144,6 +144,11 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void HandleSpecialSkillInput()
+    {
+        StartCoroutine(SpecialAttack());
+    }
+
     private IEnumerator SecondaryAttack()
     {
 
@@ -153,83 +158,13 @@ public class PlayerController : MonoBehaviour
         canUseSecondaryAttack = true;
     }
 
-    private bool canUseSpecialAttack = true;
-    public float specialAttackCooldown = 5f;
-
-
-    private void HandleSpecialSkillInput()
+    private IEnumerator SpecialAttack()
     {
-        if (canUseSpecialAttack)
+        for (int i = 0; i < specialAttackBurstCount; i++)
         {
-            SpecialAttack();
-            StartCoroutine(SpecialAttackCooldown());
+            FireProjectile(specialProjectilePrefab, normalAttackDamage);
+            yield return new WaitForSeconds(specialAttackBurstRate);
         }
-    }
-
-    private IEnumerator SpecialAttackCooldown()
-    {
-        canUseSpecialAttack = false;
-        yield return new WaitForSeconds(specialAttackCooldown);
-        canUseSpecialAttack = true;
-    }
-
-
-    private void SpecialAttack()
-    {
-        Vector3[] directions = new Vector3[]
-        {
-        Vector3.forward,
-        Vector3.back,
-        Vector3.left,
-        Vector3.right,
-        (Vector3.forward + Vector3.left).normalized,
-        (Vector3.forward + Vector3.right).normalized,
-        (Vector3.back + Vector3.left).normalized,
-        (Vector3.back + Vector3.right).normalized
-        };
-
-        foreach (Vector3 dir in directions)
-        {
-            Vector3 worldDir = transform.TransformDirection(dir);
-            FireDirectionalProjectile(specialProjectilePrefab, worldDir, normalAttackDamage);
-        }
-    }
-
-    private void FireDirectionalProjectile(GameObject prefab, Vector3 direction, float damage)
-    {
-        if (firePoint == null || prefab == null) return;
-
-        GameObject projectile = Instantiate(prefab, firePoint.position, Quaternion.LookRotation(direction));
-
-        Projectile projectileScript = projectile.GetComponent<Projectile>();
-        if (projectileScript != null)
-        {
-            projectileScript.speed = projectileSpeed;
-            projectileScript.damage = damage;
-        }
-        else
-        {
-            Rigidbody rb = projectile.GetComponent<Rigidbody>();
-            if (rb != null)
-            {
-                rb.velocity = direction.normalized * projectileSpeed;
-            }
-        }
-
-        if (muzzleFlashPrefab != null)
-        {
-            GameObject muzzleVFX = Instantiate(muzzleFlashPrefab, firePoint.position, firePoint.rotation);
-            Destroy(muzzleVFX, 2f);
-        }
-
-        if (Gamepad.current != null)
-        {
-            Gamepad.current.SetMotorSpeeds(rumbleLow, rumbleHigh);
-            if (_rumbleCoroutine != null) StopCoroutine(_rumbleCoroutine);
-            _rumbleCoroutine = StartCoroutine(StopRumbleAfter(rumbleDuration));
-        }
-
-        BeginAttackLock();
     }
 
     private void HandlePrimarySkillInput()
@@ -247,11 +182,9 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator Dash()
     {
+        m_verticalVelocity = Mathf.Sqrt(4 * -2f * Gravity);
         m_canDash = false;
-
-        // Apply jump-like vertical velocity
-        m_verticalVelocity = Mathf.Sqrt(10 * -2f * Gravity);
-
+        m_controller.Move(Vector3.up * (m_verticalVelocity * Time.deltaTime));
         yield return new WaitForSeconds(DashCooldown);
         m_canDash = true;
     }
@@ -261,7 +194,7 @@ public class PlayerController : MonoBehaviour
     {
 
 
-        //cash = cashText.text == "" ? 0 : int.Parse(cashText.text);
+        cash = cashText.text == "" ? 0 : int.Parse(cashText.text);
         //Debug.Log(cash);
 
         if (Grounded == false)
