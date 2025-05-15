@@ -36,12 +36,18 @@ public class GameManager : MonoBehaviour
         {
             case 1:
                 Instantiate(runner, playerParent.transform);
+                playerParent.GetComponent<PlayerController>().enabled = false;
+                playerParent.GetComponent<PlayerControllerRunner>().enabled = true;
                 break;
             case 2:
                 Instantiate(hunter, playerParent.transform);
+                playerParent.GetComponent<PlayerController>().enabled = true;
+                playerParent.GetComponent<PlayerControllerRunner>().enabled = false;
                 break;
             case 0: //fallback
                 Instantiate(hunter, playerParent.transform);
+                playerParent.GetComponent<PlayerController>().enabled = true;
+                playerParent.GetComponent<PlayerControllerRunner>().enabled = false;
                 break;
         }
 
@@ -52,7 +58,7 @@ public class GameManager : MonoBehaviour
         //Set attributes based on save data
         filePath = Path.Combine(Application.persistentDataPath, "playerdata.json");
         PlayerData data = savedata.LoadData(filePath);
-        Debug.Log(data.health);
+        //Debug.Log(data.health);
     }
 
     public void SaveAndExitGame()

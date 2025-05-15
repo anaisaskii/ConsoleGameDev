@@ -244,7 +244,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2425300826285918935}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.13197613, y: -0.17878062, z: 0.024207294, w: 0.9746968}
+  m_LocalRotation: {x: 0.13197613, y: -0.1787806, z: 0.02420729, w: 0.9746968}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -379,6 +379,7 @@ GameObject:
   - component: {fileID: 4680079763547943219}
   - component: {fileID: 5718619004079183101}
   - component: {fileID: 5766904126970529508}
+  - component: {fileID: 7036835009298967025}
   - component: {fileID: 7983274740999187660}
   - component: {fileID: 8702780288887206474}
   - component: {fileID: 126880449602565472}
@@ -633,9 +634,75 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3186823228501485988}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1623f3ed408311c4ab0840e0defa20be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MoveSpeed: 7
+  SprintSpeed: 10
+  RotationSmoothTime: 0.12
+  SpeedChangeRate: 10
+  FallTimeout: 0.15
+  JumpHeight: 2.3
+  DashDistance: 1.5
+  DashCooldown: 1
+  Gravity: -15
+  Grounded: 1
+  StairsGrounded: 1
+  GroundedOffset: 0.21
+  StairOffset: 0.07
+  GroundedRadius: 0.28
+  GroundLayers:
+    serializedVersion: 2
+    m_Bits: 2147483648
+  AnimationSpeedFloat: 
+  AnimationGroundedBool: 
+  AnimationFallTrigger: 
+  AttackRotationDuration: 5
+  rumbleLow: 0.2
+  rumbleHigh: 0.5
+  rumbleDuration: 0.1
+  m_animator: {fileID: 126880449602565472}
+  m_rotationStrategy: {fileID: 0}
+  cash: 0
+  cashText: {fileID: 0}
+  firePoint: {fileID: 7963990379716490408}
+  projectilePrefab: {fileID: 1735349400919506, guid: a17580581e360e74db460cc3d5dc0396,
+    type: 3}
+  fireRate: 1
+  projectileSpeed: 10
+  projectileDamage: 20
+  shootableLayers:
+    serializedVersion: 2
+    m_Bits: 2147516479
+  shootDistance: 100
+  muzzleFlashPrefab: {fileID: 1752905781611240, guid: a150ddd267ffc1b428ae91d94b828b02,
+    type: 3}
+  hitEffectPrefab: {fileID: 1735349400919506, guid: a17580581e360e74db460cc3d5dc0396,
+    type: 3}
+  normalProjectilePrefab: {fileID: 1170744857039610, guid: 1fcfcb93d7455e94bb4991c5ab289a41,
+    type: 3}
+  secondaryProjectilePrefab: {fileID: 1260705795423738, guid: e21f397f19b330b43a512abfdfd2c479,
+    type: 3}
+  specialProjectilePrefab: {fileID: 1661707786246352, guid: 368464f8326873c46857bc476ac2b0a7,
+    type: 3}
+  normalAttackDamage: 10
+  secondaryAttackDamage: 50
+  secondaryAttackCooldown: 4
+  specialAttackBurstRate: 0.1
+  specialAttackBurstCount: 10
+  freelookCam: {fileID: 9048252640906111830}
+--- !u!114 &7036835009298967025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3186823228501485988}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b531b30b2e3678c4ea21fcb9cdbdbb5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   MoveSpeed: 5
@@ -658,6 +725,10 @@ MonoBehaviour:
   AnimationSpeedFloat: 
   AnimationGroundedBool: 
   AnimationFallTrigger: 
+  AttackRotationDuration: 5
+  rumbleLow: 0.2
+  rumbleHigh: 0.5
+  rumbleDuration: 0.1
   m_animator: {fileID: 126880449602565472}
   m_rotationStrategy: {fileID: 0}
   cash: 0
@@ -798,8 +869,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3270945646867164047}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.103819266, y: -0.17940421, z: 0.01904271, w: 0.97809666}
-  m_LocalPosition: {x: -1.5480947, y: -1.8800001, z: -0.91460466}
+  m_LocalRotation: {x: 0.050041772, y: 0.4193505, z: -0.023158502, w: 0.9061483}
+  m_LocalPosition: {x: 832.59686, y: 2.698925, z: -201.41418}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1353,7 +1424,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7686761177786298988}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.103819266, y: -0.17940421, z: 0.019042714, w: 0.97809666}
+  m_LocalRotation: {x: 0.103819266, y: -0.17940421, z: 0.01904271, w: 0.97809666}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1432,7 +1503,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8565899191029131621}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.07576297, y: -0.17987601, z: 0.013896578, w: 0.9806689}
+  m_LocalRotation: {x: 0.0757631, y: -0.17987607, z: 0.013896601, w: 0.9806689}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
