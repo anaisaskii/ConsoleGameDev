@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{ed067af2-580b-41e4-bedc-d34f0e5716e1}">
 		<property name="color">
-			<value>Red</value>
+			<value>Green</value>
 		</property>
 		<property name="name">
 			<value>BGM_Fog</value>
@@ -33,6 +33,9 @@
 		</relationship>
 		<relationship name="timeline">
 			<destination>{9a96e63e-854b-407e-9156-ef1951302634}</destination>
+		</relationship>
+		<relationship name="banks">
+			<destination>{362d3a8a-6498-4243-be8d-1c7f98d9559f}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixer" id="{d72e771a-21b6-44ac-8b5e-a47344c2b680}">

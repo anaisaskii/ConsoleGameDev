@@ -91,9 +91,6 @@ public class PlayerControllerRunner : MonoBehaviour
 
     private bool canUseSecondaryAttack = true;
 
-    private EventInstance jumpInstance;
-    private string jumpInstanceLocation = "event:/TestSoundEffect";
-
     private void OnEnable()
     {
         m_input.OnPrimarySkillInput += HandlePrimarySkillInput;
@@ -132,6 +129,12 @@ public class PlayerControllerRunner : MonoBehaviour
         m_controller = GetComponent<CharacterController>();
         m_input = GetComponent<PlayerGameInput>();
         mainCamera = Camera.main;
+    }
+
+    private void Start()
+    {
+        m_animator = GetComponentInChildren<Animator>();
+        Debug.Log(m_animator);
     }
 
     private void HandleSecondarySkillInput()
@@ -190,7 +193,7 @@ public class PlayerControllerRunner : MonoBehaviour
     //All the logic connected with movement happens in the Update
     private void Update()
     {
-
+        m_animator.SetFloat("Speed", m_speed);
 
         //cash = cashText.text == "" ? 0 : int.Parse(cashText.text);
         //Debug.Log(cash);
@@ -272,6 +275,7 @@ public class PlayerControllerRunner : MonoBehaviour
         // Handle shooting
         if (m_input.PrimarySkillHeld && Time.time >= nextFireTime)
         {
+            m_animator.SetTrigger("Shoot");
             FireProjectile(normalProjectilePrefab, normalAttackDamage);
             nextFireTime = Time.time + 1f / fireRate;
         }
@@ -279,15 +283,12 @@ public class PlayerControllerRunner : MonoBehaviour
         // Handle jumping
         if (m_input.JumpInput && Grounded || m_input.JumpInput && StairsGrounded)
         {
+            m_animator.SetTrigger("Jump");
             m_verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
 
             //fmod here
-            jumpInstance = RuntimeManager.CreateInstance(jumpInstanceLocation);
-            jumpInstance.start();
-            jumpInstance.release();
+            RuntimeManager.PlayOneShot("event:/Player/Jump");
         }
-
-        //m_animator.SetFloat(AnimationSpeedFloat, m_animationMovementSpeed);
 
     }
 
@@ -401,16 +402,6 @@ public class PlayerControllerRunner : MonoBehaviour
         {
             m_speed = targetSpeed;
         }
-
-        m_animationMovementSpeed = Mathf.Lerp(m_animationMovementSpeed, targetSpeed, Time.deltaTime * SpeedChangeRate);
-        if (m_animationMovementSpeed < 0.01f)
-        {
-            m_animator.SetBool("Walking", false);
-            m_animationMovementSpeed = 0f;
-        }
-
-        bool isWalking = m_speed > 0.1f; // If moving, set walking to true
-        m_animator.SetBool("Walking", isWalking);
     }
 
     //Grounded checks that allows us to swap between FALL and MOVEMENT animation / behavior
@@ -418,7 +409,6 @@ public class PlayerControllerRunner : MonoBehaviour
     {
         Grounded = GroundedCheck(GroundedOffset);
         StairsGrounded = GroundedCheck(StairOffset);
-        //m_animator.SetBool(AnimationGroundedBool, Grounded);
     }
 
     //Spherecasting downwards to detect if we are grounded

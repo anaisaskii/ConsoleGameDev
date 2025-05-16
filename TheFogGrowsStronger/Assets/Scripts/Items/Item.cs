@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
+using FMOD.Studio;
 
 public abstract class Item : MonoBehaviour
 {
@@ -24,6 +26,7 @@ public abstract class Item : MonoBehaviour
     {
         if (other.CompareTag("Player"))  // Check if player touches it
         {
+            RuntimeManager.PlayOneShot("event:/Items/Item_Collect");
             ApplyEffect(other.gameObject);  // Apply the effect
 
             Destroy(transform.parent.gameObject);  // Remove the power-up after pickup

@@ -21,13 +21,6 @@ public class GameManager : MonoBehaviour
     private bool isPaused = false;
     public GameObject pauseMenu;
 
-    PlayerData newData = new PlayerData
-    {
-        playerName = "PlayerOne",
-        level = 5,
-        health = 72.5f,
-        position = new Vector3(1f, 2f)
-    };
 
     // Start is called before the first frame update
     void Start()
@@ -55,22 +48,16 @@ public class GameManager : MonoBehaviour
 
         UnpauseGame();
 
-        //Set attributes based on save data
-        filePath = Path.Combine(Application.persistentDataPath, "playerdata.json");
-        PlayerData data = savedata.LoadData(filePath);
-        //Debug.Log(data.health);
     }
 
     public void SaveAndExitGame()
     {
-        savedata.WriteData(newData);
-        Debug.Log("Written Data!");
         SceneManager.LoadScene("MainMenuScene");
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape)) 
+        if (Input.GetKeyDown(KeyCode.JoystickButton9)) 
         {
             if (isPaused)
                 UnpauseGame();

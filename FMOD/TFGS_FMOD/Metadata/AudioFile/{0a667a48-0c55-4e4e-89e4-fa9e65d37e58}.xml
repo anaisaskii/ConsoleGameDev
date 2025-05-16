@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{0a667a48-0c55-4e4e-89e4-fa9e65d37e58}">
+		<property name="assetPath">
+			<value>Bowrelease.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>0.62501133786848073</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{7948401e-5a1d-47d2-acaf-8619e0344bd4}</destination>
+		</relationship>
+	</object>
+</objects>

@@ -13,20 +13,12 @@ public class EnemySpawner : MonoBehaviour
     public float spawnCooldown = 2f;
     public Transform[] waypoints;
     public Transform[] bossWaypoints;
+    public Transform[] boss2Waypoints;
     private List<GameObject> activeEnemies = new List<GameObject>();
     private float spawnTimer = 0f;
 
-    private void Start()
-    {
-        
-    }
-
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            Debug.Log("Current active enemies: " + activeEnemies.Count);
-        }
 
         spawnTimer += Time.deltaTime;
 

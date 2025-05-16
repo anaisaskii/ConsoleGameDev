@@ -6,6 +6,7 @@ using UnityEngine.AI;
 public class BossStateMachine : EnemyAI
 {
     private BossBT bossBT;
+    private Boss2BT boss2bt;
 
     protected override void Start()
     {
@@ -20,8 +21,20 @@ public class BossStateMachine : EnemyAI
         }
 
         base.Start();
-        bossBT = GetComponent<BossBT>();
-        waypoints = enemySpawner.bossWaypoints;
+
+        if (this.gameObject.name == "Boss_1")
+        {
+            bossBT = GetComponent<BossBT>();
+            waypoints = enemySpawner.bossWaypoints;
+        }
+        else
+        {
+            boss2bt = GetComponent<Boss2BT>();
+            waypoints = enemySpawner.boss2Waypoints;
+        }
+
+        
+        
     }
 
     private void Update()
@@ -37,7 +50,15 @@ public class BossStateMachine : EnemyAI
     // --Damage--
     private void Attack(int damage)
     {
-        bossBT.Progress();
+        if(this.gameObject.name == "Boss_1")
+        {
+            bossBT.Progress();
+        }
+        else
+        {
+            boss2bt.Progress();
+        }
+        
         agent.SetDestination(player.transform.position);
 
         if (Vector3.Distance(transform.position, player.position) >= detectionRadius)

@@ -27,6 +27,26 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 34921
+--- !u!114 &-6471856967336424555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Enemy.bank
+  m_EditorClassIdentifier: 
+  Path: ../FMOD/TFGS_FMOD/Build/Desktop/Enemy.bank
+  Name: Enemy
+  StudioPath: bank:/Enemy
+  lastModified: 638829522200000000
+  FileSizes:
+  - Name: Desktop
+    Value: 233920
+  Exists: 1
 --- !u!114 &-6148552655213859820
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42,11 +62,93 @@ MonoBehaviour:
   Path: ../FMOD/TFGS_FMOD/Build/Desktop/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
-  lastModified: 638829445780000000
+  lastModified: 638829527360000000
   FileSizes:
   - Name: Desktop
-    Value: 1202
+    Value: 334368
   Exists: 1
+--- !u!114 &-5045453352370312124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Footsteps/Ground Type
+  m_EditorClassIdentifier: 
+  Name: Ground Type
+  StudioPath: 
+  Min: 0
+  Max: 2
+  Default: 0
+  ID:
+    data1: 1479009865
+    data2: 1622945731
+  Type: 2
+  IsGlobal: 0
+  Labels:
+  - Grass
+  - Stone
+  - Gravel
+  Exists: 1
+--- !u!114 &-4463410952058280060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Player/Footsteps
+  m_EditorClassIdentifier: 
+  Path: event:/Player/Footsteps
+  Guid:
+    Data1: 445827533
+    Data2: 1185086994
+    Data3: 214589056
+    Data4: 401240474
+  Banks:
+  - {fileID: -6148552655213859820}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters:
+  - {fileID: -5045453352370312124}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 500
+--- !u!114 &-4205422945758822357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Map/Tree
+  m_EditorClassIdentifier: 
+  Path: event:/Map/Tree
+  Guid:
+    Data1: 979848893
+    Data2: 1329993314
+    Data3: -1321627493
+    Data4: 280420573
+  Banks:
+  - {fileID: -6148552655213859820}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 60
+  Length: 18500
 --- !u!114 &-4031877061682129050
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62,7 +164,7 @@ MonoBehaviour:
   Path: ../FMOD/TFGS_FMOD/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638829445760000000
+  lastModified: 638829525500000000
   FileSizes:
   - Name: Desktop
     Value: 1036
@@ -93,7 +195,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 0
+  Length: 422
 --- !u!114 &-2588839318703713676
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -136,10 +238,10 @@ MonoBehaviour:
   Path: ../FMOD/TFGS_FMOD/Build/Desktop/Player_Atk.bank
   Name: Player_Atk
   StudioPath: bank:/Player_Atk
-  lastModified: 638829445780000000
+  lastModified: 638829521200000000
   FileSizes:
   - Name: Desktop
-    Value: 148096
+    Value: 712320
   Exists: 1
 --- !u!114 &11400000
 MonoBehaviour:
@@ -159,19 +261,55 @@ MonoBehaviour:
   - {fileID: -4031877061682129050}
   - {fileID: -6148552655213859820}
   - {fileID: -1494385254773545651}
+  - {fileID: -6471856967336424555}
   EditorEvents:
   - {fileID: -6677391761130311116}
   - {fileID: -3292941137860651606}
   - {fileID: -2588839318703713676}
   - {fileID: 2062394248928341859}
   - {fileID: 7353980564618215057}
+  - {fileID: 591781897893002656}
+  - {fileID: -4463410952058280060}
+  - {fileID: 4945699488227742122}
+  - {fileID: 4719151662147639866}
+  - {fileID: 4353502610141563470}
+  - {fileID: 4994235815652987385}
+  - {fileID: 4153001387868073980}
+  - {fileID: -4205422945758822357}
   EditorParameters: []
   MasterBanks:
   - {fileID: -4031877061682129050}
   StringsBanks:
   - {fileID: 5985094667170840401}
-  cacheTime: 638829445780000000
+  cacheTime: 638829527360000000
   cacheVersion: 131624
+--- !u!114 &591781897893002656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/BGM/BGM_Fog
+  m_EditorClassIdentifier: 
+  Path: event:/BGM/BGM_Fog
+  Guid:
+    Data1: -318342414
+    Data2: 1105483787
+    Data3: 1339284670
+    Data4: -518629618
+  Banks:
+  - {fileID: 4472467386551336300}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 67643
 --- !u!114 &2062394248928341859
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -199,6 +337,60 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 1850
+--- !u!114 &4153001387868073980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Player/Firework_Shot
+  m_EditorClassIdentifier: 
+  Path: event:/Player/Firework_Shot
+  Guid:
+    Data1: -1796284894
+    Data2: 1290878221
+    Data3: -1132644686
+    Data4: -1572112270
+  Banks:
+  - {fileID: -1494385254773545651}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 750
+--- !u!114 &4353502610141563470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Items/Item_Collect
+  m_EditorClassIdentifier: 
+  Path: event:/Items/Item_Collect
+  Guid:
+    Data1: 79766312
+    Data2: 1168363572
+    Data3: 1699945905
+    Data4: -1514087389
+  Banks:
+  - {fileID: -6148552655213859820}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 632
 --- !u!114 &4472467386551336300
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -214,11 +406,92 @@ MonoBehaviour:
   Path: ../FMOD/TFGS_FMOD/Build/Desktop/BGM.bank
   Name: BGM
   StudioPath: bank:/BGM
-  lastModified: 638829445760000000
+  lastModified: 638829477780000000
   FileSizes:
   - Name: Desktop
-    Value: 413536
+    Value: 1159904
   Exists: 1
+--- !u!114 &4719151662147639866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Enemy/Golem_Footstep
+  m_EditorClassIdentifier: 
+  Path: event:/Enemy/Golem_Footstep
+  Guid:
+    Data1: 280393201
+    Data2: 1204803338
+    Data3: 2004546980
+    Data4: -644412202
+  Banks:
+  - {fileID: -6471856967336424555}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 65
+  MaxDistance: 150
+  Length: 1300
+--- !u!114 &4945699488227742122
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Enemy/Swipe
+  m_EditorClassIdentifier: 
+  Path: event:/Enemy/Swipe
+  Guid:
+    Data1: -1015045752
+    Data2: 1145964837
+    Data3: -781149
+    Data4: 1221136838
+  Banks:
+  - {fileID: -6471856967336424555}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1000
+--- !u!114 &4994235815652987385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Player/BowShot_1
+  m_EditorClassIdentifier: 
+  Path: event:/Player/BowShot_1
+  Guid:
+    Data1: -1365108109
+    Data2: 1275268273
+    Data3: -951220034
+    Data4: -1650033970
+  Banks:
+  - {fileID: -1494385254773545651}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 550
 --- !u!114 &5985094667170840401
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -234,10 +507,10 @@ MonoBehaviour:
   Path: ../FMOD/TFGS_FMOD/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638829445780000000
+  lastModified: 638829525500000000
   FileSizes:
   - Name: Desktop
-    Value: 1078
+    Value: 1532
   Exists: 1
 --- !u!114 &7353980564618215057
 MonoBehaviour:

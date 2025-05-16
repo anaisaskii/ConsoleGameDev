@@ -406,6 +406,7 @@ MonoBehaviour:
   - Master
   Banks:
   - BGM
+  - Enemy
   - Player_Atk
   - SFX
   BanksToLoad: []

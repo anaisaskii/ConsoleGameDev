@@ -11,11 +11,8 @@ public class BossHealth : Health
         bossBT = this.GetComponent<BossBT>();
     }
 
-    public override void TakeDamage(float damage)
+    public override void Die()
     {
-        //base.TakeDamage(damage);    
-        bossBT.OnPlayerAttack();
-
-        base.TakeDamage(damage);
+        Destroy(gameObject);
     }
 }

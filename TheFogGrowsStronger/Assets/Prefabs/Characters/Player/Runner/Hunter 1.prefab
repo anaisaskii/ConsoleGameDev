@@ -59,7 +59,7 @@ Transform:
   m_GameObject: {fileID: 7135419520210877136}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.3052545, y: 9.058974, z: 1.6144704}
+  m_LocalPosition: {x: 1.9, y: 9.058974, z: 2.83}
   m_LocalScale: {x: 0.9969917, y: 0.9969917, z: 0.9969917}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -213,7 +213,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: b880dee2d13a62745a77be3f4086a779,
         type: 3}
       propertyPath: m_Name
-      value: Hunter
+      value: Hunter 1
       objectReference: {fileID: 0}
     - target: {fileID: 5413673163645920680, guid: b880dee2d13a62745a77be3f4086a779,
         type: 3}
@@ -247,6 +247,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 4029617186597091392}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b880dee2d13a62745a77be3f4086a779,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4006141604183869734}
   m_SourcePrefab: {fileID: 100100000, guid: b880dee2d13a62745a77be3f4086a779, type: 3}
 --- !u!4 &238486816348596189 stripped
 Transform:
@@ -274,3 +278,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ikActive: 1
   rightHandObj: {fileID: 667194061825477621}
+  leftHandObj: {fileID: 8354351648824112489}
+--- !u!114 &4006141604183869734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 577752482753690983}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1908f6046cfd1f44851de5069f5e71c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FootstepEvent: event:/Player/Footsteps
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 2147483648
