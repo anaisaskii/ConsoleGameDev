@@ -19,7 +19,7 @@ public class Projectile : MonoBehaviour
 
     private void Update()
     {
-        if (!hasHit)
+        if (!hasHit) //keep moving if hasn't hit anything
         {
             transform.Translate(Vector3.forward * speed * Time.deltaTime);
         }

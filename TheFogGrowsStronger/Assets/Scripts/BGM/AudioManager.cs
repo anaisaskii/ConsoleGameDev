@@ -9,14 +9,16 @@ public class AudioManager : MonoBehaviour
     private EventInstance currentMusicInstance;
     private MusicArea currentArea = MusicArea.Plains;
 
+    //Play music when the player spawns in
     void Start()
     {
         PlayMusicForArea(currentArea);
     }
 
+    // set the area from the BGMTrigger script
     public void SetArea(MusicArea newArea)
     {
-        if (newArea == currentArea) return;
+        if (newArea == currentArea) return; //ignore if it's the same
 
         currentArea = newArea;
         SwitchMusic(newArea);
@@ -28,10 +30,11 @@ public class AudioManager : MonoBehaviour
         currentMusicInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
         currentMusicInstance.release();
 
-        // Start new music
+        
         PlayMusicForArea(area);
     }
 
+    //create an instance and start music
     private void PlayMusicForArea(MusicArea area)
     {
         string eventPath = GetMusicEventPath(area);
@@ -39,6 +42,7 @@ public class AudioManager : MonoBehaviour
         currentMusicInstance.start();
     }
 
+    // BGM paths, default is forest
     private string GetMusicEventPath(MusicArea area)
     {
         switch (area)
@@ -49,6 +53,7 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    //cleanup
     private void OnDestroy()
     {
         currentMusicInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);

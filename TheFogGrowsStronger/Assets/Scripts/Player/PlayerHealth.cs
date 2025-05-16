@@ -24,8 +24,6 @@ public class PlayerHealth : Health
     {
         base.Die(); 
         //Player-specific death logic
-        Debug.Log("Player died!");
-        //death screen stuff GOES HERE :)
     }
 
     private void UpdateHealthBar()

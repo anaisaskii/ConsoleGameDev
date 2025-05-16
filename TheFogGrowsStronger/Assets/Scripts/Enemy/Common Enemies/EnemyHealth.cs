@@ -11,6 +11,7 @@ public class EnemyHealth : Health
         enemySpawner = GameObject.Find("EnemySpawner").GetComponent<EnemySpawner>();
     }
 
+    //Despawns enemy upon death and updates active enemies in scene
     public override void Die()
     {
         enemySpawner.RemoveEnemy(this.gameObject);

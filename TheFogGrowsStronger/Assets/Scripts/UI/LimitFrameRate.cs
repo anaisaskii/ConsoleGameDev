@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+//Limits framerate to 60fps
+
 public class LimitFrameRate : MonoBehaviour
 {
     public int target = 60;

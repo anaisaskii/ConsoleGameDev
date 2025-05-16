@@ -5,12 +5,13 @@ using UnityEngine;
 public class BossHealth : Health
 {
     BossBT bossBT;
-    // Start is called before the first frame update
+
     void Start()
     {
         bossBT = this.GetComponent<BossBT>();
     }
 
+    // destroy prefab when the boss dies
     public override void Die()
     {
         Destroy(gameObject);

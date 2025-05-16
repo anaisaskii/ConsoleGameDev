@@ -15,12 +15,14 @@ public class CharacterSelect : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //get characters in scene
         runner = GameObject.Find("Runner");
         hunter = GameObject.Find("huntress_mesh");
 
         HideCharacters();
     }
 
+    //Set the character
     public void SetCharacterRunner()
     {
         selectedCharacterIndex = 1;
@@ -35,6 +37,7 @@ public class CharacterSelect : MonoBehaviour
         hunter.GetComponent<SkinnedMeshRenderer>().enabled = true;
     }
 
+    //Hide all
     private void HideCharacters()
     {
         runner.GetComponent<SkinnedMeshRenderer>().enabled = false;

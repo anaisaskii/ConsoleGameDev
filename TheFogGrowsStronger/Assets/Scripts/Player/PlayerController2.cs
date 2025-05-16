@@ -274,13 +274,14 @@ public class PlayerController2 : MonoBehaviour
 
 
     }
-
+    //stops controller rumble
     private IEnumerator StopRumbleAfter(float delay)
     {
         yield return new WaitForSeconds(delay);
         Gamepad.current?.PauseHaptics();
     }
 
+    //fire the weapon projectile
     private void FireProjectile(GameObject projectilePrefab, float damage)
     {
         BeginAttackLock();
@@ -304,6 +305,7 @@ public class PlayerController2 : MonoBehaviour
                 Destroy(muzzleVFX, 2f);
             }
 
+            //take damage upon hit
             RaycastHit hit;
             if (Physics.Raycast(firePoint.position, (aimPoint - firePoint.position).normalized, out hit, shootDistance, shootableLayers))
             {
@@ -341,18 +343,18 @@ public class PlayerController2 : MonoBehaviour
         }
     }
 
-    //Calculating the movement speed and controlling the MOVEMENT animation
+    //calculate the movement speed 
     private void CharacterMovementCalculation()
     {
         float targetSpeed = m_input.SprintInput ? SprintSpeed : MoveSpeed;
 
-        // Modify the FOV manually
+        // modify the FOV (for cinemachine)
         freelookCam.m_Lens.FieldOfView = (targetSpeed == SprintSpeed) ? 65f : 60f;
 
         if (m_input.MovementInput == Vector2.zero)
             targetSpeed = 0.0f;
 
-        // a reference to the players current horizontal velocity
+        // reference to the players current horizontal velocity
         float currentHorizontalSpeed = new Vector3(m_controller.velocity.x, 0.0f, m_controller.velocity.z).magnitude;
 
         float speedOffset = 0.1f;
@@ -362,8 +364,8 @@ public class PlayerController2 : MonoBehaviour
         if (currentHorizontalSpeed < targetSpeed - speedOffset ||
             currentHorizontalSpeed > targetSpeed + speedOffset)
         {
-            // creates curved result rather than a linear one giving a more organic speed change
-            // note T in Lerp is clamped, so we don't need to clamp our speed
+            // creates curved result rather than linear one 
+            // clamped lerp
             m_speed = Mathf.Lerp(currentHorizontalSpeed, targetSpeed * inputMagnitude,
                 Time.deltaTime * SpeedChangeRate);
 
@@ -376,28 +378,21 @@ public class PlayerController2 : MonoBehaviour
         }
 
         m_animationMovementSpeed = Mathf.Lerp(m_animationMovementSpeed, targetSpeed, Time.deltaTime * SpeedChangeRate);
-        if (m_animationMovementSpeed < 0.01f)
-        {
-            m_animator.SetBool("Walking", false);
-            m_animationMovementSpeed = 0f;
-        }
 
         bool isWalking = m_speed > 0.1f; // If moving, set walking to true
-        m_animator.SetBool("Walking", isWalking);
     }
 
-    //Grounded checks that allows us to swap between FALL and MOVEMENT animation / behavior
+    //grounded checks
     private void FixedUpdate()
     {
         Grounded = GroundedCheck(GroundedOffset);
         StairsGrounded = GroundedCheck(StairOffset);
-        //m_animator.SetBool(AnimationGroundedBool, Grounded);
     }
 
-    //Spherecasting downwards to detect if we are grounded
+    //casting downwards to detect if grounded
     private bool GroundedCheck(float groundedOffset)
     {
-        // set sphere position, with offset
+        // set sphere position with offset
         Vector3 spherePosition = new Vector3(transform.position.x, transform.position.y + groundedOffset,
             transform.position.z);
         return Physics.CheckSphere(spherePosition, GroundedRadius, GroundLayers,
@@ -405,7 +400,7 @@ public class PlayerController2 : MonoBehaviour
     }
 
 
-    //Visualizaton of the Grounded check
+    //visualizaton of the Grounded check
     private void OnDrawGizmosSelected()
     {
         Color transparentGreen = new Color(0.0f, 1.0f, 0.0f, 0.35f);

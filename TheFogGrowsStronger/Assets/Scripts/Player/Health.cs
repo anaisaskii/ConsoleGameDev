@@ -48,6 +48,7 @@ public class Health : MonoBehaviour
         
     }
 
+    // Applies damage to character
     public virtual void TakeDamage(float damage)
     {
         currentHealth -= damage;
@@ -70,12 +71,14 @@ public class Health : MonoBehaviour
     {
     }
 
+    //Show the damage numbers
     void ShowDamageNumbers(float damage)
     {
         var number = Instantiate(damageNumbers, transform.position, Quaternion.identity, transform);
         number.GetComponent<TMP_Text>().text = damage.ToString();
     }
 
+    // Get the current health
     public float GetCurrentHealth()
     {
         return currentHealth;
@@ -85,15 +88,4 @@ public class Health : MonoBehaviour
     {
         return maxHealth;
     }
-    /*void UpdateHealthBar()
-    {
-        if (healthBarFill != null)
-        {
-            healthBarFill.fillAmount = currentHealth / maxHealth;
-        
-        *//*Vector3 scale = healthBarFill.rectTransform.localScale;
-        scale.x = currentHealth / maxHealth;
-        healthBarFill.rectTransform.localScale = scale;*//*
-    }
-    }*/
 }

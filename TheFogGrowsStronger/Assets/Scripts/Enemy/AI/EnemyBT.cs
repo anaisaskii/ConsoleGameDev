@@ -8,30 +8,24 @@ public class EnemyBT : MonoBehaviour
 {
     private GameObject player;
     private Transform playerTransform;
-    private Health playerhealth;
     private PlayerHealth PLAYERHEALTH;
 
     private NavMeshAgent agent;
 
     private Animator animator;
 
-    private float meleeRange = 3.0f;
-    private float rangedRange = 20.0f;
-    private float combinedCooldown = 6f;
+    private float meleeRange = 3.0f; //range to melee attack
+    private float rangedRange = 20.0f; //range to ranged attack
+    private float combinedCooldown = 6f; // attack cooldowns
     private float lastAttackTime;
 
     private Root aiRoot;
 
-    private float jumpDuration = 1f;
-    private float startTime;
-    private Vector3 jumpStartPosition;
-    private Vector3 jumpTargetPosition;
-
     void Start()
     {
+        //set up behaviour tree
         player = GameObject.FindWithTag("Player");
         playerTransform = player.transform;
-        playerhealth = player.GetComponent<Health>();
         agent = GetComponent<NavMeshAgent>();
         animator = this.GetComponent<Animator>();
 
@@ -54,17 +48,14 @@ public class EnemyBT : MonoBehaviour
         aiRoot.OpenBranch(attackSelector);
     }
 
-    void Update()
-    {
-        
-    }
-
+    // Runs the behaviour tree, this is called in the state machine every frame
+    // when in attack state
     public void progress()
     {
         aiRoot.Tick();
-        
     }
 
+    //check if player is within range to perform a melee attack
     private bool IsPlayerInMeleeRange()
     {
         bool isInRange = Vector3.Distance(transform.position, playerTransform.position) <= meleeRange;
@@ -72,6 +63,7 @@ public class EnemyBT : MonoBehaviour
         return isInRange && canAttack;
     }
 
+    //check if player is within range to perform a ranged attack
     private bool IsPlayerInRangedRange()
     {
         bool isInRange = Vector3.Distance(transform.position, playerTransform.position) <= rangedRange;
@@ -79,18 +71,17 @@ public class EnemyBT : MonoBehaviour
         return isInRange && canAttack;
     }
 
-
+    //perform attacks
     private void PerformLightMeleeAttack()
     {
         animator.SetTrigger("AtkLight");
-        Debug.Log("Performed light melee attack!");
         lastAttackTime = Time.time;
     }
 
     private void PerformRangedAttack()
     {
         animator.SetTrigger("Shoot");
-        //shoot
+        lastAttackTime = Time.time;
     }
 
     public void playerTakeDamage(int damage)

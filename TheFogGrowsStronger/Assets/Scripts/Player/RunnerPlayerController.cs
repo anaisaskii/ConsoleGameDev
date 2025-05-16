@@ -72,10 +72,9 @@ public class RunnerPlayerController : MonoBehaviour
 
     private void Update()
     {
-        // Movement & Gravity omitted for brevity...
         ApplyGravityAndMovement();
 
-        // PRIMARY: Homing arrows
+        // Primary Attack
         if (m_input.PrimarySkillHeld && Time.time >= nextHomingFireTime)
         {
             FireHomingArrow();
@@ -85,10 +84,10 @@ public class RunnerPlayerController : MonoBehaviour
 
     private void ApplyGravityAndMovement()
     {
-        // Your existing movement + gravity implementation
+        
     }
 
-    // ---------- HANDLERS ----------
+    
     private void HandleSecondarySkillInput()
         => StartCoroutine(SecondaryPowerShot());
 
@@ -100,7 +99,6 @@ public class RunnerPlayerController : MonoBehaviour
     private void HandleSpecialSkillInput()
         => StartCoroutine(SpecialAttackSequence());
 
-    // ---------- COROUTINES & METHODS ----------
 
     private IEnumerator SecondaryPowerShot()
     {
@@ -114,7 +112,7 @@ public class RunnerPlayerController : MonoBehaviour
     private IEnumerator UpwardDash()
     {
         m_canDash = false;
-        // propel player upwards
+        // shoot player upwards
         m_controller.Move(Vector3.up * UpDashPower);
         yield return new WaitForSeconds(DashCooldown);
         m_canDash = true;
@@ -122,10 +120,10 @@ public class RunnerPlayerController : MonoBehaviour
 
     private IEnumerator SpecialAttackSequence()
     {
-        // 1) Upward dash
+        // Upward dash
         yield return UpwardDash();
 
-        // 2) Rapid homing in air
+        // Rapid homing in air
         for (int i = 0; i < specialBurstCount; i++)
         {
             FireHomingArrow();
@@ -155,8 +153,7 @@ public class RunnerPlayerController : MonoBehaviour
             p.damage = damage;
     }
 }
-
-// ---------- HOMING PROJECTILE SCRIPT ----------
+ //Not fully working
 public class HomingProjectile : MonoBehaviour
 {
     public float speed = 20f;

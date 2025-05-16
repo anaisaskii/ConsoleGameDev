@@ -5,6 +5,7 @@ using UnityEngine.AI;
 
 public class BossStateMachine : EnemyAI
 {
+    //Used for both bosses
     private BossBT bossBT;
     private Boss2BT boss2bt;
 
@@ -15,13 +16,11 @@ public class BossStateMachine : EnemyAI
         {
             transform.position = hit.position; // Snap to nearest NavMesh
         }
-        else
-        {
-            Debug.LogError($"{gameObject.name} could not find NavMesh nearby!");
-        }
 
+        //Run all default starting code
         base.Start();
 
+        // Set correct waypints based on boss
         if (this.gameObject.name == "Boss_1")
         {
             bossBT = GetComponent<BossBT>();
@@ -32,11 +31,10 @@ public class BossStateMachine : EnemyAI
             boss2bt = GetComponent<Boss2BT>();
             waypoints = enemySpawner.boss2Waypoints;
         }
-
-        
         
     }
 
+    // Movement animations are based on the enemy's current movement speed
     private void Update()
     {
         animator.SetFloat("Speed", agent.velocity.magnitude);
@@ -47,7 +45,8 @@ public class BossStateMachine : EnemyAI
         Attack(enemyAttackDamage);
     }
 
-    // --Damage--
+    // Attack State
+    // The boss's behaviour tree will handle attacks
     private void Attack(int damage)
     {
         if(this.gameObject.name == "Boss_1")
@@ -68,6 +67,9 @@ public class BossStateMachine : EnemyAI
         }
     }
 
+    // Patrol State
+    // Boss will move between waypoints, waiting at each one for a few seconds
+    // Once it has visited all waypoints, it will start again
     protected override void Patrol()
     {
         if (waypoints.Length == 0) return;
@@ -93,7 +95,9 @@ public class BossStateMachine : EnemyAI
         }
     }
 
-
+    // Chase State
+    // If the player is near (not too near - attack state) the boss will chase them
+    // if the boss is chasing for 10 seconds it will enter the patrol state
     protected override void ChasePlayer()
     {
         float distance = Vector3.Distance(transform.position, player.position);

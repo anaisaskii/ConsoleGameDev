@@ -20,9 +20,9 @@ public class GameManager : MonoBehaviour
     public GameObject pauseMenu;
 
 
-    // Start is called before the first frame update
     void Start()
     {
+        //Check selected character from character select screen
         switch (CharacterSelect.selectedCharacterIndex)
         {
             case 1:
@@ -63,6 +63,9 @@ public class GameManager : MonoBehaviour
                 PauseGame();
         }
     }
+
+    //Pause/Unpause game
+    //Set game time to 0, pauses AI and movement, keeps sound playing
 
     void PauseGame()
     {

@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.AI;
 using BTAI;
 
+//Second Boss behaviour tree
+
 public class Boss2BT : MonoBehaviour
 {
     private GameObject player;
@@ -16,38 +18,39 @@ public class Boss2BT : MonoBehaviour
 
     private Animator animator;
 
-    private float meleeRange = 20.0f;
-    private float rangedRange = 30.0f;
-    private float combinedCooldown = 6f;
+    private float meleeRange = 20.0f; //range to melee attack
+    private float rangedRange = 30.0f; //range to ranged attack
+    private float combinedCooldown = 6f; // attack cooldowns
     private float lastAttackTime;
 
-    private float playerAggression = 0f;
-    private float observationInterval = 5f;
+    private float playerAggression = 0f; //how agressive the player is
+    private float observationInterval = 5f; //how often to check agression
     private float lastObservationTime;
     private int playerAttackCount;
 
     // Start is called before the first frame update
     void Start()
     {
-        // Usual setup
         player = GameObject.FindWithTag("Player");
         playerTransform = player.transform;
         playerhealth = player.GetComponent<Health>();
+
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
 
+        // Set up behavoiur tree
         aiRoot = BT.Root();
         var selector = BT.Selector();
 
         var blockSequence = BT.Sequence()
             .OpenBranch(
-                BT.Condition(ShouldBlock),
+                BT.Condition(ShouldBlock), //check the player agression
                 BT.Call(PerformBlock)
             );
 
         var attackSequence = BT.Sequence()
             .OpenBranch(
-                BT.Condition(CanPerformAttack),
+                BT.Condition(CanPerformAttack), //check cooldown
                 BT.Call(AdaptiveAttack)
             );
 
@@ -55,7 +58,8 @@ public class Boss2BT : MonoBehaviour
         aiRoot.OpenBranch(selector);
     }
 
-    // Update is called once per frame
+    // Runs the behaviour tree, this is called in the state machine every frame
+    // when in attack state
     public void Progress()
     {
         aiRoot.Tick();
@@ -68,19 +72,21 @@ public class Boss2BT : MonoBehaviour
 
     private void EvaluatePlayerAggression()
     {
-        // Normalize attack count per interval, you can tune this.
-        playerAggression = Mathf.Clamp01(playerAttackCount / 10f); // 0 = passive, 1 = aggressive
+        // normalize attack count per interval
+        //if 0, not agressive
+        //if 1, agressive
+        playerAggression = Mathf.Clamp01(playerAttackCount / 10f);
         playerAttackCount = 0;
         lastObservationTime = Time.time;
-
-        Debug.Log("Player aggression score: " + playerAggression);
     }
 
+    //increase player aggression on attack
     public void OnPlayerAttack()
     {
         playerAttackCount++;
     }
 
+    //Check if player is near to enemy to decide attack
     private void AdaptiveAttack()
     {
         float distance = Vector3.Distance(transform.position, playerTransform.position);
@@ -105,6 +111,8 @@ public class Boss2BT : MonoBehaviour
         lastAttackTime = Time.time;
     }
 
+    // if the player agression is high
+    // also randomly chooses beteween blocking and light attack
     private bool ShouldBlock()
     {
         return playerAggression >= 0.7f && Random.value > 0.5f;
@@ -113,9 +121,9 @@ public class Boss2BT : MonoBehaviour
     private void PerformBlock()
     {
         animator.SetTrigger("Block");
-        Debug.Log("Boss is dodging!");
     }
 
+    //returns whether the player is in range and the cooldown has run out
     private bool CanPerformAttack()
     {
         bool isInRange = Vector3.Distance(transform.position, playerTransform.position) <= meleeRange;
@@ -123,16 +131,18 @@ public class Boss2BT : MonoBehaviour
         return canAttack && isInRange;
     }
 
+    //perform attacks
+    //ideally this should also affect the player health :/
     private void PerformLightMeleeAttack()
     {
         agent.isStopped = true;
         agent.ResetPath();
 
         animator.SetTrigger("Swipe");
-        Debug.Log("Boss Performed light melee attack!");
         lastAttackTime = Time.time;
 
         agent.isStopped = false;
+        
     }
 
     private void PerformHeavyMeleeAttack()
@@ -141,7 +151,6 @@ public class Boss2BT : MonoBehaviour
         agent.ResetPath();
 
         animator.SetTrigger("Smash");
-        Debug.Log("Boss Performed heavy melee attack!");
         lastAttackTime = Time.time;
 
         agent.isStopped = false;
@@ -149,9 +158,7 @@ public class Boss2BT : MonoBehaviour
 
     private void PerformRangedAttack()
     {
-        Debug.Log("Boss Performed shoot attack!");
-        //animator.SetTrigger("Shoot");
-        //shoot
+        //Did not get time to implement the ranged attack :(
     }
 
 }

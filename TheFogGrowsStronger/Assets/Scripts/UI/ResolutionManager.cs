@@ -37,7 +37,6 @@ public class ResolutionManager : MonoBehaviour
                 resList.Add(newRes);
                 SelectedResList.Add(res);
             }
-            /*resList.Add(res.ToString());*/
         }
 
         ResolutionList.ClearOptions(); //clear options before adding

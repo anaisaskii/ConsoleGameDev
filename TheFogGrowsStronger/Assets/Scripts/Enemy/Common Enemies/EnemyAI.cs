@@ -8,12 +8,14 @@ using TMPro;
 
 public abstract class EnemyAI : MonoBehaviour
 {
+    //Enemy attributes
     public int enemyAttackDamage = 1;
     public int enemyAttackSpeed = 1;
     public float detectionRadius;
     public float enemySpeed = 5f;
     public TextMeshProUGUI cashText;
 
+    // Player/Enemy Gameobjects
     protected NavMeshAgent agent;
     protected Animator animator;
     protected Rigidbody rb;
@@ -23,15 +25,18 @@ public abstract class EnemyAI : MonoBehaviour
     protected EnemySpawner enemySpawner;
     protected Transform[] waypoints;
 
+    // Patrol logic (waypoints...)
     protected int currentWaypointIndex = 0;
     protected bool isWaiting = false;
     protected float waitTimer = 0f;
     protected float waitTime = 2f;
 
+    // chase logic
     protected float chaseTimer = 0f;
     protected float maxChaseDuration = 10f;
 
-    protected enum EnemyState { Idle, Patrol, Chase, Attack, Die }
+    //Possible enemy states
+    protected enum EnemyState { Patrol, Chase, Attack, Die }
     protected EnemyState currentState;
 
     protected virtual void Start()
@@ -48,21 +53,25 @@ public abstract class EnemyAI : MonoBehaviour
         currentState = EnemyState.Patrol;
     }
 
+    // Check for state changes each update
     protected virtual void FixedUpdate()
     {
         HandleState();
     }
 
+
     protected virtual void HandleState()
     {
         float distanceToPlayer = Vector3.Distance(transform.position, player.position);
 
+        // If the player is near enough to the enemy, attack
         if (distanceToPlayer <= detectionRadius && currentState != EnemyState.Attack)
         {
             currentState = EnemyState.Attack;
             return;
         }
 
+        // call the appropriate function based on the state
         switch (currentState)
         {
             case EnemyState.Patrol:
@@ -77,6 +86,7 @@ public abstract class EnemyAI : MonoBehaviour
         }
     }
 
+    //override-able functions for each enemy
     protected abstract void Patrol();
     protected abstract void ChasePlayer();
     protected abstract void AttackPlayer();

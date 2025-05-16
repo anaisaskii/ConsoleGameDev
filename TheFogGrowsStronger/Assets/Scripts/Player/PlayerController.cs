@@ -132,7 +132,7 @@ public class PlayerController : MonoBehaviour
         {
             m_rotationStrategy = GetComponent<AgentRotationStrategy>();
         }
-        //m_animator = GetComponent<Animator>();
+
         m_controller = GetComponent<CharacterController>();
         m_input = GetComponent<PlayerGameInput>();
         mainCamera = Camera.main;
@@ -159,7 +159,7 @@ public class PlayerController : MonoBehaviour
     private bool canUseSpecialAttack = true;
     public float specialAttackCooldown = 5f;
 
-
+    // Special skill
     private void HandleSpecialSkillInput()
     {
         if (canUseSpecialAttack)
@@ -170,6 +170,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    //special cooldown
     private IEnumerator SpecialAttackCooldown()
     {
         canUseSpecialAttack = false;
@@ -238,7 +239,7 @@ public class PlayerController : MonoBehaviour
 
     private void HandlePrimarySkillInput()
     {
-        // The shooting logic is handled in Update
+        
     }
 
     private void HandleUtilitySkillInput()
@@ -261,7 +262,6 @@ public class PlayerController : MonoBehaviour
         m_canDash = true;
     }
 
-    //All the logic connected with movement happens in the Update
     private void Update()
     {
         m_animator.SetFloat("Speed",m_speed);
@@ -364,7 +364,7 @@ public class PlayerController : MonoBehaviour
             _rumbleCoroutine = StartCoroutine(StopRumbleAfter(rumbleDuration));
         }
 
-        // Calculate aim point in the center of the screen
+        // calculate aim point in the center of the screen
         Ray ray = mainCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
         Vector3 aimPoint = ray.GetPoint(shootDistance);
 

@@ -8,6 +8,7 @@ public class BGMTrigger : MonoBehaviour
 
     public AudioManager audioManager;
 
+    //sets music when player enters box collider
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))

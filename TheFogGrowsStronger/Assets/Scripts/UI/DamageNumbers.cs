@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Displays enemy damage numbers
+
 public class DamageNumbers : MonoBehaviour
 {
     public float DestroyTime = 5f;

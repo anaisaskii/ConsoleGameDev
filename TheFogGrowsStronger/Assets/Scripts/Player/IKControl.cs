@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Locks hands to set object
+
 [RequireComponent(typeof(Animator))]
 public class IKControl : MonoBehaviour
 {

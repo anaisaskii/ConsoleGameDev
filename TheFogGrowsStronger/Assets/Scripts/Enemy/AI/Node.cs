@@ -1,9 +1,10 @@
 using UnityEngine;
 using System.Collections;
 
+//Node script from AI Module on Moodle
+
 public class Node
 {
-
 	public bool walkable;
 	public Vector3 worldPosition;
 	public int gridX;

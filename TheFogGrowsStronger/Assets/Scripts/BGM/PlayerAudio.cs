@@ -13,6 +13,7 @@ public class PlayerAudio : MonoBehaviour
     [SerializeField]
     private LayerMask groundLayer;
 
+    //Called by animation event on footstep animation
     public void PlayFootstep()
     {
         footstepInstance = RuntimeManager.CreateInstance(FootstepEvent);
@@ -20,9 +21,10 @@ public class PlayerAudio : MonoBehaviour
         FootstepSurfaces currentSurface = DetectGroundSurface();
 
         //set variable in fmod
-        //studio system for global parameters!!
+        //set parameter by name for local parameters
         footstepInstance.setParameterByName("Ground Type", (float)SurfaceToParameterValue(currentSurface));
 
+        //start the sound effect and release the memory
         footstepInstance.start();
         footstepInstance.release();
 

@@ -2,9 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-/// <summary>
-/// Behaviour Tree code from the AI Module on Moodle
-/// </summary>
+// Behaviour Tree code from the AI Module on Moodle
 
 namespace BTAI
 {

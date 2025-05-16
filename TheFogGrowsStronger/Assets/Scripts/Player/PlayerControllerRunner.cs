@@ -21,7 +21,7 @@ public class PlayerControllerRunner : MonoBehaviour
 
     private CharacterController m_controller;
     private PlayerGameInput m_input;
-    private float m_speed;
+    private float m_speed; //current speed
     private float m_targetRotation = 0.0f;
     private float m_rotationVelocity;
     private float m_verticalVelocity;
@@ -41,14 +41,11 @@ public class PlayerControllerRunner : MonoBehaviour
     public string AnimationFallTrigger;
 
     [Header("Rotation Override Settings")]
-    [Tooltip("How long (in seconds) to keep character facing the camera after an attack.")]
     public float AttackRotationDuration = 5f;
 
     [Header("Haptics")]
-    [Tooltip("Low (left motor) / High (right motor) rumble strength (0…1).")]
     public float rumbleLow = 0.2f;
     public float rumbleHigh = 0.5f;
-    [Tooltip("How long the rumble should play in seconds.")]
     public float rumbleDuration = 0.1f;
     private Coroutine _rumbleCoroutine;
 
@@ -125,7 +122,6 @@ public class PlayerControllerRunner : MonoBehaviour
         {
             m_rotationStrategy = GetComponent<AgentRotationStrategy>();
         }
-        //m_animator = GetComponent<Animator>();
         m_controller = GetComponent<CharacterController>();
         m_input = GetComponent<PlayerGameInput>();
         mainCamera = Camera.main;
@@ -152,7 +148,7 @@ public class PlayerControllerRunner : MonoBehaviour
 
     private IEnumerator SecondaryAttack()
     {
-
+        RuntimeManager.PlayOneShot("event:/Player/Laser_Gun");
         canUseSecondaryAttack = false;
         FireProjectile(secondaryProjectilePrefab, secondaryAttackDamage);
         yield return new WaitForSeconds(secondaryAttackCooldown);
@@ -163,6 +159,7 @@ public class PlayerControllerRunner : MonoBehaviour
     {
         for (int i = 0; i < specialAttackBurstCount; i++)
         {
+            RuntimeManager.PlayOneShot("event:/Player/RapidFire_Shot");
             FireProjectile(specialProjectilePrefab, normalAttackDamage);
             yield return new WaitForSeconds(specialAttackBurstRate);
         }
@@ -170,7 +167,7 @@ public class PlayerControllerRunner : MonoBehaviour
 
     private void HandlePrimarySkillInput()
     {
-        // The shooting logic is handled in Update since we want continuous fire
+        
     }
 
     private void HandleUtilitySkillInput()
@@ -195,28 +192,20 @@ public class PlayerControllerRunner : MonoBehaviour
     {
         m_animator.SetFloat("Speed", m_speed);
 
-        //cash = cashText.text == "" ? 0 : int.Parse(cashText.text);
-        //Debug.Log(cash);
-
         if (Grounded == false)
         {
             m_verticalVelocity += Gravity * Time.deltaTime;
             m_fallTimeoutDelta -= Time.deltaTime;
-            if (m_fallTimeoutDelta <= 0 && StairsGrounded == false)
-            {
-                //m_animator.SetTrigger(AnimationFallTrigger);
-            }
         }
         else
         {
             m_verticalVelocity = 0;
             m_fallTimeoutDelta = FallTimeout;
-            //m_animator.ResetTrigger(AnimationFallTrigger);
         }
 
         CharacterMovementCalculation();
 
-        // 1) Handle the attack-lock timer (as before) …
+        //Handle the attack-lock timer
         if (_attackLock)
         {
             _attackLockTimer += Time.deltaTime;
@@ -224,7 +213,7 @@ public class PlayerControllerRunner : MonoBehaviour
                 _attackLock = false;
         }
 
-        // 2) Compute model rotation (as you already have it):
+        //Compute model rotation
         Quaternion desiredRot;
         if (_attackLock)
         {
@@ -233,7 +222,6 @@ public class PlayerControllerRunner : MonoBehaviour
         }
         else if (m_input.MovementInput.sqrMagnitude > 0.01f)
         {
-            // your old input-based yaw + smoothing here…
             float rawYaw = Mathf.Atan2(m_input.MovementInput.x,
                                       m_input.MovementInput.y)
                            * Mathf.Rad2Deg
@@ -245,14 +233,13 @@ public class PlayerControllerRunner : MonoBehaviour
             desiredRot = transform.rotation;
         }
 
-        // smooth-slerp into place over RotationSmoothTime
         transform.rotation = Quaternion.Slerp(
             transform.rotation,
             desiredRot,
             Time.deltaTime / RotationSmoothTime
         );
 
-        // 3) BUILD YOUR MOVEMENT FROM INPUT + CAMERA, **NOT** transform.forward:
+        // movemement from input and camera
         Vector3 inputDir = new Vector3(
             m_input.MovementInput.x,
             0f,
@@ -278,6 +265,7 @@ public class PlayerControllerRunner : MonoBehaviour
             m_animator.SetTrigger("Shoot");
             FireProjectile(normalProjectilePrefab, normalAttackDamage);
             nextFireTime = Time.time + 1f / fireRate;
+            RuntimeManager.PlayOneShot("event:/Player/Pistol_Shot");
         }
 
         // Handle jumping
@@ -296,7 +284,7 @@ public class PlayerControllerRunner : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
         // pause or reset—reset does a hard stop
-        Gamepad.current?.PauseHaptics();      // or ResetHaptics()
+        Gamepad.current?.PauseHaptics();
     }
 
     private void FireProjectile(GameObject projectilePrefab, float damage)
@@ -325,11 +313,11 @@ public class PlayerControllerRunner : MonoBehaviour
                 Destroy(muzzleVFX, 2f); // Destroy after effect duration
             }
 
-            // First do hitscan detection
+            // hitscan detection
             RaycastHit hit;
             if (Physics.Raycast(firePoint.position, (aimPoint - firePoint.position).normalized, out hit, shootDistance, shootableLayers))
             {
-                // Apply damage immediately (hitscan)
+                // Apply damage 
                 Health health = hit.collider.gameObject.GetComponent<Health>();
                 if (health != null)
                 {
@@ -340,7 +328,7 @@ public class PlayerControllerRunner : MonoBehaviour
                 if (hitEffectPrefab != null)
                 {
                     GameObject hitVFX = Instantiate(hitEffectPrefab, hit.point, Quaternion.LookRotation(hit.normal));
-                    Destroy(hitVFX, 2f); // Destroy after effect duration
+                    Destroy(hitVFX, 2f); // destroy after effect duration
                 }
 
                 // Adjust aim point to hit location for visual projectile
@@ -355,7 +343,7 @@ public class PlayerControllerRunner : MonoBehaviour
             if (projectileScript != null)
             {
                 projectileScript.speed = projectileSpeed;
-                projectileScript.damage = 0; // No damage since we already applied it with hitscan
+                projectileScript.damage = 0; // no damage since already applied it with hitscan
             }
             else
             {
@@ -369,7 +357,7 @@ public class PlayerControllerRunner : MonoBehaviour
         }
     }
 
-    //Calculating the movement speed and controlling the MOVEMENT animation
+    //calculate movement speed and control the movement
     private void CharacterMovementCalculation()
     {
         float targetSpeed = m_input.SprintInput ? SprintSpeed : MoveSpeed;
@@ -390,8 +378,8 @@ public class PlayerControllerRunner : MonoBehaviour
         if (currentHorizontalSpeed < targetSpeed - speedOffset ||
             currentHorizontalSpeed > targetSpeed + speedOffset)
         {
-            // creates curved result rather than a linear one giving a more organic speed change
-            // note T in Lerp is clamped, so we don't need to clamp our speed
+            // creates curved result rather than linear one 
+            // clamped lerp
             m_speed = Mathf.Lerp(currentHorizontalSpeed, targetSpeed * inputMagnitude,
                 Time.deltaTime * SpeedChangeRate);
 
@@ -404,14 +392,14 @@ public class PlayerControllerRunner : MonoBehaviour
         }
     }
 
-    //Grounded checks that allows us to swap between FALL and MOVEMENT animation / behavior
+    //grounded checks to swap between fall and movement behavior
     private void FixedUpdate()
     {
         Grounded = GroundedCheck(GroundedOffset);
         StairsGrounded = GroundedCheck(StairOffset);
     }
 
-    //Spherecasting downwards to detect if we are grounded
+    //casting downwards to detect if we are grounded
     private bool GroundedCheck(float groundedOffset)
     {
         // set sphere position, with offset
@@ -422,7 +410,7 @@ public class PlayerControllerRunner : MonoBehaviour
     }
 
 
-    //Visualizaton of the Grounded check
+    //visualizaton of the Grounded check
     private void OnDrawGizmosSelected()
     {
         Color transparentGreen = new Color(0.0f, 1.0f, 0.0f, 0.35f);
