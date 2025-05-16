@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 using TMPro;
+using UnityEngine.UI;
 
 //select an enemy type and stuff is done automatically wow
 public enum CharacterType
@@ -15,13 +16,17 @@ public class Health : MonoBehaviour
 {
     public CharacterType characterType;
 
-    [SerializeField] private float maxHealth = 100f;
-    [SerializeField] private float currentHealth;
+    [SerializeField] protected float maxHealth = 100f;
+    [SerializeField] protected float currentHealth;
 
     public UnityEvent OnDeath;
     public UnityEvent<float> OnDamage;
 
     public GameObject damageNumbers;
+
+    /*[Header("UI")]
+    public Image healthBarFill; //player only's ui healthbar*/
+
 
     //when you choose a character type in the inspector it'll set the health automatically
     private void OnValidate()
@@ -43,6 +48,7 @@ public class Health : MonoBehaviour
         }
 
         currentHealth = maxHealth;
+        
     }
 
     public virtual void TakeDamage(float damage)
@@ -60,6 +66,7 @@ public class Health : MonoBehaviour
             currentHealth = 0;
             Die();
         }
+
     }
 
     public virtual void Die()
@@ -84,4 +91,15 @@ public class Health : MonoBehaviour
     {
         return maxHealth;
     }
+    /*void UpdateHealthBar()
+    {
+        if (healthBarFill != null)
+        {
+            healthBarFill.fillAmount = currentHealth / maxHealth;
+        
+        *//*Vector3 scale = healthBarFill.rectTransform.localScale;
+        scale.x = currentHealth / maxHealth;
+        healthBarFill.rectTransform.localScale = scale;*//*
+    }
+    }*/
 }

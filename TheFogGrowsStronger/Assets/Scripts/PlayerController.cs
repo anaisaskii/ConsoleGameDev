@@ -63,8 +63,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private AgentRotationStrategy m_rotationStrategy;
 
+    [Header("In-Game Stats")]
     public int cash = 0;
     public TextMeshProUGUI cashText;
+    /*public int maxHealth = 100;
+    public int currentHealth;
+    public bool isDead = false;*/
+
 
     [Header("Shooting")]
     public Transform firePoint;
@@ -135,7 +140,13 @@ public class PlayerController : MonoBehaviour
         m_input = GetComponent<PlayerGameInput>();
         mainCamera = Camera.main;
     }
-
+    /*void Start()
+    {
+        // This runs after Awake, only if GameObject is active
+        currentHealth = maxHealth;
+        UpdateHealthBar();
+        Debug.Log("Start");
+    }*/
     private void HandleSecondarySkillInput()
     {
         if (canUseSecondaryAttack)
@@ -194,6 +205,56 @@ public class PlayerController : MonoBehaviour
             FireDirectionalProjectile(specialProjectilePrefab, worldDir, normalAttackDamage);
         }
     }
+
+    //take damage function
+   /* public void TakeDamage(int amount)
+    {
+        if (isDead) return;
+
+        currentHealth -= amount;
+        UpdateHealthBar();
+
+        Debug.Log("Player took damage: " + amount + " | Current Health: " + currentHealth);//debug checks
+
+        if (currentHealth <= 0)
+        {
+            Die();
+        }
+    }
+
+    //heal player function
+    public void Heal(int amount)
+    {
+        if (isDead) return;
+
+        currentHealth += amount;
+        if (currentHealth > maxHealth)
+            currentHealth = maxHealth;
+
+        UpdateHealthBar();
+
+        Debug.Log("Player healed: " + amount + " | Current Health: " + currentHealth);
+    }*/
+    /*void UpdateHealthBar()
+    {
+        if (healthBarFill != null)
+        {
+            healthBarFill.fillAmount = (float)currentHealth / maxHealth;
+        }
+    }*/
+
+    /*//kill player function :(((
+    void Die()
+    {
+        isDead = true;
+        Debug.Log("Player died!");
+        //ADD LOGIC HERE FOR DEATHSCREEN (EITHER A PANEL, GAMEOBJECT SETACTVIE OR A LOADSCENE()
+    }
+
+    [Header("healthBarUI")]
+    public Image healthBarFill; //ref to HUD healthbar*/
+
+
 
     private void FireDirectionalProjectile(GameObject prefab, Vector3 direction, float damage)
     {

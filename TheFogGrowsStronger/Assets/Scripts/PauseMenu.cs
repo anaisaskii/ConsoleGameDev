@@ -33,15 +33,16 @@ public class PauseMenuController : MonoBehaviour
         }
         else
         {
-            Time.timeScale = 1f; // Resume game
+            Time.timeScale = 1f; //resume game
             pauseMenu.SetActive(false);
 
-            // Optional: clear selected UI element
+            //clear selected UI element
             EventSystem.current.SetSelectedGameObject(null);
         }
     }
     public void closepausemenu()
     {
         pauseMenu.SetActive(false);
+        Time.timeScale = 1f; //resume game
     }
 }

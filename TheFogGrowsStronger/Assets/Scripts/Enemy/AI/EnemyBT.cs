@@ -9,6 +9,7 @@ public class EnemyBT : MonoBehaviour
     private GameObject player;
     private Transform playerTransform;
     private Health playerhealth;
+    private PlayerHealth PLAYERHEALTH;
 
     private NavMeshAgent agent;
 
@@ -102,6 +103,6 @@ public class EnemyBT : MonoBehaviour
 
     private void ApplyDamageToPlayer(int damage)
     {
-        playerhealth.TakeDamage(damage);
+        PLAYERHEALTH.TakeDamage(damage);
     }
 }
