@@ -4,7 +4,6 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine;
 using JetBrains.Annotations;
-using UnityEditor.Build;
 using Unity.VisualScripting;
 
 public class ResolutionManager : MonoBehaviour

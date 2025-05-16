@@ -15,7 +15,7 @@ public class CharacterSelect : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        runner = GameObject.Find("RunnerMesh");
+        runner = GameObject.Find("Runner");
         hunter = GameObject.Find("huntress_mesh");
 
         HideCharacters();

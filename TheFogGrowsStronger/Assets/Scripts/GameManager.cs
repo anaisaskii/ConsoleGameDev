@@ -13,8 +13,6 @@ public class GameManager : MonoBehaviour
 
     public GameObject playerParent;
 
-    public Button saveGameButton;
-
     public SaveData savedata;
     private string filePath;
 
@@ -44,7 +42,7 @@ public class GameManager : MonoBehaviour
                 break;
         }
 
-        saveGameButton.onClick.AddListener(SaveAndExitGame);
+        
 
         UnpauseGame();
 
