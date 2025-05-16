@@ -33,9 +33,23 @@ public class CommonEnemyAI : EnemyAI
     private void Attack(int damage)
     {
         enemybt.progress();
-        agent.SetDestination(player.transform.position);
 
-        if (Vector3.Distance(transform.position, player.position) >= detectionRadius)
+        NavMeshPath path = new NavMeshPath();
+        Vector3 targetPos = player.position;
+
+        bool hasPath = agent.CalculatePath(targetPos, path)
+                       && path.status == NavMeshPathStatus.PathComplete;
+
+        if (hasPath)
+        {
+            agent.SetDestination(targetPos);
+        }
+        else
+        {
+            agent.ResetPath();
+        }
+
+        if (Vector3.Distance(transform.position, targetPos) >= detectionRadius)
         {
             currentState = EnemyState.Chase;
         }
