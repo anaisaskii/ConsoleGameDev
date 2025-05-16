@@ -19,7 +19,6 @@ public class LimitFrameRate : MonoBehaviour
             Application.targetFrameRate = target;
     }
 
-    //this is unrelated but i dont wanna make a new script just for this one piece of logic
     public void backtomainmenu()
     {
 

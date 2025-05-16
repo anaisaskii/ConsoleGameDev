@@ -88,7 +88,7 @@ public class PlayerController : MonoBehaviour
     public float normalAttackDamage = 10f;
     public float secondaryAttackDamage = 50f;
     public float secondaryAttackCooldown = 4f;
-    public float specialAttackBurstRate = 0.05f; // Faster burst rate
+    public float specialAttackBurstRate = 0.05f;
     public int specialAttackBurstCount = 10;
 
     private bool canUseSecondaryAttack = true;
@@ -112,10 +112,7 @@ public class PlayerController : MonoBehaviour
         m_input.OnSpecialSkillInput -= HandleSpecialSkillInput;
     }
 
-    //reference to player follow cam
-    //use for FOV and other effects
     public CinemachineFreeLook freelookCam;
-
     private Vector3 aimPoint;
 
     private void BeginAttackLock()
@@ -241,7 +238,7 @@ public class PlayerController : MonoBehaviour
 
     private void HandlePrimarySkillInput()
     {
-        // The shooting logic is handled in Update since we want continuous fire
+        // The shooting logic is handled in Update
     }
 
     private void HandleUtilitySkillInput()
@@ -257,7 +254,7 @@ public class PlayerController : MonoBehaviour
         RuntimeManager.PlayOneShot("event:/Player/Jump");
         m_canDash = false;
         m_animator.SetTrigger("Jump");
-        // Apply jump-like vertical velocity
+        // Apply vertical velocity
         m_verticalVelocity = Mathf.Sqrt(10 * -2f * Gravity);
 
         yield return new WaitForSeconds(DashCooldown);
@@ -267,8 +264,6 @@ public class PlayerController : MonoBehaviour
     //All the logic connected with movement happens in the Update
     private void Update()
     {
-        //cash = cashText.text == "" ? 0 : int.Parse(cashText.text);
-        //Debug.Log(cash);
         m_animator.SetFloat("Speed",m_speed);
 
         if (Grounded == false)
@@ -283,16 +278,12 @@ public class PlayerController : MonoBehaviour
         }
 
         CharacterMovementCalculation();
-
-        // 1) Handle the attack-lock timer (as before) …
         if (_attackLock)
         {
             _attackLockTimer += Time.deltaTime;
             if (_attackLockTimer >= AttackRotationDuration)
                 _attackLock = false;
         }
-
-        // 2) Compute model rotation (as you already have it):
         Quaternion desiredRot;
         if (_attackLock)
         {
@@ -301,7 +292,6 @@ public class PlayerController : MonoBehaviour
         }
         else if (m_input.MovementInput.sqrMagnitude > 0.01f)
         {
-            // your old input-based yaw + smoothing here…
             float rawYaw = Mathf.Atan2(m_input.MovementInput.x,
                                       m_input.MovementInput.y)
                            * Mathf.Rad2Deg
@@ -313,20 +303,18 @@ public class PlayerController : MonoBehaviour
             desiredRot = transform.rotation;
         }
 
-        // smooth-slerp into place over RotationSmoothTime
+        // smooth-slerp
         transform.rotation = Quaternion.Slerp(
             transform.rotation,
             desiredRot,
             Time.deltaTime / RotationSmoothTime
         );
 
-        // 3) BUILD YOUR MOVEMENT FROM INPUT + CAMERA, **NOT** transform.forward:
         Vector3 inputDir = new Vector3(
             m_input.MovementInput.x,
             0f,
             m_input.MovementInput.y
         );
-        // rotate that input vector by camera yaw
         Quaternion camYawQ = Quaternion.Euler(
             0f,
             mainCamera.transform.eulerAngles.y,
@@ -353,8 +341,7 @@ public class PlayerController : MonoBehaviour
         {
             m_animator.SetTrigger("Jump");
             m_verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
-            
-            //fmod here
+
             RuntimeManager.PlayOneShot("event:/Player/Jump");
         }
 
@@ -363,8 +350,7 @@ public class PlayerController : MonoBehaviour
     private IEnumerator StopRumbleAfter(float delay)
     {
         yield return new WaitForSeconds(delay);
-        // pause or reset—reset does a hard stop
-        Gamepad.current?.PauseHaptics();      // or ResetHaptics()
+        Gamepad.current?.PauseHaptics();   
     }
 
     private void FireProjectile(GameObject projectilePrefab, float damage)
@@ -374,7 +360,6 @@ public class PlayerController : MonoBehaviour
         if (Gamepad.current != null)
         {
             Gamepad.current.SetMotorSpeeds(rumbleLow, rumbleHigh);
-            // stop any existing coroutine to avoid overlap
             if (_rumbleCoroutine != null) StopCoroutine(_rumbleCoroutine);
             _rumbleCoroutine = StartCoroutine(StopRumbleAfter(rumbleDuration));
         }
@@ -390,14 +375,14 @@ public class PlayerController : MonoBehaviour
             if (muzzleFlashPrefab != null)
             {
                 GameObject muzzleVFX = Instantiate(muzzleFlashPrefab, firePoint.position, firePoint.rotation);
-                Destroy(muzzleVFX, 2f); // Destroy after effect duration
+                Destroy(muzzleVFX, 2f); 
             }
 
-            // First do hitscan detection
+            //  do hitscan detection
             RaycastHit hit;
             if (Physics.Raycast(firePoint.position, (aimPoint - firePoint.position).normalized, out hit, shootDistance, shootableLayers))
             {
-                // Apply damage immediately (hitscan)
+                // Apply damage
                 Health health = hit.collider.gameObject.GetComponent<Health>();
                 if (health != null)
                 {
@@ -408,14 +393,14 @@ public class PlayerController : MonoBehaviour
                 if (hitEffectPrefab != null)
                 {
                     GameObject hitVFX = Instantiate(hitEffectPrefab, hit.point, Quaternion.LookRotation(hit.normal));
-                    Destroy(hitVFX, 2f); // Destroy after effect duration
+                    Destroy(hitVFX, 2f); 
                 }
 
-                // Adjust aim point to hit location for visual projectile
+                // Adjust aim point
                 aimPoint = hit.point;
             }
 
-            // Spawn visual projectile
+            // Spawn projectile
             GameObject projectile = Instantiate(projectilePrefab, firePoint.position, Quaternion.identity);
             projectile.transform.LookAt(aimPoint);
 
@@ -423,11 +408,11 @@ public class PlayerController : MonoBehaviour
             if (projectileScript != null)
             {
                 projectileScript.speed = projectileSpeed;
-                projectileScript.damage = 0; // No damage since we already applied it with hitscan
+                projectileScript.damage = 0;
             }
             else
             {
-                // If no Projectile component, just make it move forward
+                //  make it move forward
                 Rigidbody rb = projectile.GetComponent<Rigidbody>();
                 if (rb != null)
                 {
@@ -437,29 +422,24 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    //Calculating the movement speed and controlling the MOVEMENT animation
+    //Calculating the movement speed
     private void CharacterMovementCalculation()
     {
         float targetSpeed = m_input.SprintInput ? SprintSpeed : MoveSpeed;
 
-        // Modify the FOV manually
         freelookCam.m_Lens.FieldOfView = (targetSpeed == SprintSpeed) ? 65f : 60f;
 
         if (m_input.MovementInput == Vector2.zero)
             targetSpeed = 0.0f;
 
-        // a reference to the players current horizontal velocity
         float currentHorizontalSpeed = new Vector3(m_controller.velocity.x, 0.0f, m_controller.velocity.z).magnitude;
 
         float speedOffset = 0.1f;
         float inputMagnitude = m_input.MovementInput.magnitude;
-
-        // accelerate or decelerate to target speed
         if (currentHorizontalSpeed < targetSpeed - speedOffset ||
             currentHorizontalSpeed > targetSpeed + speedOffset)
         {
-            // creates curved result rather than a linear one giving a more organic speed change
-            // note T in Lerp is clamped, so we don't need to clamp our speed
+
             m_speed = Mathf.Lerp(currentHorizontalSpeed, targetSpeed * inputMagnitude,
                 Time.deltaTime * SpeedChangeRate);
 
@@ -471,17 +451,15 @@ public class PlayerController : MonoBehaviour
             m_speed = targetSpeed;
         }
 
-        bool isWalking = m_speed > 0.1f; // If moving, set walking to true
+        bool isWalking = m_speed > 0.1f; // If moving
     }
 
-    //Grounded checks that allows us to swap between FALL and MOVEMENT animation / behavior
     private void FixedUpdate()
     {
         Grounded = GroundedCheck(GroundedOffset);
         StairsGrounded = GroundedCheck(StairOffset);
     }
 
-    //Spherecasting downwards to detect if we are grounded
     private bool GroundedCheck(float groundedOffset)
     {
         // set sphere position, with offset
@@ -491,8 +469,6 @@ public class PlayerController : MonoBehaviour
             QueryTriggerInteraction.Ignore);
     }
 
-
-    //Visualizaton of the Grounded check
     private void OnDrawGizmosSelected()
     {
         Color transparentGreen = new Color(0.0f, 1.0f, 0.0f, 0.35f);

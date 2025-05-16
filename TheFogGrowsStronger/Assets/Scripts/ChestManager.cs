@@ -15,10 +15,6 @@ public class ChestManager : MonoBehaviour
     public List<GameObject> itemPrefab;
 
     //spawn in a set number of random chests
-
-    //set available spots around the map
-    //choose 10? idk at random
-    //choose 2 of those to be rare oooo
     //place chests
 
 
@@ -41,8 +37,6 @@ public class ChestManager : MonoBehaviour
         //if user presses top button and it hits a chest AND they ahve enough money, open it and spawn a random item
         if (Gamepad.current != null && Gamepad.current.buttonNorth.wasPressedThisFrame)
         {
-            //15?
-
             if (player.GetComponent<PlayerController>().cash >= 0)
             {
                 RaycastHit hit;

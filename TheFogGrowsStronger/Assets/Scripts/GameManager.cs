@@ -72,8 +72,6 @@ public class GameManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
     }
-
-    // Unpauses the game
     void UnpauseGame()
     {
         Time.timeScale = 1f;
