@@ -34,6 +34,62 @@ MonoBehaviour:
     m_Localized: < VOLVER
     m_Metadata:
       m_Items: []
+  - m_Id: 36404298309632
+    m_Localized: SELECCIONAR IDIOMA
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1099437728653312
+    m_Localized: VOLUMEN PRINCIPAL
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1099534872928256
+    m_Localized: "CONFIGURACI\xD3N VISUAL"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1099638065389568
+    m_Localized: ACCESIBILIDAD
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1099715857145856
+    m_Localized: VOLUMEN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1099817006981120
+    m_Localized: "RESOLUCI\xD3N"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1099911148134400
+    m_Localized: PANTALLA COMPLETA
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1100006451109888
+    m_Localized: ACTIVAR/DESACTIVAR VSYNC
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1100155860606976
+    m_Localized: OBJETIVO
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1100214140461056
+    m_Localized: POTENCIADORES
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1177130495172608
+    m_Localized: CORREDOR
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1177234186756096
+    m_Localized: CAZADOR
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1177334678085632
+    m_Localized: SELECCIONAR
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1177431327432704
+    m_Localized: "SELECCI\xD3N DE PERSONAJE"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

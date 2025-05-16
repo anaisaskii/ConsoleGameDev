@@ -59,5 +59,6 @@ public class buttonLogic : MonoBehaviour
     public void QuitButton()
     {
         Application.Quit();
+        
     }
 }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using BTAI;
 using UnityEngine;
 using UnityEngine.Localization;
 using UnityEngine.Localization.Settings;
@@ -7,6 +8,9 @@ using UnityEngine.Localization.Settings;
 public class LanguageButton : MonoBehaviour
 {
     private bool active = false; //on/off switch
+
+    public GameObject LanguagePrompt;
+    public GameObject MainMenu;
 
     public void ChangeLocale(int localeID)
     {
@@ -22,5 +26,11 @@ public class LanguageButton : MonoBehaviour
         yield return LocalizationSettings.InitializationOperation;
         LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[_localeID];
         active = false;
+    }
+
+    public void ConfirmLang()
+    {
+        LanguagePrompt.SetActive(false);
+        MainMenu.SetActive(true);
     }
  }

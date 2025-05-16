@@ -34,6 +34,62 @@ MonoBehaviour:
     m_Localized: < BACK
     m_Metadata:
       m_Items: []
+  - m_Id: 36404298309632
+    m_Localized: SELECT LANGUAGE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1099437728653312
+    m_Localized: MASTER VOLUME
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1099534872928256
+    m_Localized: VISUAL SETTINGS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1099638065389568
+    m_Localized: ACCESSIBILITY
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1099715857145856
+    m_Localized: VOLUME
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1099817006981120
+    m_Localized: RESOLUTION
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1099911148134400
+    m_Localized: FULLSCREEN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1100006451109888
+    m_Localized: TOGGLE VSYNC
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1100155860606976
+    m_Localized: OBJECTIVE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1100214140461056
+    m_Localized: POWERUPS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1177130495172608
+    m_Localized: RUNNER
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1177234186756096
+    m_Localized: HUNTER
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1177334678085632
+    m_Localized: SELECT
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1177431327432704
+    m_Localized: CHARACTER SELECT
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
