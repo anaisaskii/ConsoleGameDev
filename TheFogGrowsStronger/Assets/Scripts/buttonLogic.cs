@@ -8,12 +8,12 @@ using UnityEngine.UI;
 
 public class buttonLogic : MonoBehaviour
 {
-    public GameObject UI_MainMenu;      //(inspector) assign main menu ui
-    public GameObject UI_SettingsMenu;  //(inspector) assign settings menu ui
+    public GameObject UI_MainMenu;     
+    public GameObject UI_SettingsMenu;  
     public GameObject UI_SelectSettings;
 
-    public CinemachineVirtualCamera mainMenuCam;  //(inspector) assign main menu cam
-    public CinemachineVirtualCamera settingsCam;  //(inspector) assign settings menu ui
+    public CinemachineVirtualCamera mainMenuCam; 
+    public CinemachineVirtualCamera settingsCam; 
 
     public EventSystem eventSystem;
 
@@ -22,36 +22,34 @@ public class buttonLogic : MonoBehaviour
 
     public void OpenSettingsMenu()
     {
-        // Disable the Main Menu UI
+        // Disable the Main Menu
         UI_MainMenu.SetActive(false);
 
         UI_FirstButtonSettings.GetComponent<Button>().Select();
 
-        // Enable the Settings Menu UI
+        // Enable the Settings
         UI_SettingsMenu.SetActive(true);
         UI_SelectSettings.SetActive(true);
 
         Debug.Log("Opening settings menu");
 
-        // Switch to the Settings camera
-        /*mainMenuCam.Priority = 0;  // Lower priority to deactivate
-        settingsCam.Priority = 1;  // Increase priority to activate*/
-        settingsCam.gameObject.SetActive(true); //set active
+        // Switch to the Settings cam
+        settingsCam.gameObject.SetActive(true);
     }
 
     public void BackToMainMenu()
     {
-        // Disable the Settings Menu UI
+        // Disable the Settings
         UI_SettingsMenu.SetActive(false);
 
         eventSystem.firstSelectedGameObject = UI_FirstButtonMainMenu;
         UI_FirstButtonMainMenu.GetComponent<Button>().Select();
 
-        // Enable the Main Menu UI
+        // Enable the Main
         UI_MainMenu.SetActive(true);
 
-        // Switch to the Main Menu camera
-        settingsCam.gameObject.SetActive(false); //set active
+        // Switch to the Main menu
+        settingsCam.gameObject.SetActive(false);
     }
 
     public void Playbutton()

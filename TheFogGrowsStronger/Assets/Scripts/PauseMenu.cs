@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class PauseMenuController : MonoBehaviour
 {
     public GameObject pauseMenu;
-    public GameObject firstSelectedButton; //immediate select upon open
+    public GameObject firstSelectedButton; 
 
     private bool isPaused = false;
 

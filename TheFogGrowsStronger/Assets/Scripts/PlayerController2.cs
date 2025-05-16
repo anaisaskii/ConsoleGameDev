@@ -88,7 +88,7 @@ public class PlayerController2 : MonoBehaviour
     public float normalAttackDamage = 10f;
     public float secondaryAttackDamage = 50f;
     public float secondaryAttackCooldown = 4f;
-    public float specialAttackBurstRate = 0.05f; // Faster burst rate
+    public float specialAttackBurstRate = 0.05f;
     public int specialAttackBurstCount = 10;
 
     private bool canUseSecondaryAttack = true;
@@ -112,8 +112,6 @@ public class PlayerController2 : MonoBehaviour
         m_input.OnSpecialSkillInput -= HandleSpecialSkillInput;
     }
 
-    //reference to player follow cam
-    //use for FOV and other effects
     public CinemachineFreeLook freelookCam;
 
     private Vector3 aimPoint;
@@ -130,7 +128,6 @@ public class PlayerController2 : MonoBehaviour
         {
             m_rotationStrategy = GetComponent<AgentRotationStrategy>();
         }
-        //m_animator = GetComponent<Animator>();
         m_controller = GetComponent<CharacterController>();
         m_input = GetComponent<PlayerGameInput>();
         mainCamera = Camera.main;
@@ -169,7 +166,6 @@ public class PlayerController2 : MonoBehaviour
 
     private void HandlePrimarySkillInput()
     {
-        // The shooting logic is handled in Update since we want continuous fire
     }
 
     private void HandleUtilitySkillInput()
@@ -189,13 +185,9 @@ public class PlayerController2 : MonoBehaviour
         m_canDash = true;
     }
 
-    //All the logic connected with movement happens in the Update
     private void Update()
     {
 
-
-        cash = cashText.text == "" ? 0 : int.Parse(cashText.text);
-        //Debug.Log(cash);
 
         if (Grounded == false)
         {
@@ -203,19 +195,17 @@ public class PlayerController2 : MonoBehaviour
             m_fallTimeoutDelta -= Time.deltaTime;
             if (m_fallTimeoutDelta <= 0 && StairsGrounded == false)
             {
-                //m_animator.SetTrigger(AnimationFallTrigger);
             }
         }
         else
         {
             m_verticalVelocity = 0;
             m_fallTimeoutDelta = FallTimeout;
-            //m_animator.ResetTrigger(AnimationFallTrigger);
+
         }
 
         CharacterMovementCalculation();
 
-        // 1) Handle the attack-lock timer (as before) …
         if (_attackLock)
         {
             _attackLockTimer += Time.deltaTime;
@@ -223,7 +213,6 @@ public class PlayerController2 : MonoBehaviour
                 _attackLock = false;
         }
 
-        // 2) Compute model rotation (as you already have it):
         Quaternion desiredRot;
         if (_attackLock)
         {
@@ -232,7 +221,6 @@ public class PlayerController2 : MonoBehaviour
         }
         else if (m_input.MovementInput.sqrMagnitude > 0.01f)
         {
-            // your old input-based yaw + smoothing here…
             float rawYaw = Mathf.Atan2(m_input.MovementInput.x,
                                       m_input.MovementInput.y)
                            * Mathf.Rad2Deg
@@ -244,20 +232,17 @@ public class PlayerController2 : MonoBehaviour
             desiredRot = transform.rotation;
         }
 
-        // smooth-slerp into place over RotationSmoothTime
         transform.rotation = Quaternion.Slerp(
             transform.rotation,
             desiredRot,
             Time.deltaTime / RotationSmoothTime
         );
 
-        // 3) BUILD YOUR MOVEMENT FROM INPUT + CAMERA, **NOT** transform.forward:
         Vector3 inputDir = new Vector3(
             m_input.MovementInput.x,
             0f,
             m_input.MovementInput.y
         );
-        // rotate that input vector by camera yaw
         Quaternion camYawQ = Quaternion.Euler(
             0f,
             mainCamera.transform.eulerAngles.y,
@@ -271,33 +256,29 @@ public class PlayerController2 : MonoBehaviour
 
         m_controller.Move(horizontalMove + verticalMove);
 
-        // Handle shooting
         if (m_input.PrimarySkillHeld && Time.time >= nextFireTime)
         {
             FireProjectile(normalProjectilePrefab, normalAttackDamage);
             nextFireTime = Time.time + 1f / fireRate;
         }
 
-        // Handle jumping
         if (m_input.JumpInput && Grounded || m_input.JumpInput && StairsGrounded)
         {
             m_verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
 
-            //fmod here
+
             jumpInstance = RuntimeManager.CreateInstance(jumpInstanceLocation);
             jumpInstance.start();
             jumpInstance.release();
         }
 
-        //m_animator.SetFloat(AnimationSpeedFloat, m_animationMovementSpeed);
 
     }
 
     private IEnumerator StopRumbleAfter(float delay)
     {
         yield return new WaitForSeconds(delay);
-        // pause or reset—reset does a hard stop
-        Gamepad.current?.PauseHaptics();      // or ResetHaptics()
+        Gamepad.current?.PauseHaptics();
     }
 
     private void FireProjectile(GameObject projectilePrefab, float damage)
@@ -307,48 +288,39 @@ public class PlayerController2 : MonoBehaviour
         if (Gamepad.current != null)
         {
             Gamepad.current.SetMotorSpeeds(rumbleLow, rumbleHigh);
-            // stop any existing coroutine to avoid overlap
+
             if (_rumbleCoroutine != null) StopCoroutine(_rumbleCoroutine);
             _rumbleCoroutine = StartCoroutine(StopRumbleAfter(rumbleDuration));
         }
 
-        // Calculate aim point in the center of the screen
         Ray ray = mainCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
         Vector3 aimPoint = ray.GetPoint(shootDistance);
 
-        // Create projectile
         if (firePoint != null && projectilePrefab != null)
         {
-            // Spawn muzzle flash
             if (muzzleFlashPrefab != null)
             {
                 GameObject muzzleVFX = Instantiate(muzzleFlashPrefab, firePoint.position, firePoint.rotation);
-                Destroy(muzzleVFX, 2f); // Destroy after effect duration
+                Destroy(muzzleVFX, 2f);
             }
 
-            // First do hitscan detection
             RaycastHit hit;
             if (Physics.Raycast(firePoint.position, (aimPoint - firePoint.position).normalized, out hit, shootDistance, shootableLayers))
             {
-                // Apply damage immediately (hitscan)
                 Health health = hit.collider.gameObject.GetComponent<Health>();
                 if (health != null)
                 {
                     health.TakeDamage(damage);
                 }
-
-                // Create hit effect at impact point
                 if (hitEffectPrefab != null)
                 {
                     GameObject hitVFX = Instantiate(hitEffectPrefab, hit.point, Quaternion.LookRotation(hit.normal));
-                    Destroy(hitVFX, 2f); // Destroy after effect duration
+                    Destroy(hitVFX, 2f);
                 }
 
-                // Adjust aim point to hit location for visual projectile
                 aimPoint = hit.point;
             }
 
-            // Spawn visual projectile
             GameObject projectile = Instantiate(projectilePrefab, firePoint.position, Quaternion.identity);
             projectile.transform.LookAt(aimPoint);
 
@@ -356,11 +328,10 @@ public class PlayerController2 : MonoBehaviour
             if (projectileScript != null)
             {
                 projectileScript.speed = projectileSpeed;
-                projectileScript.damage = 0; // No damage since we already applied it with hitscan
+                projectileScript.damage = 0; 
             }
             else
             {
-                // If no Projectile component, just make it move forward
                 Rigidbody rb = projectile.GetComponent<Rigidbody>();
                 if (rb != null)
                 {

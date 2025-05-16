@@ -3,7 +3,6 @@ using UnityEngine.Events;
 using TMPro;
 using UnityEngine.UI;
 
-//select an enemy type and stuff is done automatically wow
 public enum CharacterType
 {
     Player,
@@ -24,8 +23,6 @@ public class Health : MonoBehaviour
 
     public GameObject damageNumbers;
 
-    /*[Header("UI")]
-    public Image healthBarFill; //player only's ui healthbar*/
 
 
     //when you choose a character type in the inspector it'll set the health automatically
@@ -71,9 +68,6 @@ public class Health : MonoBehaviour
 
     public virtual void Die()
     {
-        //change this to destroy the prefab by default!!
-        //then for the player we can have special conditions (will need a playerhealth script)
-        //GetComponent<MeshRenderer>().enabled = false;
     }
 
     void ShowDamageNumbers(float damage)

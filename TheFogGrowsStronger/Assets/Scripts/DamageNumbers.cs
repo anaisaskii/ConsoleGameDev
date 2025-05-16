@@ -28,7 +28,7 @@ public class DamageNumbers : MonoBehaviour
         if (mainCamera != null)
         {
             transform.LookAt(mainCamera.transform);
-            transform.forward = -transform.forward; // Flip to face camera properly
+            transform.forward = -transform.forward;
         }
     }
 }
