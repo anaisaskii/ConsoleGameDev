@@ -71,6 +71,22 @@ MonoBehaviour:
     m_Key: powerups
     m_Metadata:
       m_Items: []
+  - m_Id: 1177130495172608
+    m_Key: Runner
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1177234186756096
+    m_Key: Hunter
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1177334678085632
+    m_Key: Select
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1177431327432704
+    m_Key: Character Select
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

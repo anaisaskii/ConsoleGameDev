@@ -74,6 +74,22 @@ MonoBehaviour:
     m_Localized: "AM\xC9LIORATIONS"
     m_Metadata:
       m_Items: []
+  - m_Id: 1177130495172608
+    m_Localized: COUREUR
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1177234186756096
+    m_Localized: CHASSEUR
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1177334678085632
+    m_Localized: "S\xC9LECTIONNER"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1177431327432704
+    m_Localized: "S\xC9LECTION DU PERSONNAGE"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

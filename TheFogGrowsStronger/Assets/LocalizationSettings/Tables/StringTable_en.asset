@@ -74,6 +74,22 @@ MonoBehaviour:
     m_Localized: POWERUPS
     m_Metadata:
       m_Items: []
+  - m_Id: 1177130495172608
+    m_Localized: RUNNER
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1177234186756096
+    m_Localized: HUNTER
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1177334678085632
+    m_Localized: SELECT
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1177431327432704
+    m_Localized: CHARACTER SELECT
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

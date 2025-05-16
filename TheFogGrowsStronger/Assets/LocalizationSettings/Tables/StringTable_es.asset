@@ -74,6 +74,22 @@ MonoBehaviour:
     m_Localized: POTENCIADORES
     m_Metadata:
       m_Items: []
+  - m_Id: 1177130495172608
+    m_Localized: CORREDOR
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1177234186756096
+    m_Localized: CAZADOR
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1177334678085632
+    m_Localized: SELECCIONAR
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1177431327432704
+    m_Localized: "SELECCI\xD3N DE PERSONAJE"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
