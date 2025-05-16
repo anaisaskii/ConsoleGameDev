@@ -11,9 +11,14 @@ public class SceneLoader : MonoBehaviour
     private void Start()
     {
         StartCoroutine(LoadSceneInBackground("MainMenuScene"));
+        StartCoroutine(LoadSceneInBackground("CharacterSelect"));
     }
 
     public void MainMapScene()
+    {
+        asyncLoad.allowSceneActivation = true;
+    }
+    public void CharacterSelect()
     {
         asyncLoad.allowSceneActivation = true;
     }
