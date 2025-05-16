@@ -14,8 +14,6 @@ public class ChestManager : MonoBehaviour
 
     public List<GameObject> itemPrefab;
 
-    public List<GameObject> rareItemPrefab;
-
     //spawn in a set number of random chests
 
     //set available spots around the map
@@ -27,8 +25,7 @@ public class ChestManager : MonoBehaviour
     void Start()
     {
         //chooses 10 of the locations at random
-        List<Transform> regularChests = chestLocations.OrderBy(x => Random.value).Take(5).ToList();
-        //add in rare chests too
+        List<Transform> regularChests = chestLocations.OrderBy(x => Random.value).Take(6).ToList();
 
         foreach (Transform t in regularChests)
         {
@@ -41,7 +38,7 @@ public class ChestManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if user presses e and it hits a chest AND they ahve enough money, open it and spawn a random item
+        //if user presses top button and it hits a chest AND they ahve enough money, open it and spawn a random item
         if (Gamepad.current != null && Gamepad.current.buttonNorth.wasPressedThisFrame)
         {
             //15?
@@ -60,37 +57,14 @@ public class ChestManager : MonoBehaviour
                         animator.SetTrigger("OpenChest");
                         SpawnItem(hit.collider.transform.position);
                     }
-                    else if (hit.collider.CompareTag("ChestRare"))
-                    {
-                        Animator animator = hit.collider.GetComponent<Animator>();
-                        animator.SetTrigger("OpenChest");
-                        SpawnRareItem(hit.collider.transform.position);
-                    }
                 }
             }
         }
     }
 
-    void OpenChest()
-    {
-
-    }
-
     void SpawnItem(Vector3 spawnPosition)
     {
         GameObject spawnedItem = Instantiate(itemPrefab[Random.Range(0, 4)], spawnPosition + Vector3.up * 2f, Quaternion.identity);
-
-        Rigidbody rb = spawnedItem.GetComponent<Rigidbody>();
-        if (rb != null)
-        {
-            Vector3 launchDirection = Vector3.up + Random.insideUnitSphere * 0.5f;
-            rb.AddForce(launchDirection * 5f, ForceMode.Impulse);
-        }
-    }
-
-    void SpawnRareItem(Vector3 spawnPosition)
-    {
-        GameObject spawnedItem = Instantiate(rareItemPrefab[Random.Range(0, 2)], spawnPosition + Vector3.up * 2f, Quaternion.identity);
 
         Rigidbody rb = spawnedItem.GetComponent<Rigidbody>();
         if (rb != null)

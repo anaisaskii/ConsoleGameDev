@@ -79,7 +79,6 @@ public class Boss2BT : MonoBehaviour
     public void OnPlayerAttack()
     {
         playerAttackCount++;
-        Debug.Log("grr");
     }
 
     private void AdaptiveAttack()
