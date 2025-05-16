@@ -2,13 +2,13 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{3a674ebd-1662-4f46-9b90-39b1dde0b610}">
 		<property name="color">
-			<value>Yellow</value>
+			<value>Green</value>
 		</property>
 		<property name="name">
 			<value>Tree</value>
 		</property>
 		<property name="outputFormat">
-			<value>1</value>
+			<value>2</value>
 		</property>
 		<relationship name="folder">
 			<destination>{1281e079-e6b2-4684-88d8-d1cd6292cb3e}</destination>
@@ -34,6 +34,9 @@
 		<relationship name="timeline">
 			<destination>{b278878d-b728-42fb-a90c-b11e0fe7052b}</destination>
 		</relationship>
+		<relationship name="banks">
+			<destination>{98248bbf-72be-4fed-8576-620ece6c00c4}</destination>
+		</relationship>
 	</object>
 	<object class="EventMixer" id="{61c84494-a9b1-4ef1-9307-68efb3be1811}">
 		<relationship name="masterBus">
@@ -56,7 +59,11 @@
 			<destination>{fa8ab0c7-75eb-4096-902b-0da0d8ccf12c}</destination>
 		</relationship>
 	</object>
-	<object class="EventAutomatableProperties" id="{18f120e9-c65b-4f19-94db-908cd4c52bcb}" />
+	<object class="EventAutomatableProperties" id="{18f120e9-c65b-4f19-94db-908cd4c52bcb}">
+		<property name="maximumDistance">
+			<value>60</value>
+		</property>
+	</object>
 	<object class="MarkerTrack" id="{84a3e65b-dea4-40a0-9a99-0a595822b18f}" />
 	<object class="GroupTrack" id="{7ee2fe13-6c21-4aa8-822e-60181ea8a6bc}">
 		<relationship name="modules">
@@ -103,6 +110,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{b8755624-2c92-4886-9e5d-4657098c58d3}">
+		<property name="volume">
+			<value>-3.5</value>
+		</property>
 		<property name="name">
 			<value>Audio 1</value>
 		</property>
@@ -132,6 +142,7 @@
 	</object>
 	<object class="MixerBusEffectChain" id="{c6abbeb2-08fb-4a94-bc18-d8111ead07f8}">
 		<relationship name="effects">
+			<destination>{a0ed7065-8430-40f7-94a0-3a3da52f1a4b}</destination>
 			<destination>{992b394b-dbed-49bc-8736-2f71d2b7613e}</destination>
 		</relationship>
 	</object>
@@ -143,6 +154,7 @@
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{962060ec-6aa3-4c9e-ac05-b5eeab6b3fbb}" />
+	<object class="SpatialiserEffect" id="{a0ed7065-8430-40f7-94a0-3a3da52f1a4b}" />
 	<object class="MixerBusFader" id="{992b394b-dbed-49bc-8736-2f71d2b7613e}" />
 	<object class="MixerBusFader" id="{79bb75a1-fe48-4e5c-92eb-a49f3c6af0a8}" />
 </objects>
